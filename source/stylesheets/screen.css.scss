@@ -42,7 +42,7 @@ html, body {
 
 #toc > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: #964BF1;
   border-radius: 40px;
   width: 20px;
 }
@@ -59,7 +59,7 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -75,6 +75,8 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
     margin-bottom: $logo-margin;
   }
 
@@ -94,11 +96,15 @@ html, body {
       border-radius: 0; /* ios has a default border radius */
     }
 
+    input::placeholder {
+      color: $search-box-border-color;
+    }
+
     &:before {
       position: absolute;
       top: 17px;
       left: $nav-padding;
-      color: $nav-text;
+      color: $search-box-border-color;
       @extend %icon-search;
     }
   }
@@ -351,9 +357,9 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: #484459;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -366,7 +372,6 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
@@ -437,6 +442,10 @@ html, body {
 
   dd {
     margin-left: 15px;
+  }
+
+  a {
+    color: #964BF1;
   }
 
   p, li, dt, dd {
@@ -545,7 +554,8 @@ html, body {
     &>p {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
-      color: #eee;
+      color: #fff;
+      font-size: 14px;
     }
   }
 }

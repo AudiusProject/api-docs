@@ -10,6 +10,45 @@
   font-style: normal;
 }
 
+/* Begin Manual Font Imports */
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 100;
+  src: font-url('AvenirNextLTPro-UltLt.ttf') format('truetype'), url('AvenirNextLTPro-UltLt.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url('AvenirNextLTPro-Regular.ttf') format('truetype'), font-url('AvenirNextLTPro-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: font-url('AvenirNextLTPro-Medium.ttf') format('truetype'), font-url('AvenirNextLTPro-Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: font-url('AvenirNextLTPro-Demi-Bold.ttf') format('truetype'), font-url('AvenirNextLTPro-Demi-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: font-url('AvenirNextLTPro-Bold.ttf') format('truetype'), font-url('AvenirNextLTPro-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: font-url('AvenirNextLTPro-Heavy.ttf') format('truetype'), font-url('AvenirNextLTPro-Heavy.otf') format('opentype');
+}
+/* End Manual Font Imports */
+
 %icon {
   font-family: 'slate';
   speak: none;
