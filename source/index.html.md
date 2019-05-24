@@ -66,27 +66,13 @@ The wallet information can be persisted on the backend of your choice. You, as t
 
 The database schema for persisting data should resemble the following example. There two tables, one for storing authentication information, and the other for storing username and walletAddress. It's important that the username is not stored in the Authentications table because the `lookupKey` is a scrypt hash of a predefined iv with an username and password combination. If the data in these tables were ever exposed, susceptibility of a [rainbow table attack](https://en.wikipedia.org/wiki/Rainbow_table) could increase because the password is the only unknown property. These tables can be named anything since Hedgehog only interacts with REST API endpoints that will perform CRUD on these tables.
 
-## Authentications
-| iv | cipherText | lookupKey |
-| - | - | - |
-| c9b3...48 | 07...e561 | 0e...2a8 |
-| d6...355 | 059f...561 | 15e...3c0 |
-| 99...6e | f4...07 | 18...10 |
-
-The values and explanation for fields in the Authentications table (`iv`, `cipherText` and `lookupKey`) are given in the [Wallet creation](#wallet-creation) section
-
-
-## Users
-| username | walletAddress |        
-| - | - |
-| user1@audius.co | 0xad7a4b1c64a10ebf7f4995bc88fcbf1749c72611 |
-| user2 | 0x2b88420100514fbd8a48c3c427c6251335bcd8d0 |
-
 ## Security Considerations
 
 All third party javascript should be audited for localStorage access. One possible attack vector is a script that loops through all localStorage keys and sends them to a third party server from where those keys could be used to sign transactions on behalf of malicious actors. To mitigate this, all third party javascript should be audited and stored locally to serve, instead of being loaded dynamically through scripts.
 
 Username should be stored separately from auth artifacts in different tables. The table containing the authentication values should be independent with no relation to the table storing username
+
+If the application developers’ server is seized, breached, or controlled by bad actors, the resources required to brute-force decrypt the auth artifacts stored there would be immense. It would only make sense to expend those resources if there were enough value to be gained by breaking a given account, which is why we only recommend using Hedgehog in cases where the stakes are lower. This is also why we recommend a bridge approach for certain use-cases, where one could start users on Hedgehog and suggest migrating to a more secure wallet if their stored value increases beyond a certain threshold. We are working on fallback mechanisms to enable key sharing between devices in the absence of this server component, eg. QR codes.
 
 ## IMPORTANT: Lost Passwords
 
@@ -94,10 +80,10 @@ If a user loses their password, the account is no longer recoverable. There's no
 
 # How To
 
-The code below shows code snippets to integrate Hedgehog into your own application. For a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+The code below shows code snippets to integrate Hedgehog into your own application. For more information about setting up a database schema, see the [example schema section](#example-sql-schema), and for a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
 
 
-## Setup
+## Client-side setup
 
 In this example, we assume you have already a backend/database set up to handle the following scenarios:
 
@@ -162,7 +148,7 @@ This is simply a helper to make defining our setters and getters easier.
 
 The Hedgehog constructor requires 3 parameters to set and retrieve data from your backend. These are:
 
-### setAuth
+### setAuthFn
 
 Responsible for setting values into the authentication table on the backend.
 
@@ -251,6 +237,27 @@ Here, we:
 2. Create a variable to store a wallet
 3. Check if a user is logged in and set their wallet accordingly
 4. If not, we can either log in a user with their credentials or sign up for a new account
+
+## Example: SQL Schema
+There are two tables that should be used to persist hedgehog authentication and user information. The names of the tables and columns can be customized. For a full working example of a server and SQL schema, see the [Hedgehog demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+
+### Authentications
+This table stores auth information like `iv` and `cipherText` and also the `lookupKey`, which should serve as the primary key for this table since it's sent from the browser to request an auth record.
+
+The values and explanation for fields in the Authentications table (`iv`, `cipherText` and `lookupKey`) are given in the [Wallet creation](#wallet-creation) section.
+
+An example of the Authentications table with example data:
+
+| iv | cipherText | lookupKey |
+| - | - | - |
+| c9b3...48 | 07...e561 | 0e...2a8 |
+| d6...355 | 059f...561 | 15e...3c0 |
+| 99...6e | f4...07 | 18...10 |
+
+
+### Users
+
+This table can store information about users, including `username` and `walletAddress`. Those are the two default fields hedgehog returns in the `setUserFn` call
 
 ## Next Steps
 
