@@ -33,15 +33,6 @@ The following sections are a technical overview of how Hedgehog works, for coded
 
 ![Hedgehog System Diagram](https://user-images.githubusercontent.com/2731362/58212636-4e33a900-7ca4-11e9-9fdd-ac3cd16dc6f0.png "Hedgehog System Diagram")
 
-## Code Organization
-
-The Hedgehog package is organized into several files with varying levels of control.
-
-* <b>index.js</b> - default exports for the npm module, exports each of the src/ modules below
-* <b>src/hedgehog.js</b> -  main constructor with primary consumable public facing API and high level functions
-* <b>src/walletManager.js</b> - wallet management logic including localStorage, and end to end authentication functionality
-* <b>src/authentication.js</b> - low level authentication functions (eg create iv, encrypt hash etc)
-
 # How It Works
 
 Hedgehog is a package that lives in your front end application to create and manage a user's entropy (from which a private key is derived). It allows your application to interact with a REST API on a server and database of your choice to securely persist and retrieve auth artifacts. Hedgehog relies on username and password to create auth artifacts, so it's able to simulate a familiar authentication system that allows users to sign up or login from multiple browsers or devices and retrieve their entropy.
@@ -73,6 +64,8 @@ All third party javascript should be audited for localStorage access. One possib
 Username should be stored separately from auth artifacts in different tables. The table containing the authentication values should be independent with no relation to the table storing username
 
 If the application developers’ server is seized, breached, or controlled by bad actors, the resources required to brute-force decrypt the auth artifacts stored there would be immense. It would only make sense to expend those resources if there were enough value to be gained by breaking a given account, which is why we only recommend using Hedgehog in cases where the stakes are lower. This is also why we recommend a bridge approach for certain use-cases, where one could start users on Hedgehog and suggest migrating to a more secure wallet if their stored value increases beyond a certain threshold. We are working on fallback mechanisms to enable key sharing between devices in the absence of this server component, eg. QR codes.
+
+For more deployment best practices please see [this section](#deploy-best-practices)
 
 ## IMPORTANT: Lost Passwords
 
@@ -414,6 +407,15 @@ async createWallet (password)
 ```
 
 Create a new client side wallet object without going through the signup flow. This is useful if you need a temporary, read-only wallet that is ephemeral and does not need to be persisted.
+
+# Code Organization
+
+The Hedgehog package is organized into several files with varying levels of control.
+
+* <b>index.js</b> - default exports for the npm module, exports each of the src/ modules below
+* <b>src/hedgehog.js</b> -  main constructor with primary consumable public facing API and high level functions
+* <b>src/walletManager.js</b> - wallet management logic including localStorage, and end to end authentication functionality
+* <b>src/authentication.js</b> - low level authentication functions (eg create iv, encrypt hash etc)
 
 # Live Demo
 
