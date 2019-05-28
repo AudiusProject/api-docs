@@ -33,15 +33,6 @@ The following sections are a technical overview of how Hedgehog works, for coded
 
 ![Hedgehog System Diagram](https://user-images.githubusercontent.com/2731362/58212636-4e33a900-7ca4-11e9-9fdd-ac3cd16dc6f0.png "Hedgehog System Diagram")
 
-## Code Organization
-
-The Hedgehog package is organized into several files with varying levels of control.
-
-* <b>index.js</b> - default exports for the npm module, exports each of the src/ modules below
-* <b>src/hedgehog.js</b> -  main constructor with primary consumable public facing API and high level functions
-* <b>src/walletManager.js</b> - wallet management logic including localStorage, and end to end authentication functionality
-* <b>src/authentication.js</b> - low level authentication functions (eg create iv, encrypt hash etc)
-
 # How It Works
 
 Hedgehog is a package that lives in your front end application to create and manage a user's entropy (from which a private key is derived). It allows your application to interact with a REST API on a server and database of your choice to securely persist and retrieve auth artifacts. Hedgehog relies on username and password to create auth artifacts, so it's able to simulate a familiar authentication system that allows users to sign up or login from multiple browsers or devices and retrieve their entropy.
@@ -66,27 +57,15 @@ The wallet information can be persisted on the backend of your choice. You, as t
 
 The database schema for persisting data should resemble the following example. There two tables, one for storing authentication information, and the other for storing username and walletAddress. It's important that the username is not stored in the Authentications table because the `lookupKey` is a scrypt hash of a predefined iv with an username and password combination. If the data in these tables were ever exposed, susceptibility of a [rainbow table attack](https://en.wikipedia.org/wiki/Rainbow_table) could increase because the password is the only unknown property. These tables can be named anything since Hedgehog only interacts with REST API endpoints that will perform CRUD on these tables.
 
-## Authentications
-| iv | cipherText | lookupKey |
-| - | - | - |
-| c9b3...48 | 07...e561 | 0e...2a8 |
-| d6...355 | 059f...561 | 15e...3c0 |
-| 99...6e | f4...07 | 18...10 |
-
-The values and explanation for fields in the Authentications table (`iv`, `cipherText` and `lookupKey`) are given in the [Wallet creation](#wallet-creation) section
-
-
-## Users
-| username | walletAddress |        
-| - | - |
-| user1@audius.co | 0xad7a4b1c64a10ebf7f4995bc88fcbf1749c72611 |
-| user2 | 0x2b88420100514fbd8a48c3c427c6251335bcd8d0 |
-
 ## Security Considerations
 
 All third party javascript should be audited for localStorage access. One possible attack vector is a script that loops through all localStorage keys and sends them to a third party server from where those keys could be used to sign transactions on behalf of malicious actors. To mitigate this, all third party javascript should be audited and stored locally to serve, instead of being loaded dynamically through scripts.
 
 Username should be stored separately from auth artifacts in different tables. The table containing the authentication values should be independent with no relation to the table storing username
+
+If the application developers’ server is seized, breached, or controlled by bad actors, the resources required to brute-force decrypt the auth artifacts stored there would be immense. It would only make sense to expend those resources if there were enough value to be gained by breaking a given account, which is why we only recommend using Hedgehog in cases where the stakes are lower. This is also why we recommend a bridge approach for certain use-cases, where one could start users on Hedgehog and suggest migrating to a more secure wallet if their stored value increases beyond a certain threshold. We are working on fallback mechanisms to enable key sharing between devices in the absence of this server component, eg. QR codes.
+
+For more deployment best practices please see [this section](#best-practices)
 
 ## IMPORTANT: Lost Passwords
 
@@ -94,10 +73,10 @@ If a user loses their password, the account is no longer recoverable. There's no
 
 # How To
 
-The code below shows code snippets to integrate Hedgehog into your own application. For a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+The code below shows code snippets to integrate Hedgehog into your own application. For more information about setting up a database schema, see the [example schema section](#example-sql-schema), and for a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
 
 
-## Setup
+## Client-side setup
 
 In this example, we assume you have already a backend/database set up to handle the following scenarios:
 
@@ -162,7 +141,7 @@ This is simply a helper to make defining our setters and getters easier.
 
 The Hedgehog constructor requires 3 parameters to set and retrieve data from your backend. These are:
 
-### setAuth
+### setAuthFn
 
 Responsible for setting values into the authentication table on the backend.
 
@@ -252,9 +231,30 @@ Here, we:
 3. Check if a user is logged in and set their wallet accordingly
 4. If not, we can either log in a user with their credentials or sign up for a new account
 
+## Example: SQL Schema
+There are two tables that should be used to persist hedgehog authentication and user information. The names of the tables and columns can be customized. For a full working example of a server and SQL schema, see the [Hedgehog demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+
+### Authentications
+This table stores auth information like `iv` and `cipherText` and also the `lookupKey`, which should serve as the primary key for this table since it's sent from the browser to request an auth record.
+
+The values and explanation for fields in the Authentications table (`iv`, `cipherText` and `lookupKey`) are given in the [Wallet creation](#wallet-creation) section.
+
+An example of the Authentications table with example data:
+
+| iv | cipherText | lookupKey |
+| - | - | - |
+| c9b3...48 | 07...e561 | 0e...2a8 |
+| d6...355 | 059f...561 | 15e...3c0 |
+| 99...6e | f4...07 | 18...10 |
+
+
+### Users
+
+This table can store information about users. The the two default fields hedgehog returns in the `setUserFn` call are `username` and `walletAddress`. `username` should serve as the primary key for the table.
+
 ## Next Steps
 
-After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts).
+After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts) as well as other [best practices](#best-practices).
 
 # Funding Hedgehog Accounts
 
@@ -262,7 +262,7 @@ Since Hedgehog creates and manages wallets client side, just like Metamask, the 
 
 This is less than ideal for an end user facing product since users will be required to pay when submitting transactions - without a technology or cryptocurrency background, self-funding wallets is an unrealistic requirement.
 
-There are two ways to try to solve this problem: **fund user wallets** or **use EIP-712 relay transactions**.
+There are two ways to try to solve this problem: **funding user wallets** or **using EIP-712 relay transactions**.
 
 ## Fund User Wallets
 
@@ -277,6 +277,20 @@ For more information about EIP-712, please see the following links:
 [https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md)
 
 [https://medium.com/metamask/eip712-is-coming-what-to-expect-and-how-to-use-it-bb92fd1a7a26](https://medium.com/metamask/eip712-is-coming-what-to-expect-and-how-to-use-it-bb92fd1a7a26)
+
+# Best practices
+
+## Password Strength
+
+It's recommended to enforce password standards client side to reject any insecure passwords. Two recommendations to increase password strength are to enforce a minimum character limit and use a bloom filter to reject commonly used passwords like this [npm module from Mozilla](https://github.com/mozilla/fxa-common-password-list)
+
+## Rate limiting
+
+The server endpoint that is called by [getFn](#client-side-setup) should be rate limited to prevent brute force attacks
+
+## Javascript security
+
+All client side code should be audited for localStorage since the entropy resides in localStorage. Please see the [security considerations](#security-considerations) section for more information
 
 # API
 
@@ -393,6 +407,15 @@ async createWallet (password)
 ```
 
 Create a new client side wallet object without going through the signup flow. This is useful if you need a temporary, read-only wallet that is ephemeral and does not need to be persisted.
+
+# Code Organization
+
+The Hedgehog package is organized into several files with varying levels of control.
+
+* <b>index.js</b> - default exports for the npm module, exports each of the src/ modules below
+* <b>src/hedgehog.js</b> -  main constructor with primary consumable public facing API and high level functions
+* <b>src/walletManager.js</b> - wallet management logic including localStorage, and end to end authentication functionality
+* <b>src/authentication.js</b> - low level authentication functions (eg create iv, encrypt hash etc)
 
 # Live Demo
 
