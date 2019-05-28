@@ -65,7 +65,7 @@ Username should be stored separately from auth artifacts in different tables. Th
 
 If the application developers’ server is seized, breached, or controlled by bad actors, the resources required to brute-force decrypt the auth artifacts stored there would be immense. It would only make sense to expend those resources if there were enough value to be gained by breaking a given account, which is why we only recommend using Hedgehog in cases where the stakes are lower. This is also why we recommend a bridge approach for certain use-cases, where one could start users on Hedgehog and suggest migrating to a more secure wallet if their stored value increases beyond a certain threshold. We are working on fallback mechanisms to enable key sharing between devices in the absence of this server component, eg. QR codes.
 
-For more deployment best practices please see [this section](#deploy-best-practices)
+For more deployment best practices please see [this section](#best-practices)
 
 ## IMPORTANT: Lost Passwords
 
@@ -254,23 +254,9 @@ This table can store information about users. The the two default fields hedgeho
 
 ## Next Steps
 
-After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts) as well as other [deployment best practices](#deploy-best-practices).
+After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts) as well as other [best practices](#best-practices).
 
-# Deploy best practices
-
-## Password Strength
-
-It's recommended to enforce password standards client side to reject any insecure passwords. Two recommendations to increase password strength are to enforce a minimum character limit and use a bloom filter to reject commonly used passwords like this is [Mozilla npm module](https://github.com/mozilla/fxa-common-password-list)
-
-## Rate limiting
-
-The server endpoint that is called by [getFn](#client-side-setup) should be rate limited to prevent brute force attacks
-
-## Javascript security
-
-All client side code should be audited for localStorage since the entropy resides in localStorage. Please see the [security considerations](#security-considerations) section
-
-## Funding Hedgehog Accounts
+# Funding Hedgehog Accounts
 
 Since Hedgehog creates and manages wallets client side, just like Metamask, the problem of funding a wallet still exists. When performing only reads from a blockchain, there's usually no transaction fee. However, write transactions typically require fees, and the onus is on the transaction sender to pay these fees. 
 
@@ -278,11 +264,11 @@ This is less than ideal for an end user facing product since users will be requi
 
 There are two ways to try to solve this problem: **funding user wallets** or **using EIP-712 relay transactions**.
 
-### Fund User Wallets
+## Fund User Wallets
 
 As part of the endpoint which persists the walletAddress, you can fund any new `walletAddress`'s created. When a new wallet is created, you could send a small amount of tokens to that address so the user can sign and send transactions to the chain browser side. The downside is there could be potential for abuse where someone farms accounts to collect tokens because these accounts would be funded directly. 
 
-### EIP-712 Relay Transactions
+## EIP-712 Relay Transactions
 
 Another option is to have users sign their transactions browser side, but relay their transaction through an EIP-712 relayer which submits their transaction to chain. Any transaction costs incurred would be paid by the relayer instead of the user, however the original user transaction data is preserved and submitted.
 
@@ -291,6 +277,20 @@ For more information about EIP-712, please see the following links:
 [https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md)
 
 [https://medium.com/metamask/eip712-is-coming-what-to-expect-and-how-to-use-it-bb92fd1a7a26](https://medium.com/metamask/eip712-is-coming-what-to-expect-and-how-to-use-it-bb92fd1a7a26)
+
+# Best practices
+
+## Password Strength
+
+It's recommended to enforce password standards client side to reject any insecure passwords. Two recommendations to increase password strength are to enforce a minimum character limit and use a bloom filter to reject commonly used passwords like this [npm module from Mozilla](https://github.com/mozilla/fxa-common-password-list)
+
+## Rate limiting
+
+The server endpoint that is called by [getFn](#client-side-setup) should be rate limited to prevent brute force attacks
+
+## Javascript security
+
+All client side code should be audited for localStorage since the entropy resides in localStorage. Please see the [security considerations](#security-considerations) section for more information
 
 # API
 
