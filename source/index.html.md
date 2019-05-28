@@ -257,25 +257,39 @@ An example of the Authentications table with example data:
 
 ### Users
 
-This table can store information about users, including `username` and `walletAddress`. Those are the two default fields hedgehog returns in the `setUserFn` call
+This table can store information about users. The the two default fields hedgehog returns in the `setUserFn` call are `username` and `walletAddress`. `username` should serve as the primary key for the table.
 
 ## Next Steps
 
-After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts).
+After setting up Hedgehog, in order to fund wallets so that transactions can be waived on behalf of the user, see [Funding Hedgehog Accounts](#funding-hedgehog-accounts) as well as other [deployment best practices](#deploy-best-practices).
 
-# Funding Hedgehog Accounts
+# Deploy best practices
+
+## Password Strength
+
+It's recommended to enforce password standards client side to reject any insecure passwords. Two recommendations to increase password strength are to enforce a minimum character limit and use a bloom filter to reject commonly used passwords like this is [Mozilla npm module](https://github.com/mozilla/fxa-common-password-list)
+
+## Rate limiting
+
+The server endpoint that is called by [getFn](#client-side-setup) should be rate limited to prevent brute force attacks
+
+## Javascript security
+
+All client side code should be audited for localStorage since the entropy resides in localStorage. Please see the [security considerations](#security-considerations) section
+
+## Funding Hedgehog Accounts
 
 Since Hedgehog creates and manages wallets client side, just like Metamask, the problem of funding a wallet still exists. When performing only reads from a blockchain, there's usually no transaction fee. However, write transactions typically require fees, and the onus is on the transaction sender to pay these fees. 
 
 This is less than ideal for an end user facing product since users will be required to pay when submitting transactions - without a technology or cryptocurrency background, self-funding wallets is an unrealistic requirement.
 
-There are two ways to try to solve this problem: **fund user wallets** or **use EIP-712 relay transactions**.
+There are two ways to try to solve this problem: **funding user wallets** or **using EIP-712 relay transactions**.
 
-## Fund User Wallets
+### Fund User Wallets
 
 As part of the endpoint which persists the walletAddress, you can fund any new `walletAddress`'s created. When a new wallet is created, you could send a small amount of tokens to that address so the user can sign and send transactions to the chain browser side. The downside is there could be potential for abuse where someone farms accounts to collect tokens because these accounts would be funded directly. 
 
-## EIP-712 Relay Transactions
+### EIP-712 Relay Transactions
 
 Another option is to have users sign their transactions browser side, but relay their transaction through an EIP-712 relayer which submits their transaction to chain. Any transaction costs incurred would be paid by the relayer instead of the user, however the original user transaction data is preserved and submitted.
 
