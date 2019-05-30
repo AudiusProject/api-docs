@@ -2,7 +2,8 @@
 title: Hedgehog Documentation
 
 toc_footers:
-  - <a href='https://audius.co/hedgehog'>Hedgehog Public Site</a>
+  - <a href='https://hedgehog.audius.co'>Hedgehog Public Site</a>
+  - <a href='https://github.com/AudiusProject/hedgehog'>Hedgehog Repository</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 search: true
@@ -12,7 +13,7 @@ search: true
 <br />
 
 **Hedgehog** is alternative to Metamask that manages a user's private key and wallet on the browser. It exposes a simple API to allow you to create an authentication scheme to let users sign up and login to their wallet 
-across multiple browsers and devices. [audius.co/hedgehog](audius.co/hedgehog).
+across multiple browsers and devices. [hedgehog.audius.co](https://hedgehog.audius.co).
 
 <br />
 
@@ -73,7 +74,7 @@ If a user loses their password, the account is no longer recoverable. There's no
 
 # How To
 
-The code below shows code snippets to integrate Hedgehog into your own application. For more information about setting up a database schema, see the [example schema section](#example-sql-schema), and for a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+The code below shows code snippets to integrate Hedgehog into your own application. For more information about setting up a database schema, see the [example schema section](#example-sql-schema), and for a fully working end-to-end demo with a custom backend (Firebase or Express), see the [demo repo](https://github.com/AudiusProject/hedgehog-demo).
 
 
 ## Client-side setup
@@ -232,7 +233,7 @@ Here, we:
 4. If not, we can either log in a user with their credentials or sign up for a new account
 
 ## Example: SQL Schema
-There are two tables that should be used to persist hedgehog authentication and user information. The names of the tables and columns can be customized. For a full working example of a server and SQL schema, see the [Hedgehog demo repo](https://github.com/AudiusProject/audius-hedgehog-demo).
+There are two tables that should be used to persist hedgehog authentication and user information. The names of the tables and columns can be customized. For a full working example of a server and SQL schema, see the [Hedgehog demo repo](https://github.com/AudiusProject/hedgehog-demo).
 
 ### Authentications
 This table stores auth information like `iv` and `cipherText` and also the `lookupKey`, which should serve as the primary key for this table since it's sent from the browser to request an auth record.
