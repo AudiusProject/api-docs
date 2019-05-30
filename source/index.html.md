@@ -22,7 +22,7 @@ Not All Transactions Are Created Equal! Currently available wallets treat every 
 
 
 # Installation
-Hedgehog is available as an [npm package](). 
+Hedgehog is available as an [npm package](https://www.npmjs.com/package/@audius/hedgehog). 
 
 ```
 npm install --save @audius/hedgehog
