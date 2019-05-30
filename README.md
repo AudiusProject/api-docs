@@ -12,3 +12,9 @@ bundle exec middleman server
 ```
 
 Up & running @ localhost:4567
+
+Deploy:
+
+```
+./deploy.sh
+```
