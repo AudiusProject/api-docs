@@ -1,6 +1,6 @@
-# Hedgehog Documentation
+# Audius API Documentation
 
-[https://audius-project.github.io/hedgehog-docs](https://audius-project.github.io/hedgehog-docs)
+[https://audius-project.github.io/api-docs](https://audius-project.github.io/api-docs)
 
 
 Getting started:
