@@ -1,0 +1,1100 @@
+{
+    "swagger": "2.0",
+    "basePath": "/v1",
+    "paths": {
+        "/playlists/{playlist_id}": {
+            "parameters": [
+                {
+                    "name": "playlist_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/playlist_response"
+                        }
+                    }
+                },
+                "summary": "Fetch a playlist",
+                "operationId": "get_playlist",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "playlists"
+                ]
+            }
+        },
+        "/playlists/{playlist_id}/tracks": {
+            "parameters": [
+                {
+                    "name": "playlist_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/playlist_tracks_response"
+                        }
+                    }
+                },
+                "summary": "Fetch tracks within a playlist",
+                "operationId": "get_playlist_tracks",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "playlists"
+                ]
+            }
+        },
+        "/tracks/{track_id}": {
+            "parameters": [
+                {
+                    "name": "track_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/track_response"
+                        }
+                    }
+                },
+                "summary": "Fetch a track",
+                "operationId": "get_track",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "tracks"
+                ]
+            }
+        },
+        "/tracks/{track_id}/stream": {
+            "parameters": [
+                {
+                    "name": "track_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "Redirect to track mp3",
+                "operationId": "get_track_stream",
+                "tags": [
+                    "tracks"
+                ]
+            }
+        },
+        "/users/search": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_search_result",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/{user_id}": {
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/user_response"
+                        }
+                    }
+                },
+                "summary": "Fetch a single user",
+                "operationId": "get_user",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/{user_id}/favorites": {
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/favorites_response"
+                        }
+                    }
+                },
+                "summary": "Fetch favorited tracks for a user",
+                "operationId": "get_favorited_tracks",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        },
+        "/users/{user_id}/tracks": {
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/tracks_response"
+                        }
+                    }
+                },
+                "summary": "Fetch a list of tracks for a user",
+                "operationId": "get_track_list",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "API",
+        "version": "1.0",
+        "description": "Audius V1 API"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "users",
+            "description": "User related operations"
+        },
+        {
+            "name": "playlists",
+            "description": "Playlist related operations"
+        },
+        {
+            "name": "tracks",
+            "description": "Track related operations"
+        }
+    ],
+    "definitions": {
+        "user_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/user"
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "user": {
+            "required": [
+                "album_count",
+                "blockhash",
+                "blocknumber",
+                "created_at",
+                "current_user_followee_follow_count",
+                "does_current_user_follow",
+                "followee_count",
+                "follower_count",
+                "handle",
+                "handle_lc",
+                "id",
+                "is_creator",
+                "is_current",
+                "is_verified",
+                "metadata_multihash",
+                "name",
+                "playlist_count",
+                "repost_count",
+                "track_blocknumber",
+                "track_count",
+                "updated_at",
+                "wallet"
+            ],
+            "properties": {
+                "album_count": {
+                    "type": "integer"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "blockhash": {
+                    "type": "string"
+                },
+                "blocknumber": {
+                    "type": "integer"
+                },
+                "cover_photo": {
+                    "type": "string"
+                },
+                "cover_photo_sizes": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "creator_node_endpoint": {
+                    "type": "string"
+                },
+                "current_user_followee_follow_count": {
+                    "type": "integer"
+                },
+                "does_current_user_follow": {
+                    "type": "boolean"
+                },
+                "followee_count": {
+                    "type": "integer"
+                },
+                "follower_count": {
+                    "type": "integer"
+                },
+                "handle": {
+                    "type": "string"
+                },
+                "handle_lc": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_creator": {
+                    "type": "boolean"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "is_verified": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "metadata_multihash": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "playlist_count": {
+                    "type": "integer"
+                },
+                "profile_picture": {
+                    "type": "string"
+                },
+                "profile_picture_sizes": {
+                    "type": "string"
+                },
+                "repost_count": {
+                    "type": "integer"
+                },
+                "track_blocknumber": {
+                    "type": "integer"
+                },
+                "track_count": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "wallet": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "version_metadata": {
+            "required": [
+                "service",
+                "version"
+            ],
+            "properties": {
+                "service": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "tracks_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Track"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "Track": {
+            "required": [
+                "blockhash",
+                "blocknumber",
+                "followee_reposts",
+                "followee_saves",
+                "has_current_user_reposted",
+                "has_current_user_saved",
+                "id",
+                "is_current",
+                "is_delete",
+                "is_unlisted",
+                "metadata_multihash",
+                "repost_count",
+                "route_id",
+                "save_count",
+                "title",
+                "user",
+                "user_id"
+            ],
+            "properties": {
+                "blockhash": {
+                    "type": "string"
+                },
+                "blocknumber": {
+                    "type": "integer"
+                },
+                "cover_art": {
+                    "type": "string"
+                },
+                "cover_art_sizes": {
+                    "type": "string"
+                },
+                "create_date": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "credits_splits": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "download": {
+                    "$ref": "#/definitions/download_metadata"
+                },
+                "field_visibility": {
+                    "$ref": "#/definitions/field_visibility"
+                },
+                "file_type": {
+                    "type": "string"
+                },
+                "followee_reposts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/repost"
+                    }
+                },
+                "followee_saves": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/favorite"
+                    }
+                },
+                "genre": {
+                    "type": "string"
+                },
+                "has_current_user_reposted": {
+                    "type": "boolean"
+                },
+                "has_current_user_saved": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "is_delete": {
+                    "type": "boolean"
+                },
+                "is_unlisted": {
+                    "type": "boolean"
+                },
+                "isrc": {
+                    "type": "string"
+                },
+                "iswc": {
+                    "type": "string"
+                },
+                "length": {
+                    "type": "integer"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "metadata_multihash": {
+                    "type": "string"
+                },
+                "mood": {
+                    "type": "string"
+                },
+                "release_date": {
+                    "type": "string"
+                },
+                "remix_of": {
+                    "$ref": "#/definitions/remix_parent"
+                },
+                "repost_count": {
+                    "type": "integer"
+                },
+                "route_id": {
+                    "type": "string"
+                },
+                "save_count": {
+                    "type": "integer"
+                },
+                "stem_of": {
+                    "$ref": "#/definitions/stem_parent"
+                },
+                "tags": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "track_segments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/track_segment"
+                    }
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "download_metadata": {
+            "required": [
+                "is_downloadable",
+                "required_follow"
+            ],
+            "properties": {
+                "cid": {
+                    "type": "string"
+                },
+                "is_downloadable": {
+                    "type": "boolean"
+                },
+                "required_follow": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "field_visibility": {
+            "properties": {
+                "mood": {
+                    "type": "boolean"
+                },
+                "tags": {
+                    "type": "boolean"
+                },
+                "genre": {
+                    "type": "boolean"
+                },
+                "share": {
+                    "type": "boolean"
+                },
+                "play_count": {
+                    "type": "boolean"
+                },
+                "remixes": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "repost": {
+            "required": [
+                "blockhash",
+                "blocknumber",
+                "created_at",
+                "is_current",
+                "is_delete",
+                "repost_item_id",
+                "repost_type",
+                "user_id"
+            ],
+            "properties": {
+                "blockhash": {
+                    "type": "string"
+                },
+                "blocknumber": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "is_delete": {
+                    "type": "boolean"
+                },
+                "repost_item_id": {
+                    "type": "integer"
+                },
+                "repost_type": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "favorite": {
+            "required": [
+                "blockhash",
+                "blocknumber",
+                "created_at",
+                "is_current",
+                "is_delete",
+                "save_item_id",
+                "save_type",
+                "user_id"
+            ],
+            "properties": {
+                "blockhash": {
+                    "type": "string"
+                },
+                "blocknumber": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "is_delete": {
+                    "type": "boolean"
+                },
+                "save_item_id": {
+                    "type": "string"
+                },
+                "save_type": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "remix_parent": {
+            "properties": {
+                "tracks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/track_element"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "track_element": {
+            "required": [
+                "parent_track_id"
+            ],
+            "properties": {
+                "parent_track_id": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "stem_parent": {
+            "required": [
+                "category",
+                "parent_track_id"
+            ],
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "parent_track_id": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "track_segment": {
+            "required": [
+                "duration",
+                "multihash"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "number"
+                },
+                "multihash": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "favorites_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/favorite"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "playlist_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/playlist"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "playlist": {
+            "required": [
+                "blockhash",
+                "blocknumber",
+                "has_current_user_reposted",
+                "has_current_user_saved\ttrue",
+                "id",
+                "is_album",
+                "is_current",
+                "is_delete",
+                "is_private",
+                "playlist_contents",
+                "playlist_id",
+                "playlist_name",
+                "repost_count",
+                "save_count",
+                "user_id"
+            ],
+            "properties": {
+                "blockhash": {
+                    "type": "string"
+                },
+                "blocknumber": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "followee_reposts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/repost"
+                    }
+                },
+                "followee_saves": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/favorite"
+                    }
+                },
+                "has_current_user_reposted": {
+                    "type": "boolean"
+                },
+                "has_current_user_saved\ttrue": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_album": {
+                    "type": "boolean"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "is_delete": {
+                    "type": "boolean"
+                },
+                "is_private": {
+                    "type": "boolean"
+                },
+                "playlist_contents": {
+                    "$ref": "#/definitions/playlist_contents"
+                },
+                "playlist_id": {
+                    "type": "integer"
+                },
+                "playlist_image_multihash": {
+                    "type": "string"
+                },
+                "playlist_image_sizes_multihash": {
+                    "type": "string"
+                },
+                "playlist_name": {
+                    "type": "string"
+                },
+                "repost_count": {
+                    "type": "integer"
+                },
+                "save_count": {
+                    "type": "integer"
+                },
+                "upc": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "playlist_contents": {
+            "properties": {
+                "track_ids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/playlist_track"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "playlist_track": {
+            "required": [
+                "time",
+                "track"
+            ],
+            "properties": {
+                "time": {
+                    "type": "integer"
+                },
+                "track": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "playlist_tracks_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Track"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "track_response": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/Track"
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "responses": {
+        "ParseError": {
+            "description": "When a mask can't be parsed"
+        },
+        "MaskError": {
+            "description": "When any error occurs on mask"
+        }
+    }
+}
