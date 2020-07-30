@@ -2,6 +2,38 @@
     "swagger": "2.0",
     "basePath": "/v1",
     "paths": {
+        "/playlists/search": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/playlist_search_result"
+                        }
+                    }
+                },
+                "summary": "Search for a playlist",
+                "operationId": "get_playlist_search_result",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "playlists"
+                ]
+            }
+        },
         "/playlists/{playlist_id}": {
             "parameters": [
                 {
@@ -70,6 +102,63 @@
                 ]
             }
         },
+        "/tracks/search": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/track_search"
+                        }
+                    }
+                },
+                "operationId": "get_track_search_result",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "tracks"
+                ]
+            }
+        },
+        "/tracks/trending": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/tracks_response"
+                        }
+                    }
+                },
+                "summary": "Get the trending tracks",
+                "operationId": "get_trending",
+                "parameters": [
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
+                    }
+                ],
+                "tags": [
+                    "tracks"
+                ]
+            }
+        },
         "/tracks/{track_id}": {
             "parameters": [
                 {
@@ -130,16 +219,27 @@
             "get": {
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/user_search"
+                        }
                     }
                 },
-                "operationId": "get_search_result",
+                "summary": "Seach for a user",
+                "operationId": "get_user_search_result",
                 "parameters": [
                     {
                         "name": "query",
                         "in": "query",
                         "type": "string",
                         "required": true
+                    },
+                    {
+                        "name": "X-Fields",
+                        "in": "header",
+                        "type": "string",
+                        "format": "mask",
+                        "description": "An optional fields mask"
                     }
                 ],
                 "tags": [
@@ -353,10 +453,7 @@
                     "type": "integer"
                 },
                 "cover_photo": {
-                    "type": "string"
-                },
-                "cover_photo_sizes": {
-                    "type": "string"
+                    "$ref": "#/definitions/cover_photo"
                 },
                 "created_at": {
                     "type": "string"
@@ -407,10 +504,7 @@
                     "type": "integer"
                 },
                 "profile_picture": {
-                    "type": "string"
-                },
-                "profile_picture_sizes": {
-                    "type": "string"
+                    "$ref": "#/definitions/profile_picture"
                 },
                 "repost_count": {
                     "type": "integer"
@@ -425,6 +519,31 @@
                     "type": "string"
                 },
                 "wallet": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "cover_photo": {
+            "properties": {
+                "640x": {
+                    "type": "string"
+                },
+                "2000x": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "profile_picture": {
+            "properties": {
+                "150x150": {
+                    "type": "string"
+                },
+                "480x480": {
+                    "type": "string"
+                },
+                "1000x1000": {
                     "type": "string"
                 }
             },
@@ -507,17 +626,14 @@
                 "user_id"
             ],
             "properties": {
+                "artwork": {
+                    "$ref": "#/definitions/track_artwork"
+                },
                 "blockhash": {
                     "type": "string"
                 },
                 "blocknumber": {
                     "type": "integer"
-                },
-                "cover_art": {
-                    "type": "string"
-                },
-                "cover_art_sizes": {
-                    "type": "string"
                 },
                 "create_date": {
                     "type": "string"
@@ -633,6 +749,20 @@
             },
             "type": "object"
         },
+        "track_artwork": {
+            "properties": {
+                "150x150": {
+                    "type": "string"
+                },
+                "480x480": {
+                    "type": "string"
+                },
+                "1000x1000": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "download_metadata": {
             "required": [
                 "is_downloadable",
@@ -702,13 +832,13 @@
                     "type": "boolean"
                 },
                 "repost_item_id": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "repost_type": {
                     "type": "string"
                 },
                 "user_id": {
-                    "type": "integer"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -845,6 +975,47 @@
             },
             "type": "object"
         },
+        "user_search": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/user"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
         "playlist_response": {
             "required": [
                 "latest_chain_block",
@@ -898,13 +1069,16 @@
                 "is_delete",
                 "is_private",
                 "playlist_contents",
-                "playlist_id",
                 "playlist_name",
                 "repost_count",
                 "save_count",
+                "user",
                 "user_id"
             ],
             "properties": {
+                "artwork": {
+                    "$ref": "#/definitions/playlist_artwork"
+                },
                 "blockhash": {
                     "type": "string"
                 },
@@ -953,15 +1127,6 @@
                 "playlist_contents": {
                     "$ref": "#/definitions/playlist_contents"
                 },
-                "playlist_id": {
-                    "type": "integer"
-                },
-                "playlist_image_multihash": {
-                    "type": "string"
-                },
-                "playlist_image_sizes_multihash": {
-                    "type": "string"
-                },
                 "playlist_name": {
                     "type": "string"
                 },
@@ -977,7 +1142,24 @@
                 "updated_at": {
                     "type": "string"
                 },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
                 "user_id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "playlist_artwork": {
+            "properties": {
+                "150x150": {
+                    "type": "string"
+                },
+                "480x480": {
+                    "type": "string"
+                },
+                "1000x1000": {
                     "type": "string"
                 }
             },
@@ -1050,6 +1232,47 @@
             },
             "type": "object"
         },
+        "playlist_search_result": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/playlist"
+                    }
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
         "track_response": {
             "required": [
                 "latest_chain_block",
@@ -1063,6 +1286,47 @@
             "properties": {
                 "data": {
                     "$ref": "#/definitions/Track"
+                },
+                "latest_chain_block": {
+                    "type": "integer"
+                },
+                "latest_indexed_block": {
+                    "type": "integer"
+                },
+                "owner_wallet": {
+                    "type": "integer"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "#/definitions/version_metadata"
+                }
+            },
+            "type": "object"
+        },
+        "track_search": {
+            "required": [
+                "latest_chain_block",
+                "latest_indexed_block",
+                "owner_wallet",
+                "signature",
+                "success",
+                "timestamp",
+                "version"
+            ],
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Track"
+                    }
                 },
                 "latest_chain_block": {
                     "type": "integer"
