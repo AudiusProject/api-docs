@@ -14,29 +14,40 @@ Base URLs:
 
 User related operations
 
-## get_search_result
+## get_user_search_result
 
-<a id="opIdget_search_result"></a>
+<a id="opIdget_user_search_result"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /v1/users/search?query=string
+curl -X GET /v1/users/search?query=string \
+  -H 'Accept: application/json' \
+  -H 'X-Fields: string'
 
 ```
 
 ```http
 GET /v1/users/search?query=string HTTP/1.1
 
+Accept: application/json
+X-Fields: string
+
 ```
 
 ```javascript
 
+const headers = {
+  'Accept':'application/json',
+  'X-Fields':'string'
+};
+
 fetch('/v1/users/search?query=string',
 {
-  method: 'GET'
+  method: 'GET',
 
+  headers: headers
 })
 .then(function(res) {
     return res.json();
@@ -50,10 +61,15 @@ fetch('/v1/users/search?query=string',
 require 'rest-client'
 require 'json'
 
+headers = {
+  'Accept' => 'application/json',
+  'X-Fields' => 'string'
+}
+
 result = RestClient.get '/v1/users/search',
   params: {
   'query' => 'string'
-}
+}, headers: headers
 
 p JSON.parse(result)
 
@@ -61,10 +77,14 @@ p JSON.parse(result)
 
 ```python
 import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Fields': 'string'
+}
 
 r = requests.get('/v1/users/search', params={
   'query': 'string'
-})
+}, headers = headers)
 
 print(r.json())
 
@@ -74,6 +94,11 @@ print(r.json())
 <?php
 
 require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'X-Fields' => 'string',
+);
 
 $client = new \GuzzleHttp\Client();
 
@@ -124,6 +149,11 @@ import (
 
 func main() {
 
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Fields": []string{"string"},
+    }
+
     data := bytes.NewBuffer([]byte{jsonReq})
     req, err := http.NewRequest("GET", "/v1/users/search", data)
     req.Header = headers
@@ -137,17 +167,77 @@ func main() {
 
 `GET /users/search`
 
-<h3 id="get_search_result-parameters">Parameters</h3>
+*Seach for a user*
+
+<h3 id="get_user_search_result-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |query|query|string|true|none|
+|X-Fields|header|string(mask)|false|An optional fields mask|
 
-<h3 id="get_search_result-responses">Responses</h3>
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "bio": "string",
+      "blockhash": "string",
+      "blocknumber": 0,
+      "cover_photo": {
+        "640x": "string",
+        "2000x": "string"
+      },
+      "created_at": "string",
+      "creator_node_endpoint": "string",
+      "current_user_followee_follow_count": 0,
+      "does_current_user_follow": true,
+      "followee_count": 0,
+      "follower_count": 0,
+      "handle": "string",
+      "handle_lc": "string",
+      "id": "string",
+      "is_creator": true,
+      "is_current": true,
+      "is_verified": true,
+      "location": "string",
+      "metadata_multihash": "string",
+      "name": "string",
+      "playlist_count": 0,
+      "profile_picture": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "repost_count": 0,
+      "track_blocknumber": 0,
+      "track_count": 0,
+      "updated_at": "string",
+      "wallet": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+```
+
+<h3 id="get_user_search_result-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[user_search](#schemauser_search)|
 
 <aside class="success">
 This operation does not require authentication
@@ -323,8 +413,10 @@ func main() {
     "bio": "string",
     "blockhash": "string",
     "blocknumber": 0,
-    "cover_photo": "string",
-    "cover_photo_sizes": "string",
+    "cover_photo": {
+      "640x": "string",
+      "2000x": "string"
+    },
     "created_at": "string",
     "creator_node_endpoint": "string",
     "current_user_followee_follow_count": 0,
@@ -341,8 +433,11 @@ func main() {
     "metadata_multihash": "string",
     "name": "string",
     "playlist_count": 0,
-    "profile_picture": "string",
-    "profile_picture_sizes": "string",
+    "profile_picture": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
     "repost_count": 0,
     "track_blocknumber": 0,
     "track_count": 0,
@@ -739,10 +834,13 @@ func main() {
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_art": "string",
-      "cover_art_sizes": "string",
       "create_date": "string",
       "created_at": "string",
       "credits_splits": "string",
@@ -768,9 +866,9 @@ func main() {
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -827,8 +925,10 @@ func main() {
         "bio": "string",
         "blockhash": "string",
         "blocknumber": 0,
-        "cover_photo": "string",
-        "cover_photo_sizes": "string",
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
         "created_at": "string",
         "creator_node_endpoint": "string",
         "current_user_followee_follow_count": 0,
@@ -845,8 +945,11 @@ func main() {
         "metadata_multihash": "string",
         "name": "string",
         "playlist_count": 0,
-        "profile_picture": "string",
-        "profile_picture_sizes": "string",
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
         "repost_count": 0,
         "track_blocknumber": 0,
         "track_count": 0,
@@ -882,6 +985,291 @@ This operation does not require authentication
 <h1 id="api-playlists">playlists</h1>
 
 Playlist related operations
+
+## get_playlist_search_result
+
+<a id="opIdget_playlist_search_result"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/playlists/search?query=string \
+  -H 'Accept: application/json' \
+  -H 'X-Fields: string'
+
+```
+
+```http
+GET /v1/playlists/search?query=string HTTP/1.1
+
+Accept: application/json
+X-Fields: string
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'X-Fields':'string'
+};
+
+fetch('/v1/playlists/search?query=string',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Fields' => 'string'
+}
+
+result = RestClient.get '/v1/playlists/search',
+  params: {
+  'query' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Fields': 'string'
+}
+
+r = requests.get('/v1/playlists/search', params={
+  'query': 'string'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'X-Fields' => 'string',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','/v1/playlists/search', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("/v1/playlists/search?query=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Fields": []string{"string"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "/v1/playlists/search", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /playlists/search`
+
+*Search for a playlist*
+
+<h3 id="get_playlist_search_result-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|query|query|string|true|none|
+|X-Fields|header|string(mask)|false|An optional fields mask|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "blockhash": "string",
+      "blocknumber": 0,
+      "created_at": "string",
+      "description": "string",
+      "followee_reposts": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "repost_item_id": "string",
+          "repost_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "followee_saves": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "save_item_id": "string",
+          "save_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "has_current_user_reposted": true,
+      "has_current_user_saved\ttrue": true,
+      "id": "string",
+      "is_album": true,
+      "is_current": true,
+      "is_delete": true,
+      "is_private": true,
+      "playlist_contents": {
+        "track_ids": [
+          {
+            "time": 0,
+            "track": 0
+          }
+        ]
+      },
+      "playlist_name": "string",
+      "repost_count": 0,
+      "save_count": 0,
+      "upc": "string",
+      "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
+      "user_id": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+```
+
+<h3 id="get_playlist_search_result-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[playlist_search_result](#schemaplaylist_search_result)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 
 ## get_playlist
 
@@ -1050,6 +1438,11 @@ func main() {
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
       "created_at": "string",
@@ -1061,9 +1454,9 @@ func main() {
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -1093,14 +1486,47 @@ func main() {
           }
         ]
       },
-      "playlist_id": 0,
-      "playlist_image_multihash": "string",
-      "playlist_image_sizes_multihash": "string",
       "playlist_name": "string",
       "repost_count": 0,
       "save_count": 0,
       "upc": "string",
       "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
       "user_id": "string"
     }
   ],
@@ -1294,10 +1720,13 @@ func main() {
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_art": "string",
-      "cover_art_sizes": "string",
       "create_date": "string",
       "created_at": "string",
       "credits_splits": "string",
@@ -1323,9 +1752,9 @@ func main() {
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -1382,8 +1811,10 @@ func main() {
         "bio": "string",
         "blockhash": "string",
         "blocknumber": 0,
-        "cover_photo": "string",
-        "cover_photo_sizes": "string",
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
         "created_at": "string",
         "creator_node_endpoint": "string",
         "current_user_followee_follow_count": 0,
@@ -1400,8 +1831,11 @@ func main() {
         "metadata_multihash": "string",
         "name": "string",
         "playlist_count": 0,
-        "profile_picture": "string",
-        "profile_picture_sizes": "string",
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
         "repost_count": 0,
         "track_blocknumber": 0,
         "track_count": 0,
@@ -1437,6 +1871,636 @@ This operation does not require authentication
 <h1 id="api-tracks">tracks</h1>
 
 Track related operations
+
+## get_track_search_result
+
+<a id="opIdget_track_search_result"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/tracks/search?query=string \
+  -H 'Accept: application/json' \
+  -H 'X-Fields: string'
+
+```
+
+```http
+GET /v1/tracks/search?query=string HTTP/1.1
+
+Accept: application/json
+X-Fields: string
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'X-Fields':'string'
+};
+
+fetch('/v1/tracks/search?query=string',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Fields' => 'string'
+}
+
+result = RestClient.get '/v1/tracks/search',
+  params: {
+  'query' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Fields': 'string'
+}
+
+r = requests.get('/v1/tracks/search', params={
+  'query': 'string'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'X-Fields' => 'string',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','/v1/tracks/search', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("/v1/tracks/search?query=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Fields": []string{"string"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "/v1/tracks/search", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /tracks/search`
+
+<h3 id="get_track_search_result-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|query|query|string|true|none|
+|X-Fields|header|string(mask)|false|An optional fields mask|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "blockhash": "string",
+      "blocknumber": 0,
+      "create_date": "string",
+      "created_at": "string",
+      "credits_splits": "string",
+      "description": "string",
+      "download": {
+        "cid": "string",
+        "is_downloadable": true,
+        "required_follow": true
+      },
+      "field_visibility": {
+        "mood": true,
+        "tags": true,
+        "genre": true,
+        "share": true,
+        "play_count": true,
+        "remixes": true
+      },
+      "file_type": "string",
+      "followee_reposts": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "repost_item_id": "string",
+          "repost_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "followee_saves": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "save_item_id": "string",
+          "save_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "genre": "string",
+      "has_current_user_reposted": true,
+      "has_current_user_saved": true,
+      "id": "string",
+      "is_current": true,
+      "is_delete": true,
+      "is_unlisted": true,
+      "isrc": "string",
+      "iswc": "string",
+      "length": 0,
+      "license": "string",
+      "metadata_multihash": "string",
+      "mood": "string",
+      "release_date": "string",
+      "remix_of": {
+        "tracks": [
+          {
+            "parent_track_id": 0
+          }
+        ]
+      },
+      "repost_count": 0,
+      "route_id": "string",
+      "save_count": 0,
+      "stem_of": {
+        "category": "string",
+        "parent_track_id": 0
+      },
+      "tags": "string",
+      "title": "string",
+      "track_segments": [
+        {
+          "duration": 0,
+          "multihash": "string"
+        }
+      ],
+      "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
+      "user_id": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+```
+
+<h3 id="get_track_search_result-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[track_search](#schematrack_search)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get_trending
+
+<a id="opIdget_trending"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/tracks/trending \
+  -H 'Accept: application/json' \
+  -H 'X-Fields: string'
+
+```
+
+```http
+GET /v1/tracks/trending HTTP/1.1
+
+Accept: application/json
+X-Fields: string
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'X-Fields':'string'
+};
+
+fetch('/v1/tracks/trending',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'X-Fields' => 'string'
+}
+
+result = RestClient.get '/v1/tracks/trending',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'X-Fields': 'string'
+}
+
+r = requests.get('/v1/tracks/trending', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'X-Fields' => 'string',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','/v1/tracks/trending', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("/v1/tracks/trending");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "X-Fields": []string{"string"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "/v1/tracks/trending", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /tracks/trending`
+
+*Get the trending tracks*
+
+<h3 id="get_trending-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|X-Fields|header|string(mask)|false|An optional fields mask|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "blockhash": "string",
+      "blocknumber": 0,
+      "create_date": "string",
+      "created_at": "string",
+      "credits_splits": "string",
+      "description": "string",
+      "download": {
+        "cid": "string",
+        "is_downloadable": true,
+        "required_follow": true
+      },
+      "field_visibility": {
+        "mood": true,
+        "tags": true,
+        "genre": true,
+        "share": true,
+        "play_count": true,
+        "remixes": true
+      },
+      "file_type": "string",
+      "followee_reposts": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "repost_item_id": "string",
+          "repost_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "followee_saves": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "save_item_id": "string",
+          "save_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "genre": "string",
+      "has_current_user_reposted": true,
+      "has_current_user_saved": true,
+      "id": "string",
+      "is_current": true,
+      "is_delete": true,
+      "is_unlisted": true,
+      "isrc": "string",
+      "iswc": "string",
+      "length": 0,
+      "license": "string",
+      "metadata_multihash": "string",
+      "mood": "string",
+      "release_date": "string",
+      "remix_of": {
+        "tracks": [
+          {
+            "parent_track_id": 0
+          }
+        ]
+      },
+      "repost_count": 0,
+      "route_id": "string",
+      "save_count": 0,
+      "stem_of": {
+        "category": "string",
+        "parent_track_id": 0
+      },
+      "tags": "string",
+      "title": "string",
+      "track_segments": [
+        {
+          "duration": 0,
+          "multihash": "string"
+        }
+      ],
+      "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
+      "user_id": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+```
+
+<h3 id="get_trending-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[tracks_response](#schematracks_response)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 
 ## get_track
 
@@ -1604,10 +2668,13 @@ func main() {
 ```json
 {
   "data": {
+    "artwork": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
     "blockhash": "string",
     "blocknumber": 0,
-    "cover_art": "string",
-    "cover_art_sizes": "string",
     "create_date": "string",
     "created_at": "string",
     "credits_splits": "string",
@@ -1633,9 +2700,9 @@ func main() {
         "created_at": "string",
         "is_current": true,
         "is_delete": true,
-        "repost_item_id": 0,
+        "repost_item_id": "string",
         "repost_type": "string",
-        "user_id": 0
+        "user_id": "string"
       }
     ],
     "followee_saves": [
@@ -1692,8 +2759,10 @@ func main() {
       "bio": "string",
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_photo": "string",
-      "cover_photo_sizes": "string",
+      "cover_photo": {
+        "640x": "string",
+        "2000x": "string"
+      },
       "created_at": "string",
       "creator_node_endpoint": "string",
       "current_user_followee_follow_count": 0,
@@ -1710,8 +2779,11 @@ func main() {
       "metadata_multihash": "string",
       "name": "string",
       "playlist_count": 0,
-      "profile_picture": "string",
-      "profile_picture_sizes": "string",
+      "profile_picture": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "repost_count": 0,
       "track_blocknumber": 0,
       "track_count": 0,
@@ -1897,8 +2969,10 @@ This operation does not require authentication
     "bio": "string",
     "blockhash": "string",
     "blocknumber": 0,
-    "cover_photo": "string",
-    "cover_photo_sizes": "string",
+    "cover_photo": {
+      "640x": "string",
+      "2000x": "string"
+    },
     "created_at": "string",
     "creator_node_endpoint": "string",
     "current_user_followee_follow_count": 0,
@@ -1915,8 +2989,11 @@ This operation does not require authentication
     "metadata_multihash": "string",
     "name": "string",
     "playlist_count": 0,
-    "profile_picture": "string",
-    "profile_picture_sizes": "string",
+    "profile_picture": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
     "repost_count": 0,
     "track_blocknumber": 0,
     "track_count": 0,
@@ -1963,8 +3040,10 @@ This operation does not require authentication
   "bio": "string",
   "blockhash": "string",
   "blocknumber": 0,
-  "cover_photo": "string",
-  "cover_photo_sizes": "string",
+  "cover_photo": {
+    "640x": "string",
+    "2000x": "string"
+  },
   "created_at": "string",
   "creator_node_endpoint": "string",
   "current_user_followee_follow_count": 0,
@@ -1981,8 +3060,11 @@ This operation does not require authentication
   "metadata_multihash": "string",
   "name": "string",
   "playlist_count": 0,
-  "profile_picture": "string",
-  "profile_picture_sizes": "string",
+  "profile_picture": {
+    "150x150": "string",
+    "480x480": "string",
+    "1000x1000": "string"
+  },
   "repost_count": 0,
   "track_blocknumber": 0,
   "track_count": 0,
@@ -2000,8 +3082,7 @@ This operation does not require authentication
 |bio|string|false|none|none|
 |blockhash|string|true|none|none|
 |blocknumber|integer|true|none|none|
-|cover_photo|string|false|none|none|
-|cover_photo_sizes|string|false|none|none|
+|cover_photo|[cover_photo](#schemacover_photo)|false|none|none|
 |created_at|string|true|none|none|
 |creator_node_endpoint|string|false|none|none|
 |current_user_followee_follow_count|integer|true|none|none|
@@ -2018,13 +3099,58 @@ This operation does not require authentication
 |metadata_multihash|string|true|none|none|
 |name|string|true|none|none|
 |playlist_count|integer|true|none|none|
-|profile_picture|string|false|none|none|
-|profile_picture_sizes|string|false|none|none|
+|profile_picture|[profile_picture](#schemaprofile_picture)|false|none|none|
 |repost_count|integer|true|none|none|
 |track_blocknumber|integer|true|none|none|
 |track_count|integer|true|none|none|
 |updated_at|string|true|none|none|
 |wallet|string|true|none|none|
+
+<h2 id="tocS_cover_photo">cover_photo</h2>
+<!-- backwards compatibility -->
+<a id="schemacover_photo"></a>
+<a id="schema_cover_photo"></a>
+<a id="tocScover_photo"></a>
+<a id="tocscover_photo"></a>
+
+```json
+{
+  "640x": "string",
+  "2000x": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|640x|string|false|none|none|
+|2000x|string|false|none|none|
+
+<h2 id="tocS_profile_picture">profile_picture</h2>
+<!-- backwards compatibility -->
+<a id="schemaprofile_picture"></a>
+<a id="schema_profile_picture"></a>
+<a id="tocSprofile_picture"></a>
+<a id="tocsprofile_picture"></a>
+
+```json
+{
+  "150x150": "string",
+  "480x480": "string",
+  "1000x1000": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|150x150|string|false|none|none|
+|480x480|string|false|none|none|
+|1000x1000|string|false|none|none|
 
 <h2 id="tocS_version_metadata">version_metadata</h2>
 <!-- backwards compatibility -->
@@ -2059,10 +3185,13 @@ This operation does not require authentication
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_art": "string",
-      "cover_art_sizes": "string",
       "create_date": "string",
       "created_at": "string",
       "credits_splits": "string",
@@ -2088,9 +3217,9 @@ This operation does not require authentication
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -2147,8 +3276,10 @@ This operation does not require authentication
         "bio": "string",
         "blockhash": "string",
         "blocknumber": 0,
-        "cover_photo": "string",
-        "cover_photo_sizes": "string",
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
         "created_at": "string",
         "creator_node_endpoint": "string",
         "current_user_followee_follow_count": 0,
@@ -2165,8 +3296,11 @@ This operation does not require authentication
         "metadata_multihash": "string",
         "name": "string",
         "playlist_count": 0,
-        "profile_picture": "string",
-        "profile_picture_sizes": "string",
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
         "repost_count": 0,
         "track_blocknumber": 0,
         "track_count": 0,
@@ -2212,10 +3346,13 @@ This operation does not require authentication
 
 ```json
 {
+  "artwork": {
+    "150x150": "string",
+    "480x480": "string",
+    "1000x1000": "string"
+  },
   "blockhash": "string",
   "blocknumber": 0,
-  "cover_art": "string",
-  "cover_art_sizes": "string",
   "create_date": "string",
   "created_at": "string",
   "credits_splits": "string",
@@ -2241,9 +3378,9 @@ This operation does not require authentication
       "created_at": "string",
       "is_current": true,
       "is_delete": true,
-      "repost_item_id": 0,
+      "repost_item_id": "string",
       "repost_type": "string",
-      "user_id": 0
+      "user_id": "string"
     }
   ],
   "followee_saves": [
@@ -2300,8 +3437,10 @@ This operation does not require authentication
     "bio": "string",
     "blockhash": "string",
     "blocknumber": 0,
-    "cover_photo": "string",
-    "cover_photo_sizes": "string",
+    "cover_photo": {
+      "640x": "string",
+      "2000x": "string"
+    },
     "created_at": "string",
     "creator_node_endpoint": "string",
     "current_user_followee_follow_count": 0,
@@ -2318,8 +3457,11 @@ This operation does not require authentication
     "metadata_multihash": "string",
     "name": "string",
     "playlist_count": 0,
-    "profile_picture": "string",
-    "profile_picture_sizes": "string",
+    "profile_picture": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
     "repost_count": 0,
     "track_blocknumber": 0,
     "track_count": 0,
@@ -2335,10 +3477,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|artwork|[track_artwork](#schematrack_artwork)|false|none|none|
 |blockhash|string|true|none|none|
 |blocknumber|integer|true|none|none|
-|cover_art|string|false|none|none|
-|cover_art_sizes|string|false|none|none|
 |create_date|string|false|none|none|
 |created_at|string|false|none|none|
 |credits_splits|string|false|none|none|
@@ -2373,6 +3514,30 @@ This operation does not require authentication
 |updated_at|string|false|none|none|
 |user|[user](#schemauser)|true|none|none|
 |user_id|string|true|none|none|
+
+<h2 id="tocS_track_artwork">track_artwork</h2>
+<!-- backwards compatibility -->
+<a id="schematrack_artwork"></a>
+<a id="schema_track_artwork"></a>
+<a id="tocStrack_artwork"></a>
+<a id="tocstrack_artwork"></a>
+
+```json
+{
+  "150x150": "string",
+  "480x480": "string",
+  "1000x1000": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|150x150|string|false|none|none|
+|480x480|string|false|none|none|
+|1000x1000|string|false|none|none|
 
 <h2 id="tocS_download_metadata">download_metadata</h2>
 <!-- backwards compatibility -->
@@ -2442,9 +3607,9 @@ This operation does not require authentication
   "created_at": "string",
   "is_current": true,
   "is_delete": true,
-  "repost_item_id": 0,
+  "repost_item_id": "string",
   "repost_type": "string",
-  "user_id": 0
+  "user_id": "string"
 }
 
 ```
@@ -2458,9 +3623,9 @@ This operation does not require authentication
 |created_at|string|true|none|none|
 |is_current|boolean|true|none|none|
 |is_delete|boolean|true|none|none|
-|repost_item_id|integer|true|none|none|
+|repost_item_id|string|true|none|none|
 |repost_type|string|true|none|none|
-|user_id|integer|true|none|none|
+|user_id|string|true|none|none|
 
 <h2 id="tocS_favorite">favorite</h2>
 <!-- backwards compatibility -->
@@ -2632,6 +3797,80 @@ This operation does not require authentication
 |timestamp|string|true|none|none|
 |version|[version_metadata](#schemaversion_metadata)|true|none|none|
 
+<h2 id="tocS_user_search">user_search</h2>
+<!-- backwards compatibility -->
+<a id="schemauser_search"></a>
+<a id="schema_user_search"></a>
+<a id="tocSuser_search"></a>
+<a id="tocsuser_search"></a>
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "bio": "string",
+      "blockhash": "string",
+      "blocknumber": 0,
+      "cover_photo": {
+        "640x": "string",
+        "2000x": "string"
+      },
+      "created_at": "string",
+      "creator_node_endpoint": "string",
+      "current_user_followee_follow_count": 0,
+      "does_current_user_follow": true,
+      "followee_count": 0,
+      "follower_count": 0,
+      "handle": "string",
+      "handle_lc": "string",
+      "id": "string",
+      "is_creator": true,
+      "is_current": true,
+      "is_verified": true,
+      "location": "string",
+      "metadata_multihash": "string",
+      "name": "string",
+      "playlist_count": 0,
+      "profile_picture": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "repost_count": 0,
+      "track_blocknumber": 0,
+      "track_count": 0,
+      "updated_at": "string",
+      "wallet": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[user](#schemauser)]|false|none|none|
+|latest_chain_block|integer|true|none|none|
+|latest_indexed_block|integer|true|none|none|
+|owner_wallet|integer|true|none|none|
+|signature|string|true|none|none|
+|success|boolean|true|none|none|
+|timestamp|string|true|none|none|
+|version|[version_metadata](#schemaversion_metadata)|true|none|none|
+
 <h2 id="tocS_playlist_response">playlist_response</h2>
 <!-- backwards compatibility -->
 <a id="schemaplaylist_response"></a>
@@ -2643,6 +3882,11 @@ This operation does not require authentication
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
       "created_at": "string",
@@ -2654,9 +3898,9 @@ This operation does not require authentication
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -2686,14 +3930,47 @@ This operation does not require authentication
           }
         ]
       },
-      "playlist_id": 0,
-      "playlist_image_multihash": "string",
-      "playlist_image_sizes_multihash": "string",
       "playlist_name": "string",
       "repost_count": 0,
       "save_count": 0,
       "upc": "string",
       "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
       "user_id": "string"
     }
   ],
@@ -2733,6 +4010,11 @@ This operation does not require authentication
 
 ```json
 {
+  "artwork": {
+    "150x150": "string",
+    "480x480": "string",
+    "1000x1000": "string"
+  },
   "blockhash": "string",
   "blocknumber": 0,
   "created_at": "string",
@@ -2744,9 +4026,9 @@ This operation does not require authentication
       "created_at": "string",
       "is_current": true,
       "is_delete": true,
-      "repost_item_id": 0,
+      "repost_item_id": "string",
       "repost_type": "string",
-      "user_id": 0
+      "user_id": "string"
     }
   ],
   "followee_saves": [
@@ -2776,14 +4058,47 @@ This operation does not require authentication
       }
     ]
   },
-  "playlist_id": 0,
-  "playlist_image_multihash": "string",
-  "playlist_image_sizes_multihash": "string",
   "playlist_name": "string",
   "repost_count": 0,
   "save_count": 0,
   "upc": "string",
   "updated_at": "string",
+  "user": {
+    "album_count": 0,
+    "bio": "string",
+    "blockhash": "string",
+    "blocknumber": 0,
+    "cover_photo": {
+      "640x": "string",
+      "2000x": "string"
+    },
+    "created_at": "string",
+    "creator_node_endpoint": "string",
+    "current_user_followee_follow_count": 0,
+    "does_current_user_follow": true,
+    "followee_count": 0,
+    "follower_count": 0,
+    "handle": "string",
+    "handle_lc": "string",
+    "id": "string",
+    "is_creator": true,
+    "is_current": true,
+    "is_verified": true,
+    "location": "string",
+    "metadata_multihash": "string",
+    "name": "string",
+    "playlist_count": 0,
+    "profile_picture": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
+    "repost_count": 0,
+    "track_blocknumber": 0,
+    "track_count": 0,
+    "updated_at": "string",
+    "wallet": "string"
+  },
   "user_id": "string"
 }
 
@@ -2793,6 +4108,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|artwork|[playlist_artwork](#schemaplaylist_artwork)|false|none|none|
 |blockhash|string|true|none|none|
 |blocknumber|integer|true|none|none|
 |created_at|string|false|none|none|
@@ -2807,15 +4123,37 @@ This operation does not require authentication
 |is_delete|boolean|true|none|none|
 |is_private|boolean|true|none|none|
 |playlist_contents|[playlist_contents](#schemaplaylist_contents)|true|none|none|
-|playlist_id|integer|true|none|none|
-|playlist_image_multihash|string|false|none|none|
-|playlist_image_sizes_multihash|string|false|none|none|
 |playlist_name|string|true|none|none|
 |repost_count|integer|true|none|none|
 |save_count|integer|true|none|none|
 |upc|string|false|none|none|
 |updated_at|string|false|none|none|
+|user|[user](#schemauser)|true|none|none|
 |user_id|string|true|none|none|
+
+<h2 id="tocS_playlist_artwork">playlist_artwork</h2>
+<!-- backwards compatibility -->
+<a id="schemaplaylist_artwork"></a>
+<a id="schema_playlist_artwork"></a>
+<a id="tocSplaylist_artwork"></a>
+<a id="tocsplaylist_artwork"></a>
+
+```json
+{
+  "150x150": "string",
+  "480x480": "string",
+  "1000x1000": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|150x150|string|false|none|none|
+|480x480|string|false|none|none|
+|1000x1000|string|false|none|none|
 
 <h2 id="tocS_playlist_contents">playlist_contents</h2>
 <!-- backwards compatibility -->
@@ -2875,10 +4213,13 @@ This operation does not require authentication
 {
   "data": [
     {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_art": "string",
-      "cover_art_sizes": "string",
       "create_date": "string",
       "created_at": "string",
       "credits_splits": "string",
@@ -2904,9 +4245,9 @@ This operation does not require authentication
           "created_at": "string",
           "is_current": true,
           "is_delete": true,
-          "repost_item_id": 0,
+          "repost_item_id": "string",
           "repost_type": "string",
-          "user_id": 0
+          "user_id": "string"
         }
       ],
       "followee_saves": [
@@ -2963,8 +4304,10 @@ This operation does not require authentication
         "bio": "string",
         "blockhash": "string",
         "blocknumber": 0,
-        "cover_photo": "string",
-        "cover_photo_sizes": "string",
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
         "created_at": "string",
         "creator_node_endpoint": "string",
         "current_user_followee_follow_count": 0,
@@ -2981,8 +4324,11 @@ This operation does not require authentication
         "metadata_multihash": "string",
         "name": "string",
         "playlist_count": 0,
-        "profile_picture": "string",
-        "profile_picture_sizes": "string",
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
         "repost_count": 0,
         "track_blocknumber": 0,
         "track_count": 0,
@@ -3019,6 +4365,136 @@ This operation does not require authentication
 |timestamp|string|true|none|none|
 |version|[version_metadata](#schemaversion_metadata)|true|none|none|
 
+<h2 id="tocS_playlist_search_result">playlist_search_result</h2>
+<!-- backwards compatibility -->
+<a id="schemaplaylist_search_result"></a>
+<a id="schema_playlist_search_result"></a>
+<a id="tocSplaylist_search_result"></a>
+<a id="tocsplaylist_search_result"></a>
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "blockhash": "string",
+      "blocknumber": 0,
+      "created_at": "string",
+      "description": "string",
+      "followee_reposts": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "repost_item_id": "string",
+          "repost_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "followee_saves": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "save_item_id": "string",
+          "save_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "has_current_user_reposted": true,
+      "has_current_user_saved\ttrue": true,
+      "id": "string",
+      "is_album": true,
+      "is_current": true,
+      "is_delete": true,
+      "is_private": true,
+      "playlist_contents": {
+        "track_ids": [
+          {
+            "time": 0,
+            "track": 0
+          }
+        ]
+      },
+      "playlist_name": "string",
+      "repost_count": 0,
+      "save_count": 0,
+      "upc": "string",
+      "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
+      "user_id": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[playlist](#schemaplaylist)]|false|none|none|
+|latest_chain_block|integer|true|none|none|
+|latest_indexed_block|integer|true|none|none|
+|owner_wallet|integer|true|none|none|
+|signature|string|true|none|none|
+|success|boolean|true|none|none|
+|timestamp|string|true|none|none|
+|version|[version_metadata](#schemaversion_metadata)|true|none|none|
+
 <h2 id="tocS_track_response">track_response</h2>
 <!-- backwards compatibility -->
 <a id="schematrack_response"></a>
@@ -3029,10 +4505,13 @@ This operation does not require authentication
 ```json
 {
   "data": {
+    "artwork": {
+      "150x150": "string",
+      "480x480": "string",
+      "1000x1000": "string"
+    },
     "blockhash": "string",
     "blocknumber": 0,
-    "cover_art": "string",
-    "cover_art_sizes": "string",
     "create_date": "string",
     "created_at": "string",
     "credits_splits": "string",
@@ -3058,9 +4537,9 @@ This operation does not require authentication
         "created_at": "string",
         "is_current": true,
         "is_delete": true,
-        "repost_item_id": 0,
+        "repost_item_id": "string",
         "repost_type": "string",
-        "user_id": 0
+        "user_id": "string"
       }
     ],
     "followee_saves": [
@@ -3117,8 +4596,10 @@ This operation does not require authentication
       "bio": "string",
       "blockhash": "string",
       "blocknumber": 0,
-      "cover_photo": "string",
-      "cover_photo_sizes": "string",
+      "cover_photo": {
+        "640x": "string",
+        "2000x": "string"
+      },
       "created_at": "string",
       "creator_node_endpoint": "string",
       "current_user_followee_follow_count": 0,
@@ -3135,8 +4616,11 @@ This operation does not require authentication
       "metadata_multihash": "string",
       "name": "string",
       "playlist_count": 0,
-      "profile_picture": "string",
-      "profile_picture_sizes": "string",
+      "profile_picture": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
       "repost_count": 0,
       "track_blocknumber": 0,
       "track_count": 0,
@@ -3164,6 +4648,169 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|[Track](#schematrack)|false|none|none|
+|latest_chain_block|integer|true|none|none|
+|latest_indexed_block|integer|true|none|none|
+|owner_wallet|integer|true|none|none|
+|signature|string|true|none|none|
+|success|boolean|true|none|none|
+|timestamp|string|true|none|none|
+|version|[version_metadata](#schemaversion_metadata)|true|none|none|
+
+<h2 id="tocS_track_search">track_search</h2>
+<!-- backwards compatibility -->
+<a id="schematrack_search"></a>
+<a id="schema_track_search"></a>
+<a id="tocStrack_search"></a>
+<a id="tocstrack_search"></a>
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "string",
+        "480x480": "string",
+        "1000x1000": "string"
+      },
+      "blockhash": "string",
+      "blocknumber": 0,
+      "create_date": "string",
+      "created_at": "string",
+      "credits_splits": "string",
+      "description": "string",
+      "download": {
+        "cid": "string",
+        "is_downloadable": true,
+        "required_follow": true
+      },
+      "field_visibility": {
+        "mood": true,
+        "tags": true,
+        "genre": true,
+        "share": true,
+        "play_count": true,
+        "remixes": true
+      },
+      "file_type": "string",
+      "followee_reposts": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "repost_item_id": "string",
+          "repost_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "followee_saves": [
+        {
+          "blockhash": "string",
+          "blocknumber": 0,
+          "created_at": "string",
+          "is_current": true,
+          "is_delete": true,
+          "save_item_id": "string",
+          "save_type": "string",
+          "user_id": "string"
+        }
+      ],
+      "genre": "string",
+      "has_current_user_reposted": true,
+      "has_current_user_saved": true,
+      "id": "string",
+      "is_current": true,
+      "is_delete": true,
+      "is_unlisted": true,
+      "isrc": "string",
+      "iswc": "string",
+      "length": 0,
+      "license": "string",
+      "metadata_multihash": "string",
+      "mood": "string",
+      "release_date": "string",
+      "remix_of": {
+        "tracks": [
+          {
+            "parent_track_id": 0
+          }
+        ]
+      },
+      "repost_count": 0,
+      "route_id": "string",
+      "save_count": 0,
+      "stem_of": {
+        "category": "string",
+        "parent_track_id": 0
+      },
+      "tags": "string",
+      "title": "string",
+      "track_segments": [
+        {
+          "duration": 0,
+          "multihash": "string"
+        }
+      ],
+      "updated_at": "string",
+      "user": {
+        "album_count": 0,
+        "bio": "string",
+        "blockhash": "string",
+        "blocknumber": 0,
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "created_at": "string",
+        "creator_node_endpoint": "string",
+        "current_user_followee_follow_count": 0,
+        "does_current_user_follow": true,
+        "followee_count": 0,
+        "follower_count": 0,
+        "handle": "string",
+        "handle_lc": "string",
+        "id": "string",
+        "is_creator": true,
+        "is_current": true,
+        "is_verified": true,
+        "location": "string",
+        "metadata_multihash": "string",
+        "name": "string",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "string",
+          "480x480": "string",
+          "1000x1000": "string"
+        },
+        "repost_count": 0,
+        "track_blocknumber": 0,
+        "track_count": 0,
+        "updated_at": "string",
+        "wallet": "string"
+      },
+      "user_id": "string"
+    }
+  ],
+  "latest_chain_block": 0,
+  "latest_indexed_block": 0,
+  "owner_wallet": 0,
+  "signature": "string",
+  "success": true,
+  "timestamp": "string",
+  "version": {
+    "service": "string",
+    "version": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[Track](#schematrack)]|false|none|none|
 |latest_chain_block|integer|true|none|none|
 |latest_indexed_block|integer|true|none|none|
 |owner_wallet|integer|true|none|none|

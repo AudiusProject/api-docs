@@ -23,18 +23,18 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #FAFAFA !default;
-$examples-bg: #FAFAFA !default;
-$code-bg: #484459 !default;
-$code-annotation-bg: #191D1F !default;
-$nav-subitem-bg: #F7F7F9 !default;
-$nav-active-bg: #A782D4 !default;
-$nav-active-parent-bg: #F2F2F4 !default; // parent links of the current section
+$nav-bg: #3F415B !default;
+$examples-bg: #3F415B !default;
+$code-bg: #393A54 !default;
+$code-annotation-bg: #5A5E78 !default;
+$nav-subitem-bg: #32334D !default;
+$nav-active-bg: rgba(145, 71, 204, 0.4) !default;
+$nav-active-parent-bg: rgba(145, 71, 204, 0.2)!default; // parent links of the current section
 $lang-select-border: #000 !default;
-$lang-select-bg: #1E2224 !default;
+$lang-select-bg: #32334D !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
-$main-bg: #FFFFFF !default;
+$main-bg: #32334D !default;
 $aside-notice-bg: #8fbcd4 !default;
 $aside-warning-bg: #c97a7e !default;
 $aside-success-bg: #6ac174 !default;
@@ -43,13 +43,13 @@ $search-notice-bg: #c97a7e !default;
 
 // TEXT COLORS
 ////////////////////
-$main-text: #8D7D9D !default; // main content text color
-$nav-text: #697386 !default;
+$main-text: #BEC5E0 !default; // main content text color
+$nav-text: rgba(190, 197, 224, 0.8) !default;
 $nav-active-text: #FAFAFA !default;
-$nav-active-parent-text: #697386 !default; // parent links of the current section
-$lang-select-text: #697386 !default; // color of unselected language tab text
-$lang-select-active-text: #697386 !default; // color of selected language tab text
-$lang-select-pressed-text: #697386 !default; // color of language tab text when mouse is pressed
+$nav-active-parent-text:rgba(190, 197, 224, 0.8) !default; // parent links of the current section
+$lang-select-text: #BEC5E0 !default; // color of unselected language tab text
+$lang-select-active-text: #BEC5E0 !default; // color of selected language tab text
+$lang-select-pressed-text: #BEC5E0 !default; // color of language tab text when mouse is pressed
 
 
 // SIZES

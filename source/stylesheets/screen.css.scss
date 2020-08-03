@@ -75,7 +75,7 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
-    padding: 40px;
+    padding: 20px;
     box-sizing: border-box;
     margin-bottom: $logo-margin;
   }
@@ -359,7 +359,7 @@ html, body {
     margin-top: 2em;
     font-weight: 700;
     letter-spacing: 0.2px;
-    color: #484459;
+    color: #BEC5E0;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -522,7 +522,7 @@ html, body {
 .content {
   pre, blockquote {
     background-color: $code-bg;
-    color: #fff;
+    color: #BEC5E0;
 
     margin: 0;
     width: $examples-width;
@@ -537,7 +537,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: #BEC5E0;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
@@ -554,7 +554,7 @@ html, body {
     &>p {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
-      color: #fff;
+      color: #BEC5E0;
       font-size: 14px;
     }
   }
