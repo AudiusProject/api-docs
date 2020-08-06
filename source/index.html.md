@@ -84,7 +84,7 @@ import requests
 host = random.choice((requests.get('https://api.audius.co')).json()['data'])
 ```
 
-Audius is a decentralized music streaming service. In order to use the API, you must first select an API host (Discovery Service) by visiting:
+Audius is a decentralized music streaming service. In order to use the API, you must first select an API endpoint (Discovery Service) by picking from the list of endpoints returned by:
 
 [https://api.audius.co](https://api.audius.co)
 
