@@ -12,6 +12,7 @@ Getting started:
 
 # generate swagger docs
 > npm install -g widdershins
+> brew install jq
 > ./swagger-import.sh http://docker.for.mac.localhost:5000/v1/swagger.json # or whatever swagger
 ```
 

@@ -12,39 +12,86 @@ language_tabs:
   - shell: Shell
   - http: HTTP
   - javascript: JavaScript
-  - ruby: Ruby
   - python: Python
   - php: PHP
   - java: Java
+  - ruby: Ruby
   - go: Go
 
 includes:
   - docs
 ---
 
+
+<script type="text/javascript">
+(function() {
+  const set = async () => {
+    const sample = (arr) => arr[Math.floor(Math.random() * arr.length)]
+    const host = sample((await (await fetch('https://api.audius.co')).json()).data)
+    // document.body.innerHTML = document.body.innerHTML.replace(/%HOST%/g, host)
+    function walkText(node) {
+      if (node.nodeType == 3) {
+        node.data = node.data.replace(/%HOST%/g, host)
+      }
+      if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
+        for (var i = 0; i < node.childNodes.length; i++) {
+          walkText(node.childNodes[i]);
+        }
+      }
+    }
+    walkText(document.body);
+  }
+  set()
+})()
+</script>
+
 <br />
 <br />
 
 # Audius API Docs
 
-### TODO: Flesh out
+🚧 Under Construction! 🚧
 
-Audius is a decentralized music streaming protocol.
+The Audius API is entirely free to use. We ask that you adhere to the guidelines in this doc and always credit artists.
 
-In order to begin API use, you must first select an API host by visiting
 
-[https://api.audius.co](https://api.audius.co)
-
-### TODO: Include iFrame example here
-
-All subsequent requests can be made to `<host>/`, for example `<host>/v1/tracks/abc`
+## Selecting a Host
 
 > Code samples
 
 ```shell
-curl -X GET https://api.audius.co
+curl https://api.audius.co
+```
+
+```http
+GET https://api.audius.co HTTP/1.1
+```
+
+```javascript
+
+const sample = (arr) => arr[Math.floor(Math.random() * arr.length)]
+const host = await fetch('https://api.audius.co')
+  .then(r => r.json())
+  .then(j => j.data)
+  .then(d => sample(d))
+
 ```
 
 ```python
+import random
+import requests
+
 host = random.choice((requests.get('https://api.audius.co')).json()['data'])
 ```
+
+Audius is a decentralized music streaming service. In order to use the API, you must first select an API host (Discovery Service) by visiting:
+
+[https://api.audius.co](https://api.audius.co)
+
+Once you've selected a host, all API requests can be sent directly to it. We recommend selecting a host each time your application starts up as availability may change over time.
+
+For the following documention, we've selected one for you:
+
+` %HOST% `
+
+If you're interested in running a service of your own, see our [Stakers guide](https://audius.org/stakers.html).

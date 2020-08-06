@@ -1,0 +1,3 @@
+curl {{=data.url}}{{=data.requiredQueryString}}{{?data.allHeaders.length}} {{?}}
+{{~data.allHeaders :p:index}} {{?index < data.allHeaders.length-1}} \{{?}}
+{{~}}

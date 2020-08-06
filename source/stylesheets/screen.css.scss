@@ -76,6 +76,7 @@ html, body {
     display: block;
     max-width: 100%;
     padding: 20px;
+    margin-left: -10px;
     box-sizing: border-box;
     margin-bottom: $logo-margin;
   }
@@ -92,7 +93,7 @@ html, body {
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text;
+      color: $search-box-border-color;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -203,6 +204,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
+  text-transform: capitalize;
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
@@ -232,7 +234,7 @@ html, body {
   top: 0;
   left: 0;
   z-index: 100;
-  color: #000;
+  color: $nav-text;
   text-decoration: none;
   font-weight: bold;
   opacity: 0.7;
@@ -360,6 +362,8 @@ html, body {
     font-weight: 700;
     letter-spacing: 0.2px;
     color: #BEC5E0;
+    background: #5A5E78;
+    text-transform: capitalize;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -374,7 +378,6 @@ html, body {
     margin-bottom: 0;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -415,16 +418,15 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
       vertical-align: bottom;
     }
 
     td {
-      padding: 10px;
+      padding: 16px;
+      padding-right: 40px;
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
     }
 
     tr:nth-child(odd)>td {
@@ -445,7 +447,8 @@ html, body {
   }
 
   a {
-    color: #964BF1;
+    font-weight: bold;
+    color: #9A60CF;
   }
 
   p, li, dt, dd {
