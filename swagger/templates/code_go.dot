@@ -14,7 +14,7 @@ func main() {
     }{{?}}
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("{{=data.methodUpper}}", "{{=data.url}}", data)
+    req, err := http.NewRequest("{{=data.methodUpper}}", "{{=data.baseUrl}}{{=data.uriExample.replace(data.requiredQueryString, "")}}", data)
     req.Header = headers
 
     client := &http.Client{}

@@ -1,4 +1,4 @@
-{{=data.methodUpper}} {{=data.url}}{{=data.requiredQueryString}} HTTP/1.1
+{{=data.methodUpper}} {{=data.baseUrl}}{{=data.uriExample}} HTTP/1.1
 {{? data.host}}Host: {{=data.host}}{{?}}
 {{?data.headerParameters.length}}{{~ data.headerParameters :p:index}}{{=p.name}}: {{=p.exampleValues.object}}
 {{~}}

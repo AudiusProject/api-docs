@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 {{~data.allHeaders :p:index}}  '{{=p.name}}':{{=p.exampleValues.json}}{{?index < data.allHeaders.length-1}},{{?}}
 {{~}}};
 {{?}}
-fetch('{{=data.url}}{{=data.requiredQueryString}}',
+fetch('{{=data.baseUrl}}{{=data.uriExample}}',
 {
   method: '{{=data.methodUpper}}'{{?data.bodyParameter.present || data.allHeaders.length}},{{?}}
 {{?data.bodyParameter.present}}  body: JSON.stringify(inputBody){{?}}{{? data.bodyParameter.present && data.allHeaders.length}},{{?}}

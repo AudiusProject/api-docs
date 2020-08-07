@@ -6,10 +6,10 @@ echo "$1"
 # Pull swagger
 curl "$1" > swagger/swagger.json
 
-Reformat adding custom %HOST% tag
+Reformat adding custom AUDIUS_API_HOST tag
 basePath=$( jq '.basePath' swagger/swagger.json )
 basePath=$( echo $basePath | sed "s/\"//g" )
-newBasePath="%HOST%${basePath}"
+newBasePath="AUDIUS_API_HOST${basePath}"
 
 cat <<< $( jq --arg bp ${newBasePath} '.basePath = $bp' swagger/swagger.json ) > swagger/swagger.json
 

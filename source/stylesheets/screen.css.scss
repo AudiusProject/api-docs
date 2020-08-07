@@ -354,7 +354,7 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 30px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
@@ -371,12 +371,16 @@ html, body {
     margin-top: 0;
   }
 
+  #selecting-a-host {
+    padding-top: 0;
+  }
+
   h2 {
     @extend %header-font;
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    padding-top: 1.2em;
+    padding-top: 4em;
     padding-bottom: 1.2em;
   }
 
@@ -390,7 +394,7 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    margin-top: 2.5em;
+    margin-top: 5em;
     margin-bottom: 0.8em;
   }
 

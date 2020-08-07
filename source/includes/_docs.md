@@ -2,22 +2,20 @@
 
 <h1 id="api-users">users</h1>
 
-User related operations
-
 ## Search Users
 
 <a id="opIdSearch Users"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/users/search?query=string 
+curl AUDIUS_API_HOST/v1/users/search?query=Brownies 
  
 
 ```
 
 ```http
-GET %HOST%/v1/users/search?query=string HTTP/1.1
+GET AUDIUS_API_HOST/v1/users/search?query=Brownies HTTP/1.1
 
 ```
 
@@ -27,7 +25,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/users/search?query=string',
+fetch('AUDIUS_API_HOST/v1/users/search?query=Brownies',
 {
   method: 'GET',
 
@@ -49,7 +47,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/users/search',
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/search',
   params: {
   'query' => 'string'
 }, headers: headers
@@ -64,8 +62,8 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/users/search', params={
-  'query': 'string'
+r = requests.get('AUDIUS_API_HOST/v1/users/search', params={
+  'query': 'Brownies'
 }, headers = headers)
 
 print(r.json())
@@ -87,7 +85,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/users/search', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/search', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -104,7 +102,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/users/search?query=string");
+URL obj = new URL("AUDIUS_API_HOST/v1/users/search?query=Brownies");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -135,7 +133,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/users/search", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/search", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -149,13 +147,13 @@ func main() {
 
 *Seach for a user*
 
-<h3 id="search-users-parameters">Parameters</h3>
+<h3 id="search-users-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search query|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -199,16 +197,16 @@ func main() {
 
 <a id="opIdGet User"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/users/{user_id} 
+curl AUDIUS_API_HOST/v1/users/nlGNe 
  
 
 ```
 
 ```http
-GET %HOST%/v1/users/{user_id} HTTP/1.1
+GET AUDIUS_API_HOST/v1/users/nlGNe HTTP/1.1
 
 ```
 
@@ -218,7 +216,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/users/{user_id}',
+fetch('AUDIUS_API_HOST/v1/users/nlGNe',
 {
   method: 'GET',
 
@@ -240,7 +238,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/users/{user_id}',
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe',
   params: {
   }, headers: headers
 
@@ -254,7 +252,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/users/{user_id}', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe', headers = headers)
 
 print(r.json())
 
@@ -275,7 +273,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/users/{user_id}', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -292,7 +290,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/users/{user_id}");
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -323,7 +321,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/users/{user_id}", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -337,13 +335,13 @@ func main() {
 
 *Fetch a single user*
 
-<h3 id="get-user-parameters">Parameters</h3>
+<h3 id="get-user-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |user_id|string|true|A User ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -385,16 +383,16 @@ func main() {
 
 <a id="opIdGet User's Favorite Tracks"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/users/{user_id}/favorites 
+curl AUDIUS_API_HOST/v1/users/nlGNe/favorites 
  
 
 ```
 
 ```http
-GET %HOST%/v1/users/{user_id}/favorites HTTP/1.1
+GET AUDIUS_API_HOST/v1/users/nlGNe/favorites HTTP/1.1
 
 ```
 
@@ -404,7 +402,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/users/{user_id}/favorites',
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/favorites',
 {
   method: 'GET',
 
@@ -426,7 +424,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/users/{user_id}/favorites',
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/favorites',
   params: {
   }, headers: headers
 
@@ -440,7 +438,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/users/{user_id}/favorites', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/favorites', headers = headers)
 
 print(r.json())
 
@@ -461,7 +459,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/users/{user_id}/favorites', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/favorites', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -478,7 +476,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/users/{user_id}/favorites");
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/favorites");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -509,7 +507,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/users/{user_id}/favorites", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/favorites", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -523,13 +521,13 @@ func main() {
 
 *Fetch favorited tracks for a user*
 
-<h3 id="get-user's-favorite-tracks-parameters">Parameters</h3>
+<h3 id="get-user's-favorite-tracks-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |user_id|string|true|A User ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -565,16 +563,16 @@ func main() {
 
 <a id="opIdGet User's Tracks"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/users/{user_id}/tracks 
+curl AUDIUS_API_HOST/v1/users/nlGNe/tracks 
  
 
 ```
 
 ```http
-GET %HOST%/v1/users/{user_id}/tracks HTTP/1.1
+GET AUDIUS_API_HOST/v1/users/nlGNe/tracks HTTP/1.1
 
 ```
 
@@ -584,7 +582,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/users/{user_id}/tracks',
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/tracks',
 {
   method: 'GET',
 
@@ -606,7 +604,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/users/{user_id}/tracks',
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/tracks',
   params: {
   }, headers: headers
 
@@ -620,7 +618,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/users/{user_id}/tracks', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/tracks', headers = headers)
 
 print(r.json())
 
@@ -641,7 +639,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/users/{user_id}/tracks', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/tracks', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -658,7 +656,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/users/{user_id}/tracks");
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/tracks");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -689,7 +687,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/users/{user_id}/tracks", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/tracks", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -703,13 +701,13 @@ func main() {
 
 *Fetch a list of tracks for a user*
 
-<h3 id="get-user's-tracks-parameters">Parameters</h3>
+<h3 id="get-user's-tracks-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |user_id|string|true|A User ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -767,22 +765,20 @@ func main() {
 
 <h1 id="api-playlists">playlists</h1>
 
-Playlist related operations
-
 ## Search Playlists
 
 <a id="opIdSearch Playlists"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/playlists/search?query=string 
+curl AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New 
  
 
 ```
 
 ```http
-GET %HOST%/v1/playlists/search?query=string HTTP/1.1
+GET AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New HTTP/1.1
 
 ```
 
@@ -792,7 +788,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/playlists/search?query=string',
+fetch('AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New',
 {
   method: 'GET',
 
@@ -814,7 +810,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/playlists/search',
+result = RestClient.get 'AUDIUS_API_HOST/v1/playlists/search',
   params: {
   'query' => 'string'
 }, headers: headers
@@ -829,8 +825,8 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/playlists/search', params={
-  'query': 'string'
+r = requests.get('AUDIUS_API_HOST/v1/playlists/search', params={
+  'query': 'Hot & New'
 }, headers = headers)
 
 print(r.json())
@@ -852,7 +848,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/playlists/search', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/playlists/search', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -869,7 +865,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/playlists/search?query=string");
+URL obj = new URL("AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -900,7 +896,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/playlists/search", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/playlists/search", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -914,13 +910,13 @@ func main() {
 
 *Search for a playlist*
 
-<h3 id="search-playlists-parameters">Parameters</h3>
+<h3 id="search-playlists-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search Query|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -977,16 +973,16 @@ func main() {
 
 <a id="opIdGet Playlist"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/playlists/{playlist_id} 
+curl AUDIUS_API_HOST/v1/playlists/DOPRl 
  
 
 ```
 
 ```http
-GET %HOST%/v1/playlists/{playlist_id} HTTP/1.1
+GET AUDIUS_API_HOST/v1/playlists/DOPRl HTTP/1.1
 
 ```
 
@@ -996,7 +992,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/playlists/{playlist_id}',
+fetch('AUDIUS_API_HOST/v1/playlists/DOPRl',
 {
   method: 'GET',
 
@@ -1018,7 +1014,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/playlists/{playlist_id}',
+result = RestClient.get 'AUDIUS_API_HOST/v1/playlists/DOPRl',
   params: {
   }, headers: headers
 
@@ -1032,7 +1028,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/playlists/{playlist_id}', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/playlists/DOPRl', headers = headers)
 
 print(r.json())
 
@@ -1053,7 +1049,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/playlists/{playlist_id}', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/playlists/DOPRl', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1070,7 +1066,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/playlists/{playlist_id}");
+URL obj = new URL("AUDIUS_API_HOST/v1/playlists/DOPRl");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1101,7 +1097,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/playlists/{playlist_id}", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/playlists/DOPRl", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1115,13 +1111,13 @@ func main() {
 
 *Fetch a playlist*
 
-<h3 id="get-playlist-parameters">Parameters</h3>
+<h3 id="get-playlist-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |playlist_id|string|true|A Playlist ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -1176,16 +1172,16 @@ func main() {
 
 <a id="opIdGet Playlist Tracks"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/playlists/{playlist_id}/tracks 
+curl AUDIUS_API_HOST/v1/playlists/DOPRl/tracks 
  
 
 ```
 
 ```http
-GET %HOST%/v1/playlists/{playlist_id}/tracks HTTP/1.1
+GET AUDIUS_API_HOST/v1/playlists/DOPRl/tracks HTTP/1.1
 
 ```
 
@@ -1195,7 +1191,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/playlists/{playlist_id}/tracks',
+fetch('AUDIUS_API_HOST/v1/playlists/DOPRl/tracks',
 {
   method: 'GET',
 
@@ -1217,7 +1213,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/playlists/{playlist_id}/tracks',
+result = RestClient.get 'AUDIUS_API_HOST/v1/playlists/DOPRl/tracks',
   params: {
   }, headers: headers
 
@@ -1231,7 +1227,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/playlists/{playlist_id}/tracks', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/playlists/DOPRl/tracks', headers = headers)
 
 print(r.json())
 
@@ -1252,7 +1248,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/playlists/{playlist_id}/tracks', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/playlists/DOPRl/tracks', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1269,7 +1265,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/playlists/{playlist_id}/tracks");
+URL obj = new URL("AUDIUS_API_HOST/v1/playlists/DOPRl/tracks");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1300,7 +1296,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/playlists/{playlist_id}/tracks", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/playlists/DOPRl/tracks", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1314,13 +1310,13 @@ func main() {
 
 *Fetch tracks within a playlist*
 
-<h3 id="get-playlist-tracks-parameters">Parameters</h3>
+<h3 id="get-playlist-tracks-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |playlist_id|string|true|A Playlist ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -1378,22 +1374,20 @@ func main() {
 
 <h1 id="api-tracks">tracks</h1>
 
-Track related operations
-
 ## Search Tracks
 
 <a id="opIdSearch Tracks"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/tracks/search?query=string 
+curl AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b 
  
 
 ```
 
 ```http
-GET %HOST%/v1/tracks/search?query=string HTTP/1.1
+GET AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b HTTP/1.1
 
 ```
 
@@ -1403,7 +1397,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/tracks/search?query=string',
+fetch('AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b',
 {
   method: 'GET',
 
@@ -1425,7 +1419,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/tracks/search',
+result = RestClient.get 'AUDIUS_API_HOST/v1/tracks/search',
   params: {
   'query' => 'string'
 }, headers: headers
@@ -1440,8 +1434,8 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/tracks/search', params={
-  'query': 'string'
+r = requests.get('AUDIUS_API_HOST/v1/tracks/search', params={
+  'query': 'baauer b2b'
 }, headers = headers)
 
 print(r.json())
@@ -1463,7 +1457,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/tracks/search', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/tracks/search', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1480,7 +1474,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/tracks/search?query=string");
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1511,7 +1505,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/tracks/search", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/tracks/search", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1525,13 +1519,13 @@ func main() {
 
 *Search for a track*
 
-<h3 id="search-tracks-parameters">Parameters</h3>
+<h3 id="search-tracks-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search Query|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -1591,16 +1585,16 @@ func main() {
 
 <a id="opIdTrending Tracks"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/tracks/trending 
+curl AUDIUS_API_HOST/v1/tracks/trending 
  
 
 ```
 
 ```http
-GET %HOST%/v1/tracks/trending HTTP/1.1
+GET AUDIUS_API_HOST/v1/tracks/trending HTTP/1.1
 
 ```
 
@@ -1610,7 +1604,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/tracks/trending',
+fetch('AUDIUS_API_HOST/v1/tracks/trending',
 {
   method: 'GET',
 
@@ -1632,7 +1626,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/tracks/trending',
+result = RestClient.get 'AUDIUS_API_HOST/v1/tracks/trending',
   params: {
   }, headers: headers
 
@@ -1646,7 +1640,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/tracks/trending', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/tracks/trending', headers = headers)
 
 print(r.json())
 
@@ -1667,7 +1661,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/tracks/trending', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/tracks/trending', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1684,7 +1678,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/tracks/trending");
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/trending");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1715,7 +1709,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/tracks/trending", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/tracks/trending", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1727,9 +1721,9 @@ func main() {
 
 `GET /tracks/trending`
 
-*Get the trending tracks*
+*Gets the top 100 trending (most popular) tracks on Audius*
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -1789,16 +1783,16 @@ func main() {
 
 <a id="opIdGet Track"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/tracks/{track_id} 
+curl AUDIUS_API_HOST/v1/tracks/D7KyD 
  
 
 ```
 
 ```http
-GET %HOST%/v1/tracks/{track_id} HTTP/1.1
+GET AUDIUS_API_HOST/v1/tracks/D7KyD HTTP/1.1
 
 ```
 
@@ -1808,7 +1802,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('%HOST%/v1/tracks/{track_id}',
+fetch('AUDIUS_API_HOST/v1/tracks/D7KyD',
 {
   method: 'GET',
 
@@ -1830,7 +1824,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get '%HOST%/v1/tracks/{track_id}',
+result = RestClient.get 'AUDIUS_API_HOST/v1/tracks/D7KyD',
   params: {
   }, headers: headers
 
@@ -1844,7 +1838,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('%HOST%/v1/tracks/{track_id}', headers = headers)
+r = requests.get('AUDIUS_API_HOST/v1/tracks/D7KyD', headers = headers)
 
 print(r.json())
 
@@ -1865,7 +1859,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/tracks/{track_id}', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/tracks/D7KyD', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1882,7 +1876,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/tracks/{track_id}");
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/D7KyD");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1913,7 +1907,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/tracks/{track_id}", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/tracks/D7KyD", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1927,13 +1921,13 @@ func main() {
 
 *Fetch a track*
 
-<h3 id="get-track-parameters">Parameters</h3>
+<h3 id="get-track-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |track_id|string|true|A Track ID|
 
-> Successful Example Response
+> Example Response
 
 ```json
 {
@@ -1991,21 +1985,21 @@ func main() {
 
 <a id="opIdStream Track"></a>
 
-> Code samples
+> Code Sample
 
 ```shell
-curl %HOST%/v1/tracks/{track_id}/stream
+curl AUDIUS_API_HOST/v1/tracks/D7KyD/stream
 
 ```
 
 ```http
-GET %HOST%/v1/tracks/{track_id}/stream HTTP/1.1
+GET AUDIUS_API_HOST/v1/tracks/D7KyD/stream HTTP/1.1
 
 ```
 
 ```javascript
 
-fetch('%HOST%/v1/tracks/{track_id}/stream',
+fetch('AUDIUS_API_HOST/v1/tracks/D7KyD/stream',
 {
   method: 'GET'
 
@@ -2022,7 +2016,7 @@ fetch('%HOST%/v1/tracks/{track_id}/stream',
 require 'rest-client'
 require 'json'
 
-result = RestClient.get '%HOST%/v1/tracks/{track_id}/stream',
+result = RestClient.get 'AUDIUS_API_HOST/v1/tracks/D7KyD/stream',
   params: {
   }
 
@@ -2033,7 +2027,7 @@ p JSON.parse(result)
 ```python
 import requests
 
-r = requests.get('%HOST%/v1/tracks/{track_id}/stream')
+r = requests.get('AUDIUS_API_HOST/v1/tracks/D7KyD/stream')
 
 print(r.json())
 
@@ -2050,7 +2044,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','%HOST%/v1/tracks/{track_id}/stream', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/tracks/D7KyD/stream', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2067,7 +2061,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("%HOST%/v1/tracks/{track_id}/stream");
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/D7KyD/stream");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2094,7 +2088,7 @@ import (
 func main() {
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "%HOST%/v1/tracks/{track_id}/stream", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/tracks/D7KyD/stream", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2106,14 +2100,12 @@ func main() {
 
 `GET /tracks/{track_id}/stream`
 
-*Get the track's streammable mp3 file*
+*Get the track's streamable mp3 file*
 
 This endpoint accepts the Range header for streaming.
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests
 
-Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the audio
-
-<h3 id="stream-track-parameters">Parameters</h3>
+<h3 id="stream-track-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
@@ -2131,12 +2123,13 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 
 # Schemas
 
-<h2 id="tocS_user_response">user_response</h2>
+The following are examples of response formats you can expect to receive from the API.
 
 <a id="schemauser_response"></a>
 <a id="schema_user_response"></a>
 <a id="tocSuser_response"></a>
 <a id="tocsuser_response"></a>
+<h2 id="tocS_user_response">user_response</h2>
 
 ```json
 {
@@ -2173,12 +2166,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[user](#schemauser)|false|none|none|
 
-<h2 id="tocS_user">user</h2>
-
 <a id="schemauser"></a>
 <a id="schema_user"></a>
 <a id="tocSuser"></a>
 <a id="tocsuser"></a>
+<h2 id="tocS_user">user</h2>
 
 ```json
 {
@@ -2226,12 +2218,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |repost_count|integer|true|none|none|
 |track_count|integer|true|none|none|
 
-<h2 id="tocS_cover_photo">cover_photo</h2>
-
 <a id="schemacover_photo"></a>
 <a id="schema_cover_photo"></a>
 <a id="tocScover_photo"></a>
 <a id="tocscover_photo"></a>
+<h2 id="tocS_cover_photo">cover_photo</h2>
 
 ```json
 {
@@ -2248,12 +2239,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |640x|string|false|none|none|
 |2000x|string|false|none|none|
 
-<h2 id="tocS_profile_picture">profile_picture</h2>
-
 <a id="schemaprofile_picture"></a>
 <a id="schema_profile_picture"></a>
 <a id="tocSprofile_picture"></a>
 <a id="tocsprofile_picture"></a>
+<h2 id="tocS_profile_picture">profile_picture</h2>
 
 ```json
 {
@@ -2272,12 +2262,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |480x480|string|false|none|none|
 |1000x1000|string|false|none|none|
 
-<h2 id="tocS_tracks_response">tracks_response</h2>
-
 <a id="schematracks_response"></a>
 <a id="schema_tracks_response"></a>
 <a id="tocStracks_response"></a>
 <a id="tocstracks_response"></a>
+<h2 id="tocS_tracks_response">tracks_response</h2>
 
 ```json
 {
@@ -2291,7 +2280,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "description": "string",
       "genre": "string",
       "id": "string",
-      "length": 0,
       "mood": "string",
       "release_date": "string",
       "remix_of": {
@@ -2304,7 +2292,7 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "string",
+      "title": "wow!",
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2340,12 +2328,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[Track](#schematrack)]|false|none|none|
 
-<h2 id="tocS_Track">Track</h2>
-
 <a id="schematrack"></a>
 <a id="schema_Track"></a>
 <a id="tocStrack"></a>
 <a id="tocstrack"></a>
+<h2 id="tocS_Track">Track</h2>
 
 ```json
 {
@@ -2357,7 +2344,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
   "description": "string",
   "genre": "string",
   "id": "string",
-  "length": 0,
   "mood": "string",
   "release_date": "string",
   "remix_of": {
@@ -2370,7 +2356,7 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
   "repost_count": 0,
   "favorite_count": 0,
   "tags": "string",
-  "title": "string",
+  "title": "wow!",
   "user": {
     "album_count": 0,
     "bio": "string",
@@ -2406,7 +2392,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |description|string|false|none|none|
 |genre|string|false|none|none|
 |id|string|true|none|none|
-|length|integer|false|none|none|
 |mood|string|false|none|none|
 |release_date|string|false|none|none|
 |remix_of|[remix_parent](#schemaremix_parent)|false|none|none|
@@ -2416,12 +2401,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |title|string|true|none|none|
 |user|[user](#schemauser)|true|none|none|
 
-<h2 id="tocS_track_artwork">track_artwork</h2>
-
 <a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
 <a id="tocStrack_artwork"></a>
 <a id="tocstrack_artwork"></a>
+<h2 id="tocS_track_artwork">track_artwork</h2>
 
 ```json
 {
@@ -2440,12 +2424,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |480x480|string|false|none|none|
 |1000x1000|string|false|none|none|
 
-<h2 id="tocS_remix_parent">remix_parent</h2>
-
 <a id="schemaremix_parent"></a>
 <a id="schema_remix_parent"></a>
 <a id="tocSremix_parent"></a>
 <a id="tocsremix_parent"></a>
+<h2 id="tocS_remix_parent">remix_parent</h2>
 
 ```json
 {
@@ -2464,12 +2447,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |tracks|[[track_element](#schematrack_element)]|false|none|none|
 
-<h2 id="tocS_track_element">track_element</h2>
-
 <a id="schematrack_element"></a>
 <a id="schema_track_element"></a>
 <a id="tocStrack_element"></a>
 <a id="tocstrack_element"></a>
+<h2 id="tocS_track_element">track_element</h2>
 
 ```json
 {
@@ -2484,12 +2466,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |parent_track_id|string|true|none|none|
 
-<h2 id="tocS_favorites_response">favorites_response</h2>
-
 <a id="schemafavorites_response"></a>
 <a id="schema_favorites_response"></a>
 <a id="tocSfavorites_response"></a>
 <a id="tocsfavorites_response"></a>
+<h2 id="tocS_favorites_response">favorites_response</h2>
 
 ```json
 {
@@ -2510,12 +2491,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[favorite](#schemafavorite)]|false|none|none|
 
-<h2 id="tocS_favorite">favorite</h2>
-
 <a id="schemafavorite"></a>
 <a id="schema_favorite"></a>
 <a id="tocSfavorite"></a>
 <a id="tocsfavorite"></a>
+<h2 id="tocS_favorite">favorite</h2>
 
 ```json
 {
@@ -2534,12 +2514,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |favorite_type|string|true|none|none|
 |user_id|string|true|none|none|
 
-<h2 id="tocS_user_search">user_search</h2>
-
 <a id="schemauser_search"></a>
 <a id="schema_user_search"></a>
 <a id="tocSuser_search"></a>
 <a id="tocsuser_search"></a>
+<h2 id="tocS_user_search">user_search</h2>
 
 ```json
 {
@@ -2578,12 +2557,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[user](#schemauser)]|false|none|none|
 
-<h2 id="tocS_playlist_response">playlist_response</h2>
-
 <a id="schemaplaylist_response"></a>
 <a id="schema_playlist_response"></a>
 <a id="tocSplaylist_response"></a>
 <a id="tocsplaylist_response"></a>
+<h2 id="tocS_playlist_response">playlist_response</h2>
 
 ```json
 {
@@ -2635,12 +2613,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[playlist](#schemaplaylist)]|false|none|none|
 
-<h2 id="tocS_playlist">playlist</h2>
-
 <a id="schemaplaylist"></a>
 <a id="schema_playlist"></a>
 <a id="tocSplaylist"></a>
 <a id="tocsplaylist"></a>
+<h2 id="tocS_playlist">playlist</h2>
 
 ```json
 {
@@ -2695,12 +2672,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |favorite_count|integer|true|none|none|
 |user|[user](#schemauser)|true|none|none|
 
-<h2 id="tocS_playlist_artwork">playlist_artwork</h2>
-
 <a id="schemaplaylist_artwork"></a>
 <a id="schema_playlist_artwork"></a>
 <a id="tocSplaylist_artwork"></a>
 <a id="tocsplaylist_artwork"></a>
+<h2 id="tocS_playlist_artwork">playlist_artwork</h2>
 
 ```json
 {
@@ -2719,12 +2695,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |480x480|string|false|none|none|
 |1000x1000|string|false|none|none|
 
-<h2 id="tocS_playlist_tracks_response">playlist_tracks_response</h2>
-
 <a id="schemaplaylist_tracks_response"></a>
 <a id="schema_playlist_tracks_response"></a>
 <a id="tocSplaylist_tracks_response"></a>
 <a id="tocsplaylist_tracks_response"></a>
+<h2 id="tocS_playlist_tracks_response">playlist_tracks_response</h2>
 
 ```json
 {
@@ -2738,7 +2713,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "description": "string",
       "genre": "string",
       "id": "string",
-      "length": 0,
       "mood": "string",
       "release_date": "string",
       "remix_of": {
@@ -2751,7 +2725,7 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "string",
+      "title": "wow!",
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2787,12 +2761,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[Track](#schematrack)]|false|none|none|
 
-<h2 id="tocS_playlist_search_result">playlist_search_result</h2>
-
 <a id="schemaplaylist_search_result"></a>
 <a id="schema_playlist_search_result"></a>
 <a id="tocSplaylist_search_result"></a>
 <a id="tocsplaylist_search_result"></a>
+<h2 id="tocS_playlist_search_result">playlist_search_result</h2>
 
 ```json
 {
@@ -2844,12 +2817,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[[playlist](#schemaplaylist)]|false|none|none|
 
-<h2 id="tocS_track_response">track_response</h2>
-
 <a id="schematrack_response"></a>
 <a id="schema_track_response"></a>
 <a id="tocStrack_response"></a>
 <a id="tocstrack_response"></a>
+<h2 id="tocS_track_response">track_response</h2>
 
 ```json
 {
@@ -2862,7 +2834,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
     "description": "string",
     "genre": "string",
     "id": "string",
-    "length": 0,
     "mood": "string",
     "release_date": "string",
     "remix_of": {
@@ -2875,7 +2846,7 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
     "repost_count": 0,
     "favorite_count": 0,
     "tags": "string",
-    "title": "string",
+    "title": "wow!",
     "user": {
       "album_count": 0,
       "bio": "string",
@@ -2910,12 +2881,11 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
 |---|---|---|---|---|
 |data|[Track](#schematrack)|false|none|none|
 
-<h2 id="tocS_track_search">track_search</h2>
-
 <a id="schematrack_search"></a>
 <a id="schema_track_search"></a>
 <a id="tocStrack_search"></a>
 <a id="tocstrack_search"></a>
+<h2 id="tocS_track_search">track_search</h2>
 
 ```json
 {
@@ -2929,7 +2899,6 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "description": "string",
       "genre": "string",
       "id": "string",
-      "length": 0,
       "mood": "string",
       "release_date": "string",
       "remix_of": {
@@ -2942,7 +2911,7 @@ Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the au
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "string",
+      "title": "wow!",
       "user": {
         "album_count": 0,
         "bio": "string",
