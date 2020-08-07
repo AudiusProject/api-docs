@@ -2292,7 +2292,7 @@ The following are examples of response formats you can expect to receive from th
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "wow!",
+      "title": "string",
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2315,7 +2315,8 @@ The following are examples of response formats you can expect to receive from th
         },
         "repost_count": 0,
         "track_count": 0
-      }
+      },
+      "duration": 0
     }
   ]
 }
@@ -2356,7 +2357,7 @@ The following are examples of response formats you can expect to receive from th
   "repost_count": 0,
   "favorite_count": 0,
   "tags": "string",
-  "title": "wow!",
+  "title": "string",
   "user": {
     "album_count": 0,
     "bio": "string",
@@ -2379,7 +2380,8 @@ The following are examples of response formats you can expect to receive from th
     },
     "repost_count": 0,
     "track_count": 0
-  }
+  },
+  "duration": 0
 }
 
 ```
@@ -2400,6 +2402,7 @@ The following are examples of response formats you can expect to receive from th
 |tags|string|false|none|none|
 |title|string|true|none|none|
 |user|[user](#schemauser)|true|none|none|
+|duration|number|true|none|none|
 
 <a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
@@ -2725,7 +2728,7 @@ The following are examples of response formats you can expect to receive from th
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "wow!",
+      "title": "string",
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2748,7 +2751,8 @@ The following are examples of response formats you can expect to receive from th
         },
         "repost_count": 0,
         "track_count": 0
-      }
+      },
+      "duration": 0
     }
   ]
 }
@@ -2846,7 +2850,7 @@ The following are examples of response formats you can expect to receive from th
     "repost_count": 0,
     "favorite_count": 0,
     "tags": "string",
-    "title": "wow!",
+    "title": "string",
     "user": {
       "album_count": 0,
       "bio": "string",
@@ -2869,7 +2873,8 @@ The following are examples of response formats you can expect to receive from th
       },
       "repost_count": 0,
       "track_count": 0
-    }
+    },
+    "duration": 0
   }
 }
 
@@ -2911,7 +2916,7 @@ The following are examples of response formats you can expect to receive from th
       "repost_count": 0,
       "favorite_count": 0,
       "tags": "string",
-      "title": "wow!",
+      "title": "string",
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2934,7 +2939,8 @@ The following are examples of response formats you can expect to receive from th
         },
         "repost_count": 0,
         "track_count": 0
-      }
+      },
+      "duration": 0
     }
   ]
 }
