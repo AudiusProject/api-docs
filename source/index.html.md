@@ -89,5 +89,5 @@ Once you've selected a host, all API requests can be sent directly to it. We rec
 
 For the following documention, we've selected one for you:
 
-` %HOST% `
+` AUDIUS_API_HOST `
 
