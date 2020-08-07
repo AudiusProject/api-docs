@@ -335,10 +335,9 @@
   const set = async () => {
     const sample = (arr) => arr[Math.floor(Math.random() * arr.length)]
     const host = sample((await (await fetch('https://api.audius.co')).json()).data)
-    // document.body.innerHTML = document.body.innerHTML.replace(/%HOST%/g, host)
     function walkText(node) {
       if (node.nodeType == 3) {
-        node.data = node.data.replace(/%HOST%/g, host)
+        node.data = node.data.replace(/AUDIUS_API_HOST/g, host)
       }
       if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
         for (var i = 0; i < node.childNodes.length; i++) {
@@ -355,12 +354,10 @@
 <p><br />
 <br /></p>
 <h1 id='audius-api-docs'>Audius API Docs</h1>
-<p>🚧 Under Construction! 🚧</p>
-
 <p>The Audius API is entirely free to use. We ask that you adhere to the guidelines in this doc and always credit artists.</p>
 <h2 id='selecting-a-host'>Selecting a Host</h2>
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl https://api.audius.co
 </code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.audius.co</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -376,7 +373,7 @@
 
 <span class="n">host</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">((</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.audius.co'</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'data'</span><span class="p">])</span>
 </code></pre>
-<p>Audius is a decentralized music streaming service. In order to use the API, you must first select an API endpoint (Discovery Service) by picking from the list of endpoints returned by:</p>
+<p>Audius is a decentralized music streaming service. To use the API, you first select an API endpoint from the list of endpoints returned by:</p>
 
 <p><a href="https://api.audius.co">https://api.audius.co</a></p>
 
@@ -385,28 +382,24 @@
 <p>For the following documention, we&#39;ve selected one for you:</p>
 
 <p><code>%HOST%</code></p>
-
-<p>If you&#39;re interested in running a service of your own, see our <a href="https://audius.org/stakers.html">Stakers guide</a>.</p>
 <h1 id="api-users">users</h1>
-
-<p>User related operations</p>
 <h2 id='search-users'>Search Users</h2>
 <p><a id="opIdSearch Users"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/users/search?query<span class="o">=</span>string 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/users/search?query<span class="o">=</span>Brownies 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/users/search?query=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/users/search?query=Brownies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/users/search?query=string'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/users/search?query=Brownies'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -425,7 +418,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/users/search'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/users/search'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'query'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -437,8 +430,8 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/users/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-  <span class="s">'query'</span><span class="p">:</span> <span class="s">'string'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/users/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'query'</span><span class="p">:</span> <span class="s">'Brownies'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
@@ -457,7 +450,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/users/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/users/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -471,7 +464,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/users/search?query=string"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/users/search?query=Brownies"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -499,7 +492,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/users/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/users/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -512,7 +505,7 @@
 
 <p><em>Seach for a user</em></p>
 
-<h3 id="search-users-parameters">Parameters</h3>
+<h3 id="search-users-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -531,7 +524,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -594,19 +587,19 @@
 <p><a id="opIdGet User"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/users/<span class="o">{</span>user_id<span class="o">}</span> 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/users/nlGNe 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/users/{user_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/users/nlGNe</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/users/{user_id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -625,7 +618,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/users/{user_id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -636,7 +629,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/users/{user_id}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/users/nlGNe'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -654,7 +647,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/users/{user_id}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -668,7 +661,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/users/{user_id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -696,7 +689,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/users/{user_id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -709,7 +702,7 @@
 
 <p><em>Fetch a single user</em></p>
 
-<h3 id="get-user-parameters">Parameters</h3>
+<h3 id="get-user-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -728,7 +721,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -789,19 +782,19 @@
 <p><a id="opIdGet User's Favorite Tracks"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/users/<span class="o">{</span>user_id<span class="o">}</span>/favorites 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/users/nlGNe/favorites 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/users/{user_id}/favorites</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/users/nlGNe/favorites</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/users/{user_id}/favorites'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/favorites'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -820,7 +813,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/users/{user_id}/favorites'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/favorites'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -831,7 +824,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/users/{user_id}/favorites'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/users/nlGNe/favorites'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -849,7 +842,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/users/{user_id}/favorites'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/favorites'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -863,7 +856,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/users/{user_id}/favorites"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe/favorites"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -891,7 +884,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/users/{user_id}/favorites"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe/favorites"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -904,7 +897,7 @@
 
 <p><em>Fetch favorited tracks for a user</em></p>
 
-<h3 id="get-user's-favorite-tracks-parameters">Parameters</h3>
+<h3 id="get-user's-favorite-tracks-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -923,7 +916,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -978,19 +971,19 @@
 <p><a id="opIdGet User's Tracks"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/users/<span class="o">{</span>user_id<span class="o">}</span>/tracks 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/users/nlGNe/tracks 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/users/{user_id}/tracks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/users/nlGNe/tracks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/users/{user_id}/tracks'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/tracks'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1009,7 +1002,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/users/{user_id}/tracks'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/tracks'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1020,7 +1013,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/users/{user_id}/tracks'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/users/nlGNe/tracks'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -1038,7 +1031,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/users/{user_id}/tracks'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/users/nlGNe/tracks'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1052,7 +1045,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/users/{user_id}/tracks"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe/tracks"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1080,7 +1073,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/users/{user_id}/tracks"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/users/nlGNe/tracks"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1093,7 +1086,7 @@
 
 <p><em>Fetch a list of tracks for a user</em></p>
 
-<h3 id="get-user's-tracks-parameters">Parameters</h3>
+<h3 id="get-user's-tracks-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1112,7 +1105,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1189,25 +1182,23 @@
 </tbody></table>
 
 <h1 id="api-playlists">playlists</h1>
-
-<p>Playlist related operations</p>
 <h2 id='search-playlists'>Search Playlists</h2>
 <p><a id="opIdSearch Playlists"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/playlists/search?query<span class="o">=</span>string 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/playlists/search?query<span class="o">=</span>Hot%20%26%20New 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/playlists/search?query=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/playlists/search?query=string'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1226,7 +1217,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/playlists/search'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/playlists/search'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'query'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -1238,8 +1229,8 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/playlists/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-  <span class="s">'query'</span><span class="p">:</span> <span class="s">'string'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/playlists/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'query'</span><span class="p">:</span> <span class="s">'Hot &amp; New'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
@@ -1258,7 +1249,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/playlists/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1272,7 +1263,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/playlists/search?query=string"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1300,7 +1291,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/playlists/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/playlists/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1313,7 +1304,7 @@
 
 <p><em>Search for a playlist</em></p>
 
-<h3 id="search-playlists-parameters">Parameters</h3>
+<h3 id="search-playlists-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1332,7 +1323,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1408,19 +1399,19 @@
 <p><a id="opIdGet Playlist"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/playlists/<span class="o">{</span>playlist_id<span class="o">}</span> 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/playlists/DOPRl 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/playlists/{playlist_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/playlists/DOPRl</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/playlists/{playlist_id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1439,7 +1430,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/playlists/{playlist_id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1450,7 +1441,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/playlists/{playlist_id}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/playlists/DOPRl'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -1468,7 +1459,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/playlists/{playlist_id}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1482,7 +1473,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/playlists/{playlist_id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/playlists/DOPRl"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1510,7 +1501,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/playlists/{playlist_id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/playlists/DOPRl"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1523,7 +1514,7 @@
 
 <p><em>Fetch a playlist</em></p>
 
-<h3 id="get-playlist-parameters">Parameters</h3>
+<h3 id="get-playlist-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1542,7 +1533,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1616,19 +1607,19 @@
 <p><a id="opIdGet Playlist Tracks"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/playlists/<span class="o">{</span>playlist_id<span class="o">}</span>/tracks 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/playlists/DOPRl/tracks 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/playlists/{playlist_id}/tracks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/playlists/DOPRl/tracks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/playlists/{playlist_id}/tracks'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl/tracks'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1647,7 +1638,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/playlists/{playlist_id}/tracks'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl/tracks'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1658,7 +1649,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/playlists/{playlist_id}/tracks'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/playlists/DOPRl/tracks'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -1676,7 +1667,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/playlists/{playlist_id}/tracks'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/DOPRl/tracks'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1690,7 +1681,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/playlists/{playlist_id}/tracks"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/playlists/DOPRl/tracks"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1718,7 +1709,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/playlists/{playlist_id}/tracks"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/playlists/DOPRl/tracks"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1731,7 +1722,7 @@
 
 <p><em>Fetch tracks within a playlist</em></p>
 
-<h3 id="get-playlist-tracks-parameters">Parameters</h3>
+<h3 id="get-playlist-tracks-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1750,7 +1741,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1827,25 +1818,23 @@
 </tbody></table>
 
 <h1 id="api-tracks">tracks</h1>
-
-<p>Track related operations</p>
 <h2 id='search-tracks'>Search Tracks</h2>
 <p><a id="opIdSearch Tracks"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/tracks/search?query<span class="o">=</span>string 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/search?query<span class="o">=</span>baauer%20b2b 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/tracks/search?query=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/tracks/search?query=string'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1864,7 +1853,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/tracks/search'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/tracks/search'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'query'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -1876,8 +1865,8 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/tracks/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-  <span class="s">'query'</span><span class="p">:</span> <span class="s">'string'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/tracks/search'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'query'</span><span class="p">:</span> <span class="s">'baauer b2b'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
@@ -1896,7 +1885,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/tracks/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/search'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1910,7 +1899,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/tracks/search?query=string"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1938,7 +1927,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/tracks/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/tracks/search"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -1951,7 +1940,7 @@
 
 <p><em>Search for a track</em></p>
 
-<h3 id="search-tracks-parameters">Parameters</h3>
+<h3 id="search-tracks-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1970,7 +1959,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2049,19 +2038,19 @@
 <p><a id="opIdTrending Tracks"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/tracks/trending 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/trending 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/tracks/trending</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/tracks/trending</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/tracks/trending'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/trending'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -2080,7 +2069,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/tracks/trending'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/tracks/trending'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -2091,7 +2080,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/tracks/trending'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/tracks/trending'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2109,7 +2098,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/tracks/trending'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/trending'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2123,7 +2112,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/tracks/trending"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/trending"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2151,7 +2140,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/tracks/trending"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/tracks/trending"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2162,10 +2151,10 @@
 </span></code></pre>
 <p><code>GET /tracks/trending</code></p>
 
-<p><em>Get the trending tracks</em></p>
+<p><em>Gets the top 100 trending (most popular) tracks on Audius</em></p>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2244,19 +2233,19 @@
 <p><a id="opIdGet Track"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/tracks/<span class="o">{</span>track_id<span class="o">}</span> 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/D7KyD 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/tracks/{track_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/tracks/D7KyD</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/tracks/{track_id}'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -2275,7 +2264,7 @@
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/tracks/{track_id}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -2286,7 +2275,7 @@
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/tracks/{track_id}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/tracks/D7KyD'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2304,7 +2293,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/tracks/{track_id}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2318,7 +2307,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/tracks/{track_id}"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/D7KyD"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2346,7 +2335,7 @@
     </span><span class="p">}</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/tracks/{track_id}"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/tracks/D7KyD"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2359,7 +2348,7 @@
 
 <p><em>Fetch a track</em></p>
 
-<h3 id="get-track-parameters">Parameters</h3>
+<h3 id="get-track-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2378,7 +2367,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Example Response</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2455,14 +2444,14 @@
 <p><a id="opIdStream Track"></a></p>
 
 <blockquote>
-<p>Code samples</p>
+<p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl %HOST%/v1/tracks/<span class="o">{</span>track_id<span class="o">}</span>/stream
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/D7KyD/stream
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">%HOST%/v1/tracks/{track_id}/stream</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/tracks/D7KyD/stream</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code>
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'%HOST%/v1/tracks/{track_id}/stream'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD/stream'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span>
 
@@ -2476,7 +2465,7 @@
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'%HOST%/v1/tracks/{track_id}/stream'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD/stream'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">}</span>
 
@@ -2484,7 +2473,7 @@
 
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">HOST</span><span class="si">%</span><span class="s">/v1/tracks/{track_id}/stream'</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/tracks/D7KyD/stream'</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2498,7 +2487,7 @@
 </span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'%HOST%/v1/tracks/{track_id}/stream'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/D7KyD/stream'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2512,7 +2501,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"%HOST%/v1/tracks/{track_id}/stream"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/D7KyD/stream"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2536,7 +2525,7 @@
 </span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
 
     </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
-    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"%HOST%/v1/tracks/{track_id}/stream"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/tracks/D7KyD/stream"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
     </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
 
     </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
@@ -2547,14 +2536,12 @@
 </span></code></pre>
 <p><code>GET /tracks/{track_id}/stream</code></p>
 
-<p><em>Get the track&#39;s streammable mp3 file</em></p>
+<p><em>Get the track&#39;s streamable mp3 file</em></p>
 
 <p>This endpoint accepts the Range header for streaming.
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 
-<p>Note: This endpoint returns a 302 to an Audius Creator Node that surfaces the audio</p>
-
-<h3 id="stream-track-parameters">Parameters</h3>
+<h3 id="stream-track-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2614,12 +2601,13 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 <h1 id='schemas'>Schemas</h1>
-<h2 id="tocS_user_response">user_response</h2>
+<p>The following are examples of response formats you can expect to receive from the API.</p>
 
 <p><a id="schemauser_response"></a>
 <a id="schema_user_response"></a>
 <a id="tocSuser_response"></a>
-<a id="tocsuser_response"></a></p>
+<a id="tocsuser_response"></a>
+<h2 id="tocS_user_response">user_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2665,12 +2653,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_user">user</h2>
-
 <p><a id="schemauser"></a>
 <a id="schema_user"></a>
 <a id="tocSuser"></a>
-<a id="tocsuser"></a></p>
+<a id="tocsuser"></a>
+<h2 id="tocS_user">user</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2805,12 +2792,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_cover_photo">cover_photo</h2>
-
 <p><a id="schemacover_photo"></a>
 <a id="schema_cover_photo"></a>
 <a id="tocScover_photo"></a>
-<a id="tocscover_photo"></a></p>
+<a id="tocscover_photo"></a>
+<h2 id="tocS_cover_photo">cover_photo</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"640x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"2000x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -2842,12 +2828,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_profile_picture">profile_picture</h2>
-
 <p><a id="schemaprofile_picture"></a>
 <a id="schema_profile_picture"></a>
 <a id="tocSprofile_picture"></a>
-<a id="tocsprofile_picture"></a></p>
+<a id="tocsprofile_picture"></a>
+<h2 id="tocS_profile_picture">profile_picture</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"150x150"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"480x480"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2887,12 +2872,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_tracks_response">tracks_response</h2>
-
 <p><a id="schematracks_response"></a>
 <a id="schema_tracks_response"></a>
 <a id="tocStracks_response"></a>
-<a id="tocstracks_response"></a></p>
+<a id="tocstracks_response"></a>
+<h2 id="tocS_tracks_response">tracks_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2904,7 +2888,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"remix_of"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2917,7 +2900,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"repost_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"favorite_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wow!"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2964,12 +2947,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Track">Track</h2>
-
 <p><a id="schematrack"></a>
 <a id="schema_Track"></a>
 <a id="tocStrack"></a>
-<a id="tocstrack"></a></p>
+<a id="tocstrack"></a>
+<h2 id="tocS_Track">Track</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"artwork"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"150x150"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2979,7 +2961,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"remix_of"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2992,7 +2973,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
   </span><span class="s2">"repost_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"favorite_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wow!"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3057,13 +3038,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 <td>none</td>
 </tr>
 <tr>
-<td>length</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
 <td>mood</td>
 <td>string</td>
 <td>false</td>
@@ -3121,12 +3095,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_track_artwork">track_artwork</h2>
-
 <p><a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
 <a id="tocStrack_artwork"></a>
-<a id="tocstrack_artwork"></a></p>
+<a id="tocstrack_artwork"></a>
+<h2 id="tocS_track_artwork">track_artwork</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"150x150"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"480x480"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3166,12 +3139,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_remix_parent">remix_parent</h2>
-
 <p><a id="schemaremix_parent"></a>
 <a id="schema_remix_parent"></a>
 <a id="tocSremix_parent"></a>
-<a id="tocsremix_parent"></a></p>
+<a id="tocsremix_parent"></a>
+<h2 id="tocS_remix_parent">remix_parent</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"tracks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3199,12 +3171,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_track_element">track_element</h2>
-
 <p><a id="schematrack_element"></a>
 <a id="schema_track_element"></a>
 <a id="tocStrack_element"></a>
-<a id="tocstrack_element"></a></p>
+<a id="tocstrack_element"></a>
+<h2 id="tocS_track_element">track_element</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"parent_track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3228,12 +3199,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_favorites_response">favorites_response</h2>
-
 <p><a id="schemafavorites_response"></a>
 <a id="schema_favorites_response"></a>
 <a id="tocSfavorites_response"></a>
-<a id="tocsfavorites_response"></a></p>
+<a id="tocsfavorites_response"></a>
+<h2 id="tocS_favorites_response">favorites_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3263,12 +3233,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_favorite">favorite</h2>
-
 <p><a id="schemafavorite"></a>
 <a id="schema_favorite"></a>
 <a id="tocSfavorite"></a>
-<a id="tocsfavorite"></a></p>
+<a id="tocsfavorite"></a>
+<h2 id="tocS_favorite">favorite</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"favorite_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"favorite_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3308,12 +3277,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_user_search">user_search</h2>
-
 <p><a id="schemauser_search"></a>
 <a id="schema_user_search"></a>
 <a id="tocSuser_search"></a>
-<a id="tocsuser_search"></a></p>
+<a id="tocsuser_search"></a>
+<h2 id="tocS_user_search">user_search</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3361,12 +3329,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_playlist_response">playlist_response</h2>
-
 <p><a id="schemaplaylist_response"></a>
 <a id="schema_playlist_response"></a>
 <a id="tocSplaylist_response"></a>
-<a id="tocsplaylist_response"></a></p>
+<a id="tocsplaylist_response"></a>
+<h2 id="tocS_playlist_response">playlist_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3427,12 +3394,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_playlist">playlist</h2>
-
 <p><a id="schemaplaylist"></a>
 <a id="schema_playlist"></a>
 <a id="tocSplaylist"></a>
-<a id="tocsplaylist"></a></p>
+<a id="tocsplaylist"></a>
+<h2 id="tocS_playlist">playlist</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"artwork"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"150x150"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3538,12 +3504,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_playlist_artwork">playlist_artwork</h2>
-
 <p><a id="schemaplaylist_artwork"></a>
 <a id="schema_playlist_artwork"></a>
 <a id="tocSplaylist_artwork"></a>
-<a id="tocsplaylist_artwork"></a></p>
+<a id="tocsplaylist_artwork"></a>
+<h2 id="tocS_playlist_artwork">playlist_artwork</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"150x150"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"480x480"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3583,12 +3548,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_playlist_tracks_response">playlist_tracks_response</h2>
-
 <p><a id="schemaplaylist_tracks_response"></a>
 <a id="schema_playlist_tracks_response"></a>
 <a id="tocSplaylist_tracks_response"></a>
-<a id="tocsplaylist_tracks_response"></a></p>
+<a id="tocsplaylist_tracks_response"></a>
+<h2 id="tocS_playlist_tracks_response">playlist_tracks_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3600,7 +3564,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"remix_of"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3613,7 +3576,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"repost_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"favorite_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wow!"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3660,12 +3623,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_playlist_search_result">playlist_search_result</h2>
-
 <p><a id="schemaplaylist_search_result"></a>
 <a id="schema_playlist_search_result"></a>
 <a id="tocSplaylist_search_result"></a>
-<a id="tocsplaylist_search_result"></a></p>
+<a id="tocsplaylist_search_result"></a>
+<h2 id="tocS_playlist_search_result">playlist_search_result</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3726,12 +3688,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_track_response">track_response</h2>
-
 <p><a id="schematrack_response"></a>
 <a id="schema_track_response"></a>
 <a id="tocStrack_response"></a>
-<a id="tocstrack_response"></a></p>
+<a id="tocstrack_response"></a>
+<h2 id="tocS_track_response">track_response</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"artwork"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3742,7 +3703,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"remix_of"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3755,7 +3715,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
     </span><span class="s2">"repost_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"favorite_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wow!"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3801,12 +3761,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_track_search">track_search</h2>
-
 <p><a id="schematrack_search"></a>
 <a id="schema_track_search"></a>
 <a id="tocStrack_search"></a>
-<a id="tocstrack_search"></a></p>
+<a id="tocstrack_search"></a>
+<h2 id="tocS_track_search">track_search</h2></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3818,7 +3777,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"release_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"remix_of"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3831,7 +3789,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
       </span><span class="s2">"repost_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"favorite_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wow!"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"album_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
