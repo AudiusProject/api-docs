@@ -91,3 +91,9 @@ For the following documention, we've selected one for you:
 
 ` AUDIUS_API_HOST `
 
+## Specifying App Name
+
+If you're integrating the Audius API into an app in production, we ask that you include an `&app_name=<YOUR-UNIQUE-APP-NAME>` param with each query. Your unique app name is entirely up to you!
+
+<br />
+<br />
