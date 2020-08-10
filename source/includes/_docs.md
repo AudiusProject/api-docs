@@ -727,6 +727,7 @@ func main() {
       "favorite_count": 143,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
+      "duration": 5265,
       "user": {
         "album_count": 0,
         "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
@@ -1336,6 +1337,7 @@ func main() {
       "favorite_count": 143,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
+      "duration": 5265,
       "user": {
         "album_count": 0,
         "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
@@ -1545,6 +1547,7 @@ func main() {
       "favorite_count": 143,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
+      "duration": 5265,
       "user": {
         "album_count": 0,
         "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
@@ -1743,6 +1746,7 @@ func main() {
       "favorite_count": 143,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
+      "duration": 5265,
       "user": {
         "album_count": 0,
         "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
@@ -1946,6 +1950,7 @@ func main() {
     "favorite_count": 143,
     "tags": "baauer,partyfavor,browniesandlemonade,live",
     "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
+    "duration": 5265,
     "user": {
       "album_count": 0,
       "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
