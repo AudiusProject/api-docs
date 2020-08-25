@@ -1726,6 +1726,13 @@ func main() {
 
 *Gets the top 100 trending (most popular) tracks on Audius*
 
+<h3 id="trending-tracks-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|genre|string|false|Trending tracks for a specified genre|
+|time|string|false|Trending tracks over a specified time range (week, month, allTime)|
+
 > Example Response
 
 ```json
@@ -2321,7 +2328,8 @@ The following are examples of response formats you can expect to receive from th
         "repost_count": 0,
         "track_count": 0
       },
-      "duration": 0
+      "duration": 0,
+      "downloadable": true
     }
   ]
 }
@@ -2386,7 +2394,8 @@ The following are examples of response formats you can expect to receive from th
     "repost_count": 0,
     "track_count": 0
   },
-  "duration": 0
+  "duration": 0,
+  "downloadable": true
 }
 
 ```
@@ -2407,7 +2416,8 @@ The following are examples of response formats you can expect to receive from th
 |tags|string|false|none|none|
 |title|string|true|none|none|
 |user|[user](#schemauser)|true|none|none|
-|duration|number|true|none|none|
+|duration|integer|true|none|none|
+|downloadable|boolean|false|none|none|
 
 <a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
@@ -2757,7 +2767,8 @@ The following are examples of response formats you can expect to receive from th
         "repost_count": 0,
         "track_count": 0
       },
-      "duration": 0
+      "duration": 0,
+      "downloadable": true
     }
   ]
 }
@@ -2879,7 +2890,8 @@ The following are examples of response formats you can expect to receive from th
       "repost_count": 0,
       "track_count": 0
     },
-    "duration": 0
+    "duration": 0,
+    "downloadable": true
   }
 }
 
@@ -2945,7 +2957,8 @@ The following are examples of response formats you can expect to receive from th
         "repost_count": 0,
         "track_count": 0
       },
-      "duration": 0
+      "duration": 0,
+      "downloadable": true
     }
   ]
 }

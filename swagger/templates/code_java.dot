@@ -1,4 +1,4 @@
-URL obj = new URL("{{=data.baseUrl}}{{=data.uriExample}}");
+URL obj = new URL("{{=data.baseUrl}}{{=data.requiredUriExample}}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("{{=data.methodUpper}}");
 int responseCode = con.getResponseCode();

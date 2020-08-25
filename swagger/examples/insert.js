@@ -34,11 +34,6 @@ const paramMapping = {
       'query': 'baauer b2b'
     }
   },
-  '/tracks/trending': {
-    'get': {
-  
-    }
-  },
   '/tracks/{track_id}': {
     'get': {
       'track_id': 'D7KyD'
