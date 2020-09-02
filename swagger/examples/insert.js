@@ -10,7 +10,8 @@ const mapping = {
   '/users/search': require('./users.search.json'),
   '/users/{user_id}': require('./users.{user_id}.json'),
   '/users/{user_id}/favorites': require('./users.{user_id}.favorites.json'),
-  '/users/{user_id}/tracks': require('./users.{user_id}.tracks.json')
+  '/users/{user_id}/tracks': require('./users.{user_id}.tracks.json'),
+  '/resolve': require('./resolve.json')
 }
 
 const paramMapping = {
@@ -63,6 +64,11 @@ const paramMapping = {
     'get': {
       'user_id': 'nlGNe'
     }
+  },
+  '/resolve': {
+    'get': {
+      'url': 'https://audius.co/camouflybeats/hypermantra-86216'
+    }
   }
 }
 
@@ -71,12 +77,18 @@ const swagger = require('../swagger.json')
 console.log(mapping['/users/search'])
 
 Object.keys(mapping).forEach(key => {
-  // Add example
-  swagger["paths"][key]["get"]["responses"]["200"]["examples"] = {
-    "application/json": mapping[key]
+  if (key === '/resolve') {
+    swagger["paths"][key]["get"]["responses"]["302"]["examples"] = {
+      "text/plain": mapping[key].data
+    }
+  } else {
+    // Add example
+    swagger["paths"][key]["get"]["responses"]["200"]["examples"] = {
+      "application/json": mapping[key]
+    }
+    // Remove description
+    delete swagger["paths"][key]["get"]["responses"]["200"]["description"]
   }
-  // Remove description
-  delete swagger["paths"][key]["get"]["responses"]["200"]["description"]
 })
 
 Object.keys(paramMapping).forEach(key => {

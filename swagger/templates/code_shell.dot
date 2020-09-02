@@ -1,3 +1,3 @@
-curl {{=data.baseUrl}}{{=data.requiredUriExample}}{{?data.allHeaders.length}} {{?}}
+curl {{=data.baseUrl}}{{=decodeURIComponent(data.requiredUriExample)}}{{?data.allHeaders.length}} {{?}}
 {{~data.allHeaders :p:index}} {{?index < data.allHeaders.length-1}} \{{?}}
 {{~}}

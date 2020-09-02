@@ -773,13 +773,13 @@ func main() {
 > Code Sample
 
 ```shell
-curl AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New 
+curl AUDIUS_API_HOST/v1/playlists/search?query=Hot & New 
  
 
 ```
 
 ```http
-GET AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New HTTP/1.1
+GET AUDIUS_API_HOST/v1/playlists/search?query=Hot & New HTTP/1.1
 
 ```
 
@@ -789,7 +789,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New',
+fetch('AUDIUS_API_HOST/v1/playlists/search?query=Hot & New',
 {
   method: 'GET',
 
@@ -866,7 +866,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New");
+URL obj = new URL("AUDIUS_API_HOST/v1/playlists/search?query=Hot & New");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1383,13 +1383,13 @@ func main() {
 > Code Sample
 
 ```shell
-curl AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b 
+curl AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b 
  
 
 ```
 
 ```http
-GET AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b HTTP/1.1
+GET AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b HTTP/1.1
 
 ```
 
@@ -1399,7 +1399,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b',
+fetch('AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b',
 {
   method: 'GET',
 
@@ -1476,7 +1476,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b");
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2132,6 +2132,179 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |416|[Range Not Satisfiable](https://tools.ietf.org/html/rfc7233#section-4.4)|Content range invalid|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+<h1 id="api-resolve">resolve</h1>
+
+## Resolve
+
+<a id="opIdResolve"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216 HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'text/plain'
+};
+
+fetch('AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'text/plain'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/resolve',
+  params: {
+  'url' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'text/plain'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/resolve', params={
+  'url': 'https://audius.co/camouflybeats/hypermantra-86216'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'text/plain',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/resolve', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"text/plain"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/resolve", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /resolve`
+
+*Resolves and redirects a provided Audius app URL to the API resource URL it represents*
+
+This endpoint allows you to lookup and access API resources when you only know the
+audius.co URL.
+Tracks, Playlists, and Users are supported.
+
+<h3 id="resolve-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|url|string|true|URL to resolve. Either fully formed URL (https://audius.co) or just the absolute path|
+
+> Example Response
+
+> Internal redirect
+
+```
+{"HTTP/1.1 302 Found Location":"/v1/tracks/V4W8r"}
+```
+
+<h3 id="resolve-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|302|[Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)|Internal redirect|None|
+
+<h3 id="resolve-responseschema">Response Schema</h3>
 
 # Schemas
 

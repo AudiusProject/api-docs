@@ -13,7 +13,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('{{=data.methodUpper}}','{{=data.baseUrl}}{{=data.requiredUriExample.replace(data.requiredQueryString, "")}}', array(
+    $response = $client->request('{{=data.methodUpper}}','{{=data.baseUrl}}{{=decodeURIComponent(data.requiredUriExample.replace(data.requiredQueryString, ""))}}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
