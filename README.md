@@ -1,6 +1,6 @@
 # Audius API Documentation
 
-[https://audius-project.github.io/api-docs](https://audius-project.github.io/api-docs)
+[https://audiusproject.github.io/api-docs](https://audiusproject.github.io/api-docs)
 
 
 Getting started:
