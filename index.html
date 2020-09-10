@@ -272,6 +272,14 @@
               </ul>
           </li>
           <li>
+            <a href="#api-resolve" class="toc-h1 toc-link" data-title="resolve">resolve</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#resolve" class="toc-h2 toc-link" data-title="Resolve">Resolve</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1207,17 +1215,17 @@
 <blockquote>
 <p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/playlists/search?query<span class="o">=</span>Hot%20%26%20New 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/playlists/search?query<span class="o">=</span>Hot &amp; New 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="err">GET AUDIUS_API_HOST/v1/playlists/search?query=Hot &amp; New HTTP/1.1
 
-</code></pre><pre class="highlight javascript tab-javascript"><code>
+</span></code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/playlists/search?query=Hot &amp; New'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1282,7 +1290,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/playlists/search?query=Hot%20%26%20New"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/playlists/search?query=Hot &amp; New"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -1844,17 +1852,17 @@
 <blockquote>
 <p>Code Sample</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/search?query<span class="o">=</span>baauer%20b2b 
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/tracks/search?query<span class="o">=</span>baauer b2b 
 
 
-</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="err">GET AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b HTTP/1.1
 
-</code></pre><pre class="highlight javascript tab-javascript"><code>
+</span></code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
 
@@ -1919,7 +1927,7 @@
 
  <span class="c1">// ...
 </span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/search?query=baauer%20b2b"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/tracks/search?query=baauer b2b"</span><span class="o">);</span>
 <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2647,6 +2655,178 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</p>
 <td>None</td>
 </tr>
 </tbody></table>
+
+<h1 id="api-resolve">resolve</h1>
+<h2 id='resolve'>Resolve</h2>
+<p><a id="opIdResolve"></a></p>
+
+<blockquote>
+<p>Code Sample</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl AUDIUS_API_HOST/v1/resolve?url<span class="o">=</span>https://audius.co/camouflybeats/hypermantra-86216 
+
+
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'text/plain'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'text/plain'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'AUDIUS_API_HOST/v1/resolve'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
+<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'text/plain'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'AUDIUS_API_HOST/v1/resolve'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://audius.co/camouflybeats/hypermantra-86216'</span>
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'text/plain'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.
+</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'AUDIUS_API_HOST/v1/resolve'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.
+</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...
+</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"AUDIUS_API_HOST/v1/resolve?url=https://audius.co/camouflybeats/hypermantra-86216"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight go tab-go"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+       </span><span class="s">"bytes"</span><span class="x">
+       </span><span class="s">"net/http"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+    </span><span class="n">headers</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"text/plain"</span><span class="p">},</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span><span class="x"> </span><span class="s">"AUDIUS_API_HOST/v1/resolve"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
+
+    </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
+    </span><span class="n">resp</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
+    </span><span class="c">// ...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre>
+<p><code>GET /resolve</code></p>
+
+<p><em>Resolves and redirects a provided Audius app URL to the API resource URL it represents</em></p>
+
+<p>This endpoint allows you to lookup and access API resources when you only know the
+audius.co URL.
+Tracks, Playlists, and Users are supported.</p>
+
+<h3 id="resolve-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>true</td>
+<td>URL to resolve. Either fully formed URL (https://audius.co) or just the absolute path</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Response</p>
+
+<p>Internal redirect</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{"HTTP/1.1 302 Found Location":"/v1/tracks/V4W8r"}
+</code></pre>
+<h3 id="resolve-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>302</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.4.3">Found</a></td>
+<td>Internal redirect</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="resolve-responseschema">Response Schema</h3>
 <h1 id='schemas'>Schemas</h1>
 <p>The following are examples of response formats you can expect to receive from the API.</p>
 
