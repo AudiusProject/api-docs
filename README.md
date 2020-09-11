@@ -20,6 +20,8 @@ Up & running @ localhost:4567
 
 Deploy (github pages):
 
+IMPORTANT: Make sure you have run swagger-import first!
+
 ```bash
 > ./deploy.sh
 ```
