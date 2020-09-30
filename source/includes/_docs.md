@@ -152,6 +152,7 @@ func main() {
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search query|
+|only_downloadable|string|false|none|
 
 > Example Response
 
@@ -916,6 +917,7 @@ func main() {
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search Query|
+|only_downloadable|string|false|none|
 
 > Example Response
 
@@ -1526,6 +1528,7 @@ func main() {
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |query|string|true|Search Query|
+|only_downloadable|string|false|Return only downloadable tracks|
 
 > Example Response
 
@@ -2502,7 +2505,8 @@ The following are examples of response formats you can expect to receive from th
         "track_count": 0
       },
       "duration": 0,
-      "downloadable": true
+      "downloadable": true,
+      "play_count": 0
     }
   ]
 }
@@ -2568,7 +2572,8 @@ The following are examples of response formats you can expect to receive from th
     "track_count": 0
   },
   "duration": 0,
-  "downloadable": true
+  "downloadable": true,
+  "play_count": 0
 }
 
 ```
@@ -2591,6 +2596,7 @@ The following are examples of response formats you can expect to receive from th
 |user|[user](#schemauser)|true|none|none|
 |duration|integer|true|none|none|
 |downloadable|boolean|false|none|none|
+|play_count|integer|true|none|none|
 
 <a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
@@ -2769,6 +2775,7 @@ The following are examples of response formats you can expect to receive from th
       "playlist_name": "string",
       "repost_count": 0,
       "favorite_count": 0,
+      "total_play_count": 0,
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -2823,6 +2830,7 @@ The following are examples of response formats you can expect to receive from th
   "playlist_name": "string",
   "repost_count": 0,
   "favorite_count": 0,
+  "total_play_count": 0,
   "user": {
     "album_count": 0,
     "bio": "string",
@@ -2861,6 +2869,7 @@ The following are examples of response formats you can expect to receive from th
 |playlist_name|string|true|none|none|
 |repost_count|integer|true|none|none|
 |favorite_count|integer|true|none|none|
+|total_play_count|integer|true|none|none|
 |user|[user](#schemauser)|true|none|none|
 
 <a id="schemaplaylist_artwork"></a>
@@ -2941,7 +2950,8 @@ The following are examples of response formats you can expect to receive from th
         "track_count": 0
       },
       "duration": 0,
-      "downloadable": true
+      "downloadable": true,
+      "play_count": 0
     }
   ]
 }
@@ -2975,6 +2985,7 @@ The following are examples of response formats you can expect to receive from th
       "playlist_name": "string",
       "repost_count": 0,
       "favorite_count": 0,
+      "total_play_count": 0,
       "user": {
         "album_count": 0,
         "bio": "string",
@@ -3064,7 +3075,8 @@ The following are examples of response formats you can expect to receive from th
       "track_count": 0
     },
     "duration": 0,
-    "downloadable": true
+    "downloadable": true,
+    "play_count": 0
   }
 }
 
@@ -3131,7 +3143,8 @@ The following are examples of response formats you can expect to receive from th
         "track_count": 0
       },
       "duration": 0,
-      "downloadable": true
+      "downloadable": true,
+      "play_count": 0
     }
   ]
 }

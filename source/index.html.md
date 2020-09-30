@@ -27,7 +27,10 @@ includes:
 (function() {
   const set = async () => {
     const sample = (arr) => arr[Math.floor(Math.random() * arr.length)]
-    const host = sample((await (await fetch('https://api.audius.co')).json()).data)
+    let host = sample((await (await fetch('https://api.audius.co')).json()).data)
+    if (host.endsWith('/')) {
+      host = host.slice(0, -1)
+    }
     function walkText(node) {
       if (node.nodeType == 3) {
         node.data = node.data.replace(/AUDIUS_API_HOST/g, host)
