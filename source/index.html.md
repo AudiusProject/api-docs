@@ -20,6 +20,7 @@ language_tabs:
 
 includes:
   - docs
+  - embed
 ---
 
 
