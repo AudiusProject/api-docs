@@ -93,6 +93,14 @@ const paramMapping = {
   }
 }
 
+const operationIdMapping = {
+  '/users/{id}/tracks': 'Get User\'s Tracks',
+  '/users/{id}/favorites': 'Get User\'s Favorite Tracks',
+  '/users/{id}/reposts': 'Get User\'s Reposts',
+  '/users/{id}/tags': 'Get User\'s Most Used Track Tags',
+  '/users/{id}/connected_wallets': 'Get User\'s Connected Wallets'
+}
+
 const swagger = require('../swagger.json')
 
 Object.keys(mapping).forEach(key => {
@@ -125,6 +133,10 @@ Object.keys(paramMapping).forEach(key => {
       })
     })
   })
+})
+
+Object.keys(operationIdMapping).forEach(key => {
+  swagger["paths"][key]["get"]["operationId"] = operationIdMapping[key]
 })
 
 fs.writeFile('swagger/swagger.json', JSON.stringify(swagger), (err) => {
