@@ -1,0 +1,32 @@
+{
+  "name": "audius-api-docs",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "Documentation generator for the Audius read-only API",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "patch-package": "^6.4.7",
+    "widdershins": "^4.0.1"
+  },
+  "scripts": {
+    "postinstall": "patch-package",
+    "start": "bundle exec middleman server",
+    "build": "bundle exec middleman build --clean",
+    "gen:dev": "./swagger-import.sh http://dn1_web-server_1:5000/v1/swagger.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AudiusProject/api-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AudiusProject/api-docs/issues"
+  },
+  "homepage": "https://github.com/AudiusProject/api-docs#readme"
+}
