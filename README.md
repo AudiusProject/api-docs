@@ -23,7 +23,7 @@ npm run start
 # Runs with all options, including updating the example responses from prod
 # Uses http://dn1_web-server_1:5000/v1/swagger.json to pull the swagger.json
 # and https://discoveryprovider.audius.co to generate the example responses by default
-node ./swagger/index.js -ferpo
+node ./swagger/index.js -f -e -rpo
 
 # Shortcut of the above
 npm run gen

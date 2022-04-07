@@ -30,7 +30,7 @@
     "postinstall": "patch-package",
     "start": "bundle exec middleman server",
     "build": "bundle exec middleman build --clean",
-    "gen": "node ./swagger/index.js -ferpo",
+    "gen": "node ./swagger/index.js -f -e -rpo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
