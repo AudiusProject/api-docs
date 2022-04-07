@@ -21,13 +21,19 @@ npm run start
 ### 3. Generate docs
 ```bash
 # Runs with all options, including updating the example responses from prod
-node ./swagger/index.js -e http://discoveryprovider.audius.co -f http://dn1_web-server_1:5000/v1/swagger.json -rpo
+# Uses http://dn1_web-server_1:5000/v1/swagger.json to pull the swagger.json
+# and https://discoveryprovider.audius.co to generate the example responses by default
+node ./swagger/index.js -ferpo
 
-# Don't refresh the example responses, but refresh the swagger.json
-node ./swagger/index.js -f http://dn1_web-server_1:5000/v1/swagger.json -rpo
+# Shortcut of the above
+npm run gen
 
-# Don't refresh the swagger, but refresh the example responses (assumes example parameters are already inserted)
-node ./swagger/index.js -e http://discoveryprovider.audius.co
+# Don't refresh the example responses, but refresh the swagger.json from prod
+node ./swagger/index.js -f https://discoveryprovider.audius.co/v1/swagger.json -rpo
+
+# Don't refresh the swagger, but refresh the example responses using a specific DN
+# (assumes example parameters are already inserted - if they aren't, use -p)
+node ./swagger/index.js -e http://discoveryprovider2.audius.co
 ```
 
 Note: To build and inspect the output of the actual website (eg to put on <you>.audius.co), run `npm run build`
