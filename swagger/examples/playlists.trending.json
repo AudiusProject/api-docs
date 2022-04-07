@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
+        "480x480": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
+        "1000x1000": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
+      },
+      "description": "All the latest hot new tracks on Audius! Enjoy the eclectic sounds that are created during the peak of this 2020 Summer.",
+      "id": "DOPRl",
+      "is_album": true,
+      "playlist_name": "Hot & New on Audius 🔥",
+      "repost_count": 46,
+      "favorite_count": 88,
+      "user": {
+        "album_count": 0,
+        "bio": "The official Audius account! Creating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.",
+        "cover_photo": {
+          "640x": "string",
+          "2000x": "string"
+        },
+        "followee_count": 69,
+        "follower_count": 6763,
+        "handle": "Audius",
+        "id": "eJ57D",
+        "is_verified": true,
+        "location": "SF & LA",
+        "name": "Audius",
+        "playlist_count": 9,
+        "profile_picture": {
+          "150x150": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f",
+          "480x480": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f",
+          "1000x1000": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f"
+        },
+        "repost_count": 200,
+        "track_count": 0
+      }
+    }
+  ]
+}

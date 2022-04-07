@@ -2,15 +2,21 @@ const fs = require('fs')
 
 const mapping = {
   '/playlists/search': require('./playlists.search.json'),
+  '/playlists/trending': require('./playlists.trending.json'),
   '/playlists/{playlist_id}': require('./playlists.{playlist_id}.json'),
   '/playlists/{playlist_id}/tracks': require('./playlists.{playlist_id}.tracks.json'),
   '/tracks/search': require('./tracks.search.json'),
+  '/tracks': require('./tracks.json'),
   '/tracks/trending': require('./tracks.trending.json'),
   '/tracks/{track_id}': require('./tracks.{track_id}.json'),
   '/users/search': require('./users.search.json'),
-  '/users/{user_id}': require('./users.{user_id}.json'),
-  '/users/{user_id}/favorites': require('./users.{user_id}.favorites.json'),
-  '/users/{user_id}/tracks': require('./users.{user_id}.tracks.json'),
+  '/users/{id}': require('./users.{user_id}.json'),
+  '/users/{id}/favorites': require('./users.{user_id}.favorites.json'),
+  '/users/{id}/reposts': require('./users.{user_id}.reposts.json'),
+  '/users/{id}/tracks': require('./users.{user_id}.tracks.json'),
+  '/users/id': require('./users.id.json'),
+  '/users/{id}/connected_wallets': require('./users.{user_id}.connected_wallets.json'),
+  '/users/{id}/tags': require('./users.{user_id}.tags.json'),
   '/resolve': require('./resolve.json')
 }
 
@@ -28,6 +34,11 @@ const paramMapping = {
   '/playlists/{playlist_id}/tracks': {
     'get': {
       'playlist_id': 'DOPRl'
+    }
+  },
+  '/tracks': {
+    'get': {
+      'permalink': '/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725'
     }
   },
   '/tracks/search': {
@@ -50,19 +61,29 @@ const paramMapping = {
       'query': 'Brownies'
     }
   },
-  '/users/{user_id}': {
+  '/users/{id}': {
     'get': {
-      'user_id': 'nlGNe'
+      'id': 'nlGNe'
     }
   },
-  '/users/{user_id}/favorites': {
+  '/users/{id}/favorites': {
     'get': {
-      'user_id': 'nlGNe'
+      'id': 'nlGNe'
     }
   },
-  '/users/{user_id}/tracks': {
+  '/users/{id}/tracks': {
     'get': {
-      'user_id': 'nlGNe'
+      'id': 'nlGNe'
+    }
+  },
+  '/users/{id}/connected_wallets': {
+    'get': {
+      'id': 'nlGNe'
+    }
+  },
+  '/users/id': {
+    'get': {
+      'associated_wallet': '0x087F08462BbD30fC1775bBA3E58821F4CaD47b6b'
     }
   },
   '/resolve': {
@@ -72,9 +93,15 @@ const paramMapping = {
   }
 }
 
-const swagger = require('../swagger.json')
+const operationIdMapping = {
+  '/users/{id}/tracks': 'Get User\'s Tracks',
+  '/users/{id}/favorites': 'Get User\'s Favorite Tracks',
+  '/users/{id}/reposts': 'Get User\'s Reposts',
+  '/users/{id}/tags': 'Get User\'s Most Used Track Tags',
+  '/users/{id}/connected_wallets': 'Get User\'s Connected Wallets'
+}
 
-console.log(mapping['/users/search'])
+const swagger = require('../swagger.json')
 
 Object.keys(mapping).forEach(key => {
   if (key === '/resolve') {
@@ -108,8 +135,9 @@ Object.keys(paramMapping).forEach(key => {
   })
 })
 
-
-console.log(JSON.stringify(swagger["paths"]["/users/search"]))
+Object.keys(operationIdMapping).forEach(key => {
+  swagger["paths"][key]["get"]["operationId"] = operationIdMapping[key]
+})
 
 fs.writeFile('swagger/swagger.json', JSON.stringify(swagger), (err) => {
   if (err) throw err
