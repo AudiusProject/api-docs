@@ -14,6 +14,7 @@ const {
 } = require('./swaggerModifiers')
 
 const DEFAULT_SWAGGER_LOCATION = 'http://dn1_web-server_1:5000/v1/swagger.json'
+const DEFAULT_BASE_URL = 'https://discoveryprovider.audius.co'
 
 program
   .option(
@@ -75,8 +76,12 @@ const main = async (options) => {
     swagger = insertParameters(swagger)
   }
   if (options.generateExamples) {
-    console.log('Generating response examples...')
-    await generateExamples(swagger, options.generateExamples)
+    const baseUrl =
+      options.generateExamples === true
+        ? DEFAULT_BASE_URL
+        : options.generateExamples
+    console.log('Generating response examples from', baseUrl)
+    await generateExamples(swagger, baseUrl)
   }
   if (options.insertResponses) {
     console.log('Inserting response examples...')

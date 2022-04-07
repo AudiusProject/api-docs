@@ -4,7 +4,6 @@ const path = require('path')
 const { convert } = require('widdershins/lib/index')
 const { convertPathToFilename } = require('./helpers')
 
-const BASE_URL = 'https://discoveryprovider.audius.co'
 const OUTPUT_DIR = path.resolve(__dirname, 'examples/')
 
 const setupData = (data) => {
@@ -55,12 +54,9 @@ const fetchAndSaveExample = async (urlToFetch, filename, operation) => {
 const generateExamples = async (swagger, baseUrl) => {
   await fs.mkdir(OUTPUT_DIR, { recursive: true })
   const toFetch = []
-  convert(swagger, {
+  await convert(swagger, {
     templateCallback: (templateName, stage, data) => {
-      data.baseUrl = data.baseUrl.replace(
-        'AUDIUS_API_HOST',
-        baseUrl || BASE_URL
-      )
+      data.baseUrl = data.baseUrl.replace('AUDIUS_API_HOST', baseUrl)
       if (templateName === 'main' && stage === 'post') {
         for (const resource in data.resources) {
           data.resource = data.resources[resource]
