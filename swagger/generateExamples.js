@@ -32,8 +32,13 @@ const fetchAndSaveExample = async (urlToFetch, filename, operation) => {
   let content = await res.text()
   const contentType = getContentType(operation, res.status)
   if (!contentType || contentType === 'application/json') {
+    let json
     try {
-      const json = JSON.parse(content)
+      json = JSON.parse(content)
+    } catch (_) {
+      console.warn('Skipping output for', urlToFetch, "as it's not JSON")
+    }
+    if (json) {
       console.log('Parsing as JSON', urlToFetch)
       if (Array.isArray(json.data)) {
         // Shorten lists
@@ -43,8 +48,6 @@ const fetchAndSaveExample = async (urlToFetch, filename, operation) => {
       const filePath = path.resolve(OUTPUT_DIR, filename)
       console.log('Writing to', filePath)
       await fs.writeFile(filePath, content, 'utf-8')
-    } catch (e) {
-      console.warn('Skipping output for', urlToFetch, "as it's not JSON")
     }
   } else {
     console.warn('Skipping output for', urlToFetch, "as it's not JSON")
