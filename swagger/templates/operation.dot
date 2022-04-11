@@ -25,7 +25,10 @@
 
 {{? data.operation.summary && !data.options.tocSummary}}*{{= data.operation.summary }}*{{?}}
 
-{{? data.operation.description}}{{= data.operation.description }}{{?}}
+{{ const linkify = (text) => {
+    return text.replace(/(https?\:\/\/[^\s]*)/g, '<a target="_blank" href="$1">$1</a>')
+}; }}
+{{? data.operation.description}}{{= linkify(data.operation.description) }}{{?}}
 
 {{? data.operation.requestBody}}
 > Body parameter

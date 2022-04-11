@@ -2,8 +2,8 @@
 <h3 id="{{=data.operationUniqueSlug}}-parameters">Query Parameters</h3>
 
 |Name|Type|Required|Description|
-|---|---|---|---|---|
-{{~ data.parameters :p}}|{{=p.name}}|{{=p.safeType}}|{{=p.required}}|{{=p.shortDesc || 'none'}}|
+|---|---|---|---|---|---|
+{{~ data.parameters :p}}|{{=p.name}}|{{=p.safeType}}|{{=p.required}}|{{=p.shortDesc || 'none'}}{{? p.schema && p.schema.enum}}<table class="inline"><tr><th>Available values:</th>{{~ p.schema.enum :e}}<td>{{=e}}</td>{{~}}</tr></table>{{?}}|
 {{~}}
 
 {{? data.longDescs }}
@@ -14,12 +14,6 @@
 {{?}}
 
 {{~ data.parameters :p}}
-
-{{? p.schema && p.schema.enum }}
-{{~ p.schema.enum :e}}
-{{ var entry = {}; entry.name = p.name; entry.value = e; data.enums.push(entry); }}
-{{~}}
-{{?}}
 
 {{? p.schema && p.schema.items && p.schema.items.enum }}
 {{~ p.schema.items.enum :e}}

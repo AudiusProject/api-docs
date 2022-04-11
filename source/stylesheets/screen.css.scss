@@ -442,6 +442,21 @@ html, body {
     }
   }
 
+  table.inline {
+    margin: 0.5em -5px;
+    border-spacing: 5px;
+    border-collapse: separate;
+    font-size: 0.9em;
+
+    th {
+      padding: 5px 5px 5px 0px;
+    }
+    tr>td {
+      padding: 4px 12px;
+      background-color: lighten($main-bg,8.6%);
+    }
+  }
+
   dt {
     font-weight: bold;
   }
