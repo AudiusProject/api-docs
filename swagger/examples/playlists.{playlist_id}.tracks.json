@@ -2,43 +2,55 @@
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
+        "150x150": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/150x150.jpg",
+        "480x480": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/480x480.jpg",
+        "1000x1000": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/1000x1000.jpg"
       },
-      "description": "@baauer b2b @partyfavormusic live set at Brownies & Lemonade Block Party LA at The Shrine on 7.3.19.",
-      "genre": "Electronic",
-      "id": "D7KyD",
-      "mood": "Fiery",
-      "release_date": "Mon Sep 23 2019 12:35:10 GMT-0700",
-      "repost_count": 47,
-      "favorite_count": 143,
-      "tags": "baauer,partyfavor,browniesandlemonade,live",
-      "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
-      "duration": 5265,
+      "description": null,
+      "genre": "Hip-Hop/Rap",
+      "id": "W66jo",
+      "mood": "Gritty",
+      "release_date": "Fri Jun 24 2022 08:14:47 GMT-0700",
+      "remix_of": {
+        "tracks": null
+      },
+      "repost_count": 38,
+      "favorite_count": 53,
+      "tags": null,
+      "title": "TAXIN",
       "user": {
-        "album_count": 0,
-        "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
+        "album_count": 1,
+        "bio": "$INGLES COLLECTION\nhttps://linktr.ee/DarnellW\n\nEach collector will receive 10% of the music royalties via UnitedMasters Splitpay. news.unitedmasters.com/blog/splitpay (Does not include licensing rights)",
         "cover_photo": {
-           "640x": "https://creatornode.audius.co/ipfs/QmXVMM1RVqP6EFKuDq49HYq5aNSKXd24S7vcxR7qcPom6e/640x.jpg",
-           "2000x": "https://creatornode.audius.co/ipfs/QmXVMM1RVqP6EFKuDq49HYq5aNSKXd24S7vcxR7qcPom6e/2000x.jpg"
+          "640x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/640x.jpg",
+          "2000x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/2000x.jpg"
         },
-        "followee_count": 19,
-        "follower_count": 11141,
-        "handle": "TeamBandL",
-        "id": "nlGNe",
+        "followee_count": 28,
+        "follower_count": 28866,
+        "does_follow_current_user": false,
+        "handle": "DarnellWilliams",
+        "id": "6EEYG",
         "is_verified": true,
-        "location": "Los Angeles, CA",
-        "name": "Brownies & Lemonade",
-        "playlist_count": 2,
+        "location": "Los Angeles",
+        "name": "Darnell William$",
+        "playlist_count": 0,
         "profile_picture": {
-           "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-           "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-           "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+          "150x150": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/1000x1000.jpg"
         },
-        "repost_count": 5,
-        "track_count": 4
-      }
+        "repost_count": 2,
+        "track_count": 19,
+        "is_deactivated": false,
+        "erc_wallet": "0x1a994e5b35526111e7aa92fece1815f5099c72b2",
+        "spl_wallet": "5rnytbVtJiV1fqkUPHZhFngPsmEFgjpjJWSg2oLCt2ut",
+        "supporter_count": 0,
+        "supporting_count": 0
+      },
+      "duration": 166,
+      "downloadable": false,
+      "play_count": 3626,
+      "permalink": "/DarnellWilliams/taxin"
     }
   ]
 }

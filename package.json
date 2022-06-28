@@ -30,7 +30,8 @@
     "postinstall": "patch-package",
     "start": "bundle exec middleman server",
     "build": "bundle exec middleman build --clean",
-    "gen": "node ./swagger/index.js -f -e -rpo",
+    "gen": "node ./swagger/index.js -f -e -rpou",
+    "gen:prod": "node ./swagger/index.js -f https://discoveryprovider.audius.co/v1/swagger.json -e http://discoveryprovider2.audius.co -rpou",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

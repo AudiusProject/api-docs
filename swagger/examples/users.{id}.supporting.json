@@ -1,0 +1,3 @@
+{
+  "message": "Invalid ID: 'type,string'. You have requested this URI [/v1/users/type,string/supporting] but did you mean /v1/users/<string:id>/supporting or /v1/full/users/<string:id>/supporting or /v1/users/<string:id>/supporters ?"
+}

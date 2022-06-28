@@ -1,3 +1,54 @@
 {
-  "data": "HTTP/1.1 302 Found Location: /v1/tracks/V4W8r"
+  "data": {
+    "artwork": {
+      "150x150": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/150x150.jpg",
+      "480x480": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/480x480.jpg",
+      "1000x1000": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/1000x1000.jpg"
+    },
+    "description": "HYPERMANTRA.\n1 play, 7 chapters, no breaks.\n\nget it here: http://tiny.cc/hypermantra\n\npremiered on Ä Live 8/22.\n\ncredits: ilian, the salsoul orchestra, brian bennett, 100% pure poison, you & explosion band, yuji ohno, frank ocean.",
+    "genre": "Electronic",
+    "id": "V4W8r",
+    "mood": "Yearning",
+    "release_date": "Mon Aug 24 2020 21:08:36 GMT+0200",
+    "remix_of": {
+      "tracks": null
+    },
+    "repost_count": 78,
+    "favorite_count": 171,
+    "tags": null,
+    "title": "HYPERMANTRA",
+    "user": {
+      "album_count": 0,
+      "bio": "kawaii bounce 🌟\n\nmy sample pack: gum.co/camocandybox1\n\nheader by paprikaworm",
+      "cover_photo": {
+        "640x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/640x.jpg",
+        "2000x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/2000x.jpg"
+      },
+      "followee_count": 204,
+      "follower_count": 16992,
+      "does_follow_current_user": false,
+      "handle": "camouflybeats",
+      "id": "nd6JD",
+      "is_verified": false,
+      "location": "",
+      "name": "camoufly 🌟",
+      "playlist_count": 4,
+      "profile_picture": {
+        "150x150": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/150x150.jpg",
+        "480x480": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/480x480.jpg",
+        "1000x1000": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/1000x1000.jpg"
+      },
+      "repost_count": 157,
+      "track_count": 64,
+      "is_deactivated": false,
+      "erc_wallet": "0xa65a69a3c38b55b9a3f83266bcc36fe6950cd85f",
+      "spl_wallet": "2bnJKYk6WnseedNWkDEACmS5563uxLCrSRAsQqora947",
+      "supporter_count": 0,
+      "supporting_count": 0
+    },
+    "duration": 1741,
+    "downloadable": false,
+    "play_count": 12867,
+    "permalink": "/camouflybeats/hypermantra-86216"
+  }
 }

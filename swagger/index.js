@@ -8,6 +8,7 @@ const {
   insertParameters,
   insertExamples,
   renameOperations,
+  reorderRoutes,
   writeSwaggerToFile,
   readSwaggerFromFile,
   insertAppName
@@ -42,6 +43,7 @@ program
     'Whether to pre-process the schema to rename select operation IDs to more human-friendly titles',
     false
   )
+  .option('-u, --reorder-routes', 'Whether to reorder routes', false)
   .option(
     '-v, --verbose',
     'Whether to run widdershins with vebose option set to true',
@@ -90,6 +92,10 @@ const main = async (options) => {
   if (options.renameOperations) {
     console.log('Renaming operations...')
     swagger = renameOperations(swagger)
+  }
+  if (options.reorderRoutes) {
+    console.log('Reordering routes...')
+    swagger = reorderRoutes(swagger)
   }
   console.log('Saving swagger.json...')
   writeSwaggerToFile(swagger)

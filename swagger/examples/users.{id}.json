@@ -1,26 +1,31 @@
 {
-  "data":
-    {
-      "album_count": 0,
-      "bio": "Makin' moves & keeping you on your toes. linktr.ee/browniesandlemonade",
-      "cover_photo": {
-         "640x": "https://creatornode.audius.co/ipfs/QmXVMM1RVqP6EFKuDq49HYq5aNSKXd24S7vcxR7qcPom6e/640x.jpg",
-         "2000x": "https://creatornode.audius.co/ipfs/QmXVMM1RVqP6EFKuDq49HYq5aNSKXd24S7vcxR7qcPom6e/2000x.jpg"
-      },
-      "followee_count": 19,
-      "follower_count": 11141,
-      "handle": "TeamBandL",
-      "id": "nlGNe",
-      "is_verified": true,
-      "location": "Los Angeles, CA",
-      "name": "Brownies & Lemonade",
-      "playlist_count": 2,
-      "profile_picture": {
-         "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-         "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-         "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
-      },
-      "repost_count": 5,
-      "track_count": 4
-   }
+  "data": {
+    "album_count": 0,
+    "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
+    "cover_photo": {
+      "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+      "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+    },
+    "followee_count": 26,
+    "follower_count": 33246,
+    "does_follow_current_user": false,
+    "handle": "TeamBandL",
+    "id": "nlGNe",
+    "is_verified": true,
+    "location": "Los Angeles, CA",
+    "name": "Brownies & Lemonade",
+    "playlist_count": 2,
+    "profile_picture": {
+      "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+      "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+      "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+    },
+    "repost_count": 5,
+    "track_count": 10,
+    "is_deactivated": false,
+    "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
+    "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
+    "supporter_count": 0,
+    "supporting_count": 0
+  }
 }

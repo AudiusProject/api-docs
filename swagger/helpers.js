@@ -90,6 +90,12 @@ const operationIdMapping = {
   '/users/{id}/connected_wallets': "Get User's Connected Wallets"
 }
 
+const routeOrdering = {
+  tracks: ['/tracks/{track_id}', '/tracks'],
+  users: ['/users/{id}'],
+  playlists: ['/playlists/{playlist_id}']
+}
+
 const convertPathToFilename = (path) => {
   return path.substring(1).replace(/\//g, '.') + '.json'
 }
@@ -97,5 +103,6 @@ const convertPathToFilename = (path) => {
 module.exports = {
   paramMapping,
   operationIdMapping,
+  routeOrdering,
   convertPathToFilename
 }
