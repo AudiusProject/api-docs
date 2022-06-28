@@ -2,38 +2,45 @@
   "data": [
     {
       "artwork": {
-        "150x150": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
-        "480x480": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
-        "1000x1000": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
+        "150x150": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/150x150.jpg",
+        "480x480": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/480x480.jpg",
+        "1000x1000": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/1000x1000.jpg"
       },
-      "description": "All the latest hot new tracks on Audius! Enjoy the eclectic sounds that are created during the peak of this 2020 Summer.",
-      "id": "DOPRl",
-      "is_album": true,
-      "playlist_name": "Hot & New on Audius 🔥",
-      "repost_count": 46,
-      "favorite_count": 88,
+      "description": null,
+      "id": "aAw5Q",
+      "is_album": false,
+      "playlist_name": "Chill Vibes  Lofi hip hop Music Deep ",
+      "repost_count": 29,
+      "favorite_count": 41,
+      "total_play_count": 12695,
       "user": {
         "album_count": 0,
-        "bio": "The official Audius account! Creating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.",
+        "bio": "vibe music",
         "cover_photo": {
-          "640x": "string",
-          "2000x": "string"
+          "640x": "https://creatornode2.audius.co/ipfs/QmWx2iWSpAT3Z5oLSFB9DfxgppESkLBEB9oJpU1BKtPPZk/640x.jpg",
+          "2000x": "https://creatornode2.audius.co/ipfs/QmWx2iWSpAT3Z5oLSFB9DfxgppESkLBEB9oJpU1BKtPPZk/2000x.jpg"
         },
-        "followee_count": 69,
-        "follower_count": 6763,
-        "handle": "Audius",
-        "id": "eJ57D",
-        "is_verified": true,
-        "location": "SF & LA",
-        "name": "Audius",
-        "playlist_count": 9,
+        "followee_count": 17,
+        "follower_count": 120,
+        "does_follow_current_user": false,
+        "handle": "vibemusic",
+        "id": "7AG6P",
+        "is_verified": false,
+        "location": null,
+        "name": "vibemusic",
+        "playlist_count": 4,
         "profile_picture": {
-          "150x150": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f",
-          "480x480": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f",
-          "1000x1000": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f"
+          "150x150": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/150x150.jpg",
+          "480x480": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/480x480.jpg",
+          "1000x1000": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/1000x1000.jpg"
         },
-        "repost_count": 200,
-        "track_count": 0
+        "repost_count": 179,
+        "track_count": 3,
+        "is_deactivated": false,
+        "erc_wallet": "0xa83604a5a9bae53def1f4325f048d86afed13a6e",
+        "spl_wallet": "XAcjNmSrsH8JHXynMhDF9erRpxgVN26g8zs3p6dUCGa",
+        "supporter_count": 0,
+        "supporting_count": 0
       }
     }
   ]

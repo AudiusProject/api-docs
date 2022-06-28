@@ -3,6 +3,7 @@ const path = require('path')
 const {
   operationIdMapping,
   paramMapping,
+  routeOrdering,
   convertPathToFilename
 } = require('./helpers')
 
@@ -15,6 +16,43 @@ const renameOperations = (swagger) => {
   return swagger
 }
 
+const reorderRoutes = (swagger) => {
+  const tagNames = swagger.tags.map((tag) => {
+    return tag.name
+  })
+  const tagGroups = tagNames.reduce((prev, tagName) => {
+    prev[tagName] = []
+    return prev
+  }, {})
+  Object.keys(routeOrdering).forEach((tag) => {
+    routeOrdering[tag].forEach((route) => {
+      tagGroups[tag].push([route, swagger.paths[route]])
+      delete swagger.paths[route]
+    })
+  })
+  Object.entries(swagger.paths).forEach((entry) => {
+    const value = entry[1]
+    tagGroups[value.get.tags[0]].push(entry)
+  })
+  const orderedRoutes = Object.values(tagGroups).reduce(
+    (prevGroups, tagGroup) => {
+      const flatGroup = tagGroup.reduce(
+        (prevRoutes, [routeName, routeData]) => {
+          const currGroup = {
+            ...prevRoutes
+          }
+          currGroup[routeName] = routeData
+          return currGroup
+        },
+        {}
+      )
+      return { ...prevGroups, ...flatGroup }
+    },
+    {}
+  )
+  swagger.paths = orderedRoutes
+  return swagger
+}
 const insertParameters = (swagger) => {
   Object.keys(paramMapping).forEach((key) => {
     const methods = paramMapping[key]
@@ -94,6 +132,7 @@ module.exports = {
   insertParameters,
   insertAppName,
   renameOperations,
+  reorderRoutes,
   writeSwaggerToFile,
   readSwaggerFromFile
 }
