@@ -1,57 +1,59 @@
 {
   "data": [
     {
-      "timestamp": "2021-03-16 21:13:35",
+      "timestamp": "2021-05-03 02:48:00",
       "item_type": "track",
       "item": {
         "artwork": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmcidM2XqyAHiwr6xyi99rbYMj9vkpzvEpGQXJL9ZbMeKr/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmcidM2XqyAHiwr6xyi99rbYMj9vkpzvEpGQXJL9ZbMeKr/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmcidM2XqyAHiwr6xyi99rbYMj9vkpzvEpGQXJL9ZbMeKr/1000x1000.jpg"
+          "150x150": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/1000x1000.jpg"
         },
-        "description": "first ever underwater dj set where i played a bunch of extremely random things including some bullshit i made the day before",
+        "description": null,
         "genre": "Electronic",
-        "id": "r7my8",
+        "id": "y7XX7",
         "mood": "Other",
-        "release_date": "Tue Mar 16 2021 01:00:41 GMT-0700",
+        "release_date": "Sun Mar 28 2021 11:52:35 GMT-0700",
         "remix_of": {
           "tracks": null
         },
-        "repost_count": 83,
-        "favorite_count": 188,
-        "tags": "chet,porter,underwater,music,set,justin,bieber,haha,starbucks",
-        "title": "Underwater Set (Digital Mirage 2)",
+        "repost_count": 45,
+        "favorite_count": 99,
+        "tags": null,
+        "title": "PAULINE HERR @ BROWNIES & LEMONADE OPEN AUX 1/30",
         "user": {
-          "album_count": 0,
-          "bio": "cool musician dj guy",
+          "album_count": 1,
+          "bio": "producer, singer, human\n\nsocials: @paulineherr",
           "cover_photo": {
-            "640x": "https://creatornode2.audius.co/ipfs/QmbjeuPn724weNZAyh8JV9T8KvvETovmwn37F3ZaGn8eZa/640x.jpg",
-            "2000x": "https://creatornode2.audius.co/ipfs/QmbjeuPn724weNZAyh8JV9T8KvvETovmwn37F3ZaGn8eZa/2000x.jpg"
+            "640x": "https://creatornode3.audius.co/ipfs/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/640x.jpg",
+            "2000x": "https://creatornode3.audius.co/ipfs/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/2000x.jpg"
           },
-          "followee_count": 11,
-          "follower_count": 1009,
+          "followee_count": 144,
+          "follower_count": 33651,
           "does_follow_current_user": false,
-          "handle": "chetporter",
-          "id": "ePa45",
+          "handle": "paulineherr",
+          "id": "eGEam",
           "is_verified": true,
-          "location": "LA / Toronto",
-          "name": "chet porter",
-          "playlist_count": 0,
+          "location": "Burbank, CA",
+          "name": "Pauline Herr",
+          "playlist_count": 1,
           "profile_picture": {
-            "150x150": "https://creatornode2.audius.co/ipfs/QmbG3bEdcfYeWM88eFmaqCkNzv72npL94VFkJqFUBTW1hf/150x150.jpg",
-            "480x480": "https://creatornode2.audius.co/ipfs/QmbG3bEdcfYeWM88eFmaqCkNzv72npL94VFkJqFUBTW1hf/480x480.jpg",
-            "1000x1000": "https://creatornode2.audius.co/ipfs/QmbG3bEdcfYeWM88eFmaqCkNzv72npL94VFkJqFUBTW1hf/1000x1000.jpg"
+            "150x150": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/150x150.jpg",
+            "480x480": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/480x480.jpg",
+            "1000x1000": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/1000x1000.jpg"
           },
-          "repost_count": 2,
-          "track_count": 3,
+          "repost_count": 155,
+          "track_count": 36,
           "is_deactivated": false,
-          "erc_wallet": "0x35360764544c5484c722c34b4f384ba2cce89a01",
-          "spl_wallet": "2NVskDyqGfp5ZtocTc9vVvDcajkp98Uq4z8RaBxDiUah"
+          "erc_wallet": "0xf568ab060acd91fe4861e52136deb08ca1f26574",
+          "spl_wallet": "3DeyiqjmCAtqPUzGX6MQP2C62kKRANy7LFvcBzUEHqPc",
+          "supporter_count": 0,
+          "supporting_count": 0
         },
-        "duration": 1702,
+        "duration": 1708,
         "downloadable": false,
-        "play_count": 2632,
-        "permalink": "/chetporter/underwater-set-digital-mirage-2-288830"
+        "play_count": 873,
+        "permalink": "/paulineherr/pauline-herr-brownies-lemonade-open-aux-130-316935"
       }
     }
   ]

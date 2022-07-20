@@ -69,7 +69,7 @@ const generateExamples = async (swagger, baseUrl) => {
             const operation = data.operation
             const urlToFetch = data.baseUrl + data.requiredUriExample
             const filename = convertPathToFilename(data.method.path)
-            console.log('Fetching', urlToFetch)
+            console.log('Fetchidang', urlToFetch)
             toFetch.push(fetchAndSaveExample(urlToFetch, filename, operation))
           }
         }

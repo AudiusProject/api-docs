@@ -8,6 +8,7 @@ const {
   insertParameters,
   insertExamples,
   renameOperations,
+  reorderRoutes,
   writeSwaggerToFile,
   readSwaggerFromFile,
   insertAppName
@@ -91,6 +92,10 @@ const main = async (options) => {
     console.log('Renaming operations...')
     swagger = renameOperations(swagger)
   }
+
+  console.log('Reordering routes...')
+  swagger = reorderRoutes(swagger)
+
   console.log('Saving swagger.json...')
   writeSwaggerToFile(swagger)
   console.log('Generating docs...')
