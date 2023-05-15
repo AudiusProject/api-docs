@@ -2,55 +2,60 @@
   "data": [
     {
       "artwork": {
-        "150x150": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/150x150.jpg",
-        "480x480": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/480x480.jpg",
-        "1000x1000": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/1000x1000.jpg"
+        "150x150": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/150x150.jpg",
+        "480x480": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/480x480.jpg",
+        "1000x1000": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/1000x1000.jpg"
       },
-      "description": "Follow me on social media!\nOfficial Website: www.nosammusic.com\nMerch: www.nosam.store\nInstagram: www.instagram.com/nosammusic\nTik Tok: www.tiktok.com/@nosam\nYoutube: www.youtube.com/c/nosam\nTwitter: www.twitter.com/nosammusic\nFacebook: www.facebook.com/nosammusic\nSoundCloud: https://soundcloud.com/nosam\nSnapchat: nosammusic",
+      "description": "PBJ with NITTI out now!! ",
       "genre": "Electronic",
-      "id": "3Rva0",
+      "id": "2o8qVY6",
+      "track_cid": "QmVbmiJQ5vHB5RfTGWDrUdHUrd4aTKVV4SpCx48aBoPdS6",
       "mood": "Energizing",
-      "release_date": "Tue Jun 21 2022 10:17:17 GMT-0700",
+      "release_date": "Mon May 08 2023 06:37:27 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 51,
-      "favorite_count": 95,
-      "tags": "sleepatnight,nosam,edm,progressivehouse,trap,dance,2022,festival,newmusic",
-      "title": "Sleep at Night",
+      "repost_count": 33,
+      "favorite_count": 58,
+      "tags": "henryfong,nitti,pbj,basshouse",
+      "title": "Henry Fong & NITTI - PBJ",
       "user": {
         "album_count": 0,
-        "bio": "‘Sleep At Night’ out now!",
+        "artist_pick_track_id": "y8Nvx",
+        "bio": "DJ/Producer",
         "cover_photo": {
-          "640x": "https://content-node.audius.co/ipfs/QmZEB1yfgUH4XShdaAnnhYS8N5sveBTKMn4gdEpSG92LWt/640x.jpg",
-          "2000x": "https://content-node.audius.co/ipfs/QmZEB1yfgUH4XShdaAnnhYS8N5sveBTKMn4gdEpSG92LWt/2000x.jpg"
+          "640x": "https://creatornode3.audius.co/content/QmSADrMwcqUFHjnuh3r3aWGgZjYFYovfsUxDDtxYwWHsv2/640x.jpg",
+          "2000x": "https://creatornode3.audius.co/content/QmSADrMwcqUFHjnuh3r3aWGgZjYFYovfsUxDDtxYwWHsv2/2000x.jpg"
         },
-        "followee_count": 8,
-        "follower_count": 1289,
+        "followee_count": 19,
+        "follower_count": 511,
         "does_follow_current_user": false,
-        "handle": "nosammusic",
-        "id": "z87gz",
+        "handle": "henryfong",
+        "id": "nolY2",
         "is_verified": true,
-        "location": "Los Angeles, CA",
-        "name": "NOSAM",
-        "playlist_count": 2,
+        "location": "Los Angeles",
+        "name": "Henry Fong",
+        "playlist_count": 1,
         "profile_picture": {
-          "150x150": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/150x150.jpg",
-          "480x480": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/480x480.jpg",
-          "1000x1000": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/1000x1000.jpg"
+          "150x150": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/1000x1000.jpg"
         },
-        "repost_count": 0,
-        "track_count": 11,
+        "repost_count": 2,
+        "track_count": 12,
         "is_deactivated": false,
-        "erc_wallet": "0x8cbf545775594b2884aa1421de59e96d16696641",
-        "spl_wallet": "7KVcTkoYNJLShQcFG3w4nbfFFxfUPj6ho1httTt5ZpRT",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x106a6b57ca0731cf57bf4fc7ef6b6bd447f5f5dd",
+        "spl_wallet": "3WZRg5pbFLP4ey7RhF4n95hR4WnGJTAq6KZBrfmwxBct",
+        "supporter_count": 7,
+        "supporting_count": 0,
+        "total_audio_balance": 133
       },
-      "duration": 236,
+      "duration": 222,
       "downloadable": false,
-      "play_count": 10927,
-      "permalink": "/nosammusic/sleep-at-night"
+      "play_count": 13424,
+      "permalink": "/henryfong/henry-fong-nitti-pbj",
+      "is_streamable": true
     }
   ]
 }

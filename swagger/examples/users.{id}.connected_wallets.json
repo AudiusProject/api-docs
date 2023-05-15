@@ -1,8 +1,10 @@
 {
   "data": {
     "erc_wallets": [
-      "0x087F08462BbD30fC1775bBA3E58821F4CaD47b6b"
+      "0x42b53313f643D2a8007a169C2eC973100A1F84C3"
     ],
-    "spl_wallets": []
+    "spl_wallets": [
+      "EF1zneAqA2mwjkD3Lj7sQnMhR2uorGqEHXNtAWfGdCu2"
+    ]
   }
 }
