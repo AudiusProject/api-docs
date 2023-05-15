@@ -50,6 +50,26 @@ const paramMapping = {
       id: 'nlGNe'
     }
   },
+  '/users/{id}/followers': {
+    get: {
+      id: 'nlGNe'
+    }
+  },
+  '/users/{id}/following': {
+    get: {
+      id: 'nlGNe'
+    }
+  },
+  '/users/{id}/related': {
+    get: {
+      id: 'nlGNe'
+    }
+  },
+  '/users/{id}/subscribers': {
+    get: {
+      id: 'nlGNe'
+    }
+  },
   '/users/{id}/tracks': {
     get: {
       id: 'nlGNe'
@@ -57,7 +77,7 @@ const paramMapping = {
   },
   '/users/{id}/connected_wallets': {
     get: {
-      id: 'nlGNe'
+      id: 'Wem1e'
     }
   },
   '/users/{id}/tags': {
@@ -73,6 +93,16 @@ const paramMapping = {
   '/users/id': {
     get: {
       associated_wallet: '0x087F08462BbD30fC1775bBA3E58821F4CaD47b6b'
+    }
+  },
+  '/users/handle/{handle}': {
+    get: {
+      handle: 'rac'
+    }
+  },
+  '/users/handle/{handle}/tracks/ai_attributed': {
+    get: {
+      handle: 'phuture'
     }
   },
   '/users/verify_token': {
