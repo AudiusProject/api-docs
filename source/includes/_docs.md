@@ -160,13 +160,14 @@ Gets a single user by their user ID
 {
   "data": {
     "album_count": 0,
+    "artist_pick_track_id": "D7KyD",
     "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
     "cover_photo": {
-      "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-      "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+      "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+      "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
     },
     "followee_count": 26,
-    "follower_count": 33254,
+    "follower_count": 34503,
     "does_follow_current_user": false,
     "handle": "TeamBandL",
     "id": "nlGNe",
@@ -175,17 +176,19 @@ Gets a single user by their user ID
     "name": "Brownies & Lemonade",
     "playlist_count": 2,
     "profile_picture": {
-      "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-      "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-      "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+      "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+      "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+      "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
     },
     "repost_count": 5,
     "track_count": 10,
     "is_deactivated": false,
+    "is_available": true,
     "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
     "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-    "supporter_count": 0,
-    "supporting_count": 0
+    "supporter_count": 9,
+    "supporting_count": 0,
+    "total_audio_balance": 3123
   }
 }
 ```
@@ -195,6 +198,440 @@ Gets a single user by their user ID
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[user_response](#schemauser_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get User by Handle
+
+<a id="opIdGet User by Handle"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/rac',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/handle/rac', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/rac', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/rac", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/handle/{handle}`
+
+Gets a single user by their handle
+
+<h3 id="get-user-by-handle-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|handle|string|true|A User handle|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": {
+    "album_count": 1,
+    "artist_pick_track_id": "bbzxO",
+    "bio": "Grammy award winning recording artist",
+    "cover_photo": {
+      "640x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/640x.jpg",
+      "2000x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/2000x.jpg"
+    },
+    "followee_count": 19,
+    "follower_count": 64352,
+    "does_follow_current_user": false,
+    "handle": "RAC",
+    "id": "nkwv1",
+    "is_verified": true,
+    "location": "Portland, OR",
+    "name": "RAC",
+    "playlist_count": 0,
+    "profile_picture": {
+      "150x150": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/150x150.jpg",
+      "480x480": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/480x480.jpg",
+      "1000x1000": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/1000x1000.jpg"
+    },
+    "repost_count": 12,
+    "track_count": 16,
+    "is_deactivated": false,
+    "is_available": true,
+    "erc_wallet": "0x346dfbfaf04f40a7f4d327a4935ee98a5bdbd478",
+    "spl_wallet": "2AXmXpWwbFTRWJWkmfjfKajapgAkQEQKkqxooBRZd5cf",
+    "supporter_count": 23,
+    "supporting_count": 1,
+    "total_audio_balance": 114101
+  }
+}
+```
+
+<h3 id="get-user-by-handle-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[user_response](#schemauser_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get AI Attributed Tracks by User Handle
+
+<a id="opIdGet AI Attributed Tracks by User Handle"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/handle/{handle}/tracks/ai_attributed`
+
+Gets the AI generated tracks attributed to a user using the user's handle
+
+<h3 id="get-ai-attributed-tracks-by-user-handle-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|handle|string|true|A User handle|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|sort|string|false|[Deprecated] Field to sort by<table class="inline"><tr><th>Available values:</th><td>date</td><td>plays</td></tr></table>|
+|query|string|false|The filter query|
+|sort_method|string|false|The sort method<table class="inline"><tr><th>Available values:</th><td>title</td><td>artist_name</td><td>release_date</td><td>last_listen_date</td><td>added_date</td><td>length</td><td>plays</td><td>reposts</td><td>saves</td><td>most_listens_by_user</td></tr></table>|
+|sort_direction|string|false|The sort direction<table class="inline"><tr><th>Available values:</th><td>asc</td><td>desc</td></tr></table>|
+|filter_tracks|string|false|Filter by unlisted or public tracks<table class="inline"><tr><th>Available values:</th><td>all</td><td>public</td><td>unlisted</td></tr></table>|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/150x150.jpg",
+        "480x480": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/480x480.jpg",
+        "1000x1000": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/1000x1000.jpg"
+      },
+      "description": "Made with Boomy",
+      "genre": "Electronic",
+      "id": "wzwEM32",
+      "track_cid": "Qme14CQbQPTK1snP8Gt3JSdGAHHdWFJAg25FnVue4s1oT7",
+      "mood": "Sophisticated",
+      "release_date": "Mon May 01 2023 17:17:23 GMT-0700",
+      "remix_of": {
+        "tracks": null
+      },
+      "repost_count": 1,
+      "favorite_count": 2,
+      "tags": "ai,aimusic",
+      "title": "PhutureAI",
+      "user": {
+        "album_count": 0,
+        "artist_pick_track_id": null,
+        "bio": "Founder of Phuture Collective",
+        "cover_photo": {
+          "640x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/640x.jpg",
+          "2000x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/2000x.jpg"
+        },
+        "followee_count": 8,
+        "follower_count": 247,
+        "does_follow_current_user": false,
+        "handle": "synchronistic",
+        "id": "LRNZL",
+        "is_verified": false,
+        "location": "Portland, OR",
+        "name": "synchronistic",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/150x150.jpg",
+          "480x480": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/480x480.jpg",
+          "1000x1000": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/1000x1000.jpg"
+        },
+        "repost_count": 2,
+        "track_count": 3,
+        "is_deactivated": false,
+        "is_available": true,
+        "erc_wallet": "0x0b0e6bd939a6165a98ed8f4ea350a96d1127676f",
+        "spl_wallet": "4eKrNigZuzvAR4rYBLFJMRSULA1Me9LSwygMjqzEYJGc",
+        "supporter_count": 0,
+        "supporting_count": 0,
+        "total_audio_balance": 1
+      },
+      "duration": 67,
+      "downloadable": false,
+      "play_count": 1529,
+      "permalink": "/synchronistic/phutureai",
+      "is_streamable": true
+    }
+  ]
+}
+```
+
+<h3 id="get-ai-attributed-tracks-by-user-handle-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tracks_response](#schematracks_response)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
@@ -356,7 +793,7 @@ Gets a User ID from an associated wallet address
 ```json
 {
   "data": {
-    "user_id": "nlGNe"
+    "user_id": null
   }
 }
 ```
@@ -529,13 +966,14 @@ Search for users that match the given query
   "data": [
     {
       "album_count": 0,
+      "artist_pick_track_id": "D7KyD",
       "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
       "cover_photo": {
-        "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-        "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+        "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+        "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
       },
       "followee_count": 26,
-      "follower_count": 33254,
+      "follower_count": 34503,
       "does_follow_current_user": false,
       "handle": "TeamBandL",
       "id": "nlGNe",
@@ -544,17 +982,19 @@ Search for users that match the given query
       "name": "Brownies & Lemonade",
       "playlist_count": 2,
       "profile_picture": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+        "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+        "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+        "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
       },
       "repost_count": 5,
       "track_count": 10,
       "is_deactivated": false,
+      "is_available": true,
       "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
       "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-      "supporter_count": 0,
-      "supporting_count": 0
+      "supporter_count": 9,
+      "supporting_count": 0,
+      "total_audio_balance": null
     }
   ]
 }
@@ -754,13 +1194,13 @@ Verify if the given jwt ID token was signed by the subject (user) in the payload
 > Code Sample
 
 ```shell
-curl AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets?app_name=EXAMPLEAPP 
+curl AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets?app_name=EXAMPLEAPP 
  
 
 ```
 
 ```http
-GET AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets?app_name=EXAMPLEAPP HTTP/1.1
+GET AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets?app_name=EXAMPLEAPP HTTP/1.1
 
 ```
 
@@ -770,7 +1210,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets?app_name=EXAMPLEAPP',
+fetch('AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets?app_name=EXAMPLEAPP',
 {
   method: 'GET',
 
@@ -792,7 +1232,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets',
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets',
   params: {
   'app_name' => 'string'
 }, headers: headers
@@ -807,7 +1247,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets', params={
+r = requests.get('AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets', params={
   'app_name': 'EXAMPLEAPP'
 }, headers = headers)
 
@@ -830,7 +1270,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets', array(
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -847,7 +1287,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets?app_name=EXAMPLEAPP");
+URL obj = new URL("AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets?app_name=EXAMPLEAPP");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -878,7 +1318,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/connected_wallets", data)
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/Wem1e/connected_wallets", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -905,9 +1345,11 @@ Get the User's ERC and SPL connected wallets
 {
   "data": {
     "erc_wallets": [
-      "0x087F08462BbD30fC1775bBA3E58821F4CaD47b6b"
+      "0x42b53313f643D2a8007a169C2eC973100A1F84C3"
     ],
-    "spl_wallets": []
+    "spl_wallets": [
+      "EF1zneAqA2mwjkD3Lj7sQnMhR2uorGqEHXNtAWfGdCu2"
+    ]
   }
 }
 ```
@@ -1078,9 +1520,10 @@ Gets a user's favorite tracks
 {
   "data": [
     {
-      "favorite_item_id": "ezYKz",
+      "favorite_item_id": "5O2pg",
       "favorite_type": "SaveType.track",
-      "user_id": "nlGNe"
+      "user_id": "nlGNe",
+      "created_at": "2022-07-27 01:25:15"
     }
   ]
 }
@@ -1091,6 +1534,618 @@ Gets a user's favorite tracks
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[favorites_response](#schemafavorites_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Followers
+
+<a id="opIdGet Followers"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/followers?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/followers?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/followers?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/followers',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/followers', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/followers', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/followers?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/followers", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/followers`
+
+All users that follow the provided user
+
+<h3 id="get-followers-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "artist_pick_track_id": null,
+      "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audius",
+      "cover_photo": {
+        "640x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
+        "2000x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
+      },
+      "followee_count": 856,
+      "follower_count": 1525903,
+      "does_follow_current_user": false,
+      "handle": "Audius",
+      "id": "eJ57D",
+      "is_verified": true,
+      "location": "SF & LA",
+      "name": "Audius",
+      "playlist_count": 6,
+      "profile_picture": {
+        "150x150": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
+        "480x480": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
+        "1000x1000": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
+      },
+      "repost_count": 3489,
+      "track_count": 0,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x3256bd2d0b1984e7df4fa525017ad9ba48470760",
+      "spl_wallet": "D1WXgUS2pnrVQTEqSGy2t2oxowahUL8Pw2Qy64CvTi79",
+      "supporter_count": 215,
+      "supporting_count": 4,
+      "total_audio_balance": 16150
+    }
+  ]
+}
+```
+
+<h3 id="get-followers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[followers_response](#schemafollowers_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Following
+
+<a id="opIdGet Following"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/following?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/following?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/following?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/following',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/following', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/following', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/following?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/following", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/following`
+
+All users that the provided user follows
+
+<h3 id="get-following-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "artist_pick_track_id": null,
+      "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audius",
+      "cover_photo": {
+        "640x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
+        "2000x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
+      },
+      "followee_count": 856,
+      "follower_count": 1525903,
+      "does_follow_current_user": false,
+      "handle": "Audius",
+      "id": "eJ57D",
+      "is_verified": true,
+      "location": "SF & LA",
+      "name": "Audius",
+      "playlist_count": 6,
+      "profile_picture": {
+        "150x150": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
+        "480x480": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
+        "1000x1000": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
+      },
+      "repost_count": 3489,
+      "track_count": 0,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x3256bd2d0b1984e7df4fa525017ad9ba48470760",
+      "spl_wallet": "D1WXgUS2pnrVQTEqSGy2t2oxowahUL8Pw2Qy64CvTi79",
+      "supporter_count": 215,
+      "supporting_count": 4,
+      "total_audio_balance": 16150
+    }
+  ]
+}
+```
+
+<h3 id="get-following-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[following_response](#schemafollowing_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Related Users
+
+<a id="opIdGet Related Users"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/related',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/related', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/related', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/related", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/related`
+
+Gets a list of users that might be of interest to followers of this user.
+
+<h3 id="get-related-users-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "artist_pick_track_id": null,
+      "bio": "we are here for now. \n\ninquiries: joey@keel.la",
+      "cover_photo": {
+        "640x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/640x.jpg",
+        "2000x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/2000x.jpg"
+      },
+      "followee_count": 8,
+      "follower_count": 39042,
+      "does_follow_current_user": false,
+      "handle": "LouisTheChild",
+      "id": "LxQm2",
+      "is_verified": true,
+      "location": "Chicago, IL",
+      "name": "Louis The Child",
+      "playlist_count": 0,
+      "profile_picture": {
+        "150x150": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/150x150.jpg",
+        "480x480": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/480x480.jpg",
+        "1000x1000": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/1000x1000.jpg"
+      },
+      "repost_count": 1,
+      "track_count": 94,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x0fd1293443c366bc433d85c94be56ca8117d0ef6",
+      "spl_wallet": "4V5UASoUDPSMRNU1AJ8vNh2kC7y1DXoMnaoehXCxNZsk",
+      "supporter_count": 4,
+      "supporting_count": 0,
+      "total_audio_balance": 12
+    }
+  ]
+}
+```
+
+<h3 id="get-related-users-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[related_artist_response](#schemarelated_artist_response)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
@@ -1259,31 +2314,33 @@ Gets the given user's reposts
       "item_type": "track",
       "item": {
         "artwork": {
-          "150x150": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/150x150.jpg",
-          "480x480": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/480x480.jpg",
-          "1000x1000": "https://creatornode3.audius.co/ipfs/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/1000x1000.jpg"
+          "150x150": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/1000x1000.jpg"
         },
         "description": null,
         "genre": "Electronic",
         "id": "y7XX7",
+        "track_cid": "QmXFnuP57woE7ZZ3HTkWggXuzZL13SJVLiL7rVE9qSFTyf",
         "mood": "Other",
         "release_date": "Sun Mar 28 2021 11:52:35 GMT-0700",
         "remix_of": {
           "tracks": null
         },
-        "repost_count": 45,
-        "favorite_count": 99,
+        "repost_count": 46,
+        "favorite_count": 100,
         "tags": null,
         "title": "PAULINE HERR @ BROWNIES & LEMONADE OPEN AUX 1/30",
         "user": {
           "album_count": 1,
+          "artist_pick_track_id": "JbQN0",
           "bio": "producer, singer, human\n\nsocials: @paulineherr",
           "cover_photo": {
-            "640x": "https://creatornode3.audius.co/ipfs/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/640x.jpg",
-            "2000x": "https://creatornode3.audius.co/ipfs/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/2000x.jpg"
+            "640x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/640x.jpg",
+            "2000x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/2000x.jpg"
           },
           "followee_count": 144,
-          "follower_count": 33651,
+          "follower_count": 41573,
           "does_follow_current_user": false,
           "handle": "paulineherr",
           "id": "eGEam",
@@ -1292,22 +2349,25 @@ Gets the given user's reposts
           "name": "Pauline Herr",
           "playlist_count": 1,
           "profile_picture": {
-            "150x150": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/150x150.jpg",
-            "480x480": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/480x480.jpg",
-            "1000x1000": "https://creatornode3.audius.co/ipfs/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/1000x1000.jpg"
+            "150x150": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/150x150.jpg",
+            "480x480": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/480x480.jpg",
+            "1000x1000": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/1000x1000.jpg"
           },
           "repost_count": 155,
-          "track_count": 36,
+          "track_count": 35,
           "is_deactivated": false,
+          "is_available": true,
           "erc_wallet": "0xf568ab060acd91fe4861e52136deb08ca1f26574",
           "spl_wallet": "3DeyiqjmCAtqPUzGX6MQP2C62kKRANy7LFvcBzUEHqPc",
-          "supporter_count": 0,
-          "supporting_count": 0
+          "supporter_count": 8,
+          "supporting_count": 0,
+          "total_audio_balance": 131
         },
         "duration": 1708,
         "downloadable": false,
-        "play_count": 873,
-        "permalink": "/paulineherr/pauline-herr-brownies-lemonade-open-aux-130-316935"
+        "play_count": 958,
+        "permalink": "/paulineherr/pauline-herr-brownies-lemonade-open-aux-130-316935",
+        "is_streamable": true
       }
     }
   ]
@@ -1319,6 +2379,210 @@ Gets the given user's reposts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[reposts](#schemareposts)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Subscribers
+
+<a id="opIdGet Subscribers"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/subscribers',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/subscribers', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/subscribers', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/subscribers", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/subscribers`
+
+All users that subscribe to the provided user
+
+<h3 id="get-subscribers-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 1,
+      "artist_pick_track_id": "QVkPv",
+      "bio": "🌞👄🌞\noak",
+      "cover_photo": {
+        "640x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/640x.jpg",
+        "2000x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/2000x.jpg"
+      },
+      "followee_count": 1543,
+      "follower_count": 8276,
+      "does_follow_current_user": false,
+      "handle": "rayjacobson",
+      "id": "7eP5n",
+      "is_verified": false,
+      "location": "chik fil yay!!",
+      "name": "raymont",
+      "playlist_count": 8,
+      "profile_picture": {
+        "150x150": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/150x150.jpg",
+        "480x480": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/480x480.jpg",
+        "1000x1000": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/1000x1000.jpg"
+      },
+      "repost_count": 3891,
+      "track_count": 17,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x7d273271690538cf855e5b3002a0dd8c154bb060",
+      "spl_wallet": "EXfHYvqN7GTeQa7aiRhq4UMMZBC9PmUXmskgCH7BSaTn",
+      "supporter_count": 8,
+      "supporting_count": 110,
+      "total_audio_balance": 205
+    }
+  ]
+}
+```
+
+<h3 id="get-subscribers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[subscribers_response](#schemasubscribers_response)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
@@ -1486,13 +2750,14 @@ Gets the supporters of the given user
       "amount": "6000000000000000000",
       "sender": {
         "album_count": 0,
+        "artist_pick_track_id": "G0RNQ8w",
         "bio": "Bebig Music is a record label part of treinta3tres records dedicated to dance commercial music.\nBebig Music is Dance!\nbebigmusic@gmail.com",
         "cover_photo": {
-          "640x": "https://creatornode2.audius.co/ipfs/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/ipfs/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/2000x.jpg"
+          "640x": "https://creatornode2.audius.co/content/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/640x.jpg",
+          "2000x": "https://creatornode2.audius.co/content/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/2000x.jpg"
         },
-        "followee_count": 57,
-        "follower_count": 69,
+        "followee_count": 58,
+        "follower_count": 81,
         "does_follow_current_user": false,
         "handle": "bebigmusic",
         "id": "aW8mr",
@@ -1501,17 +2766,19 @@ Gets the supporters of the given user
         "name": "Bebig Music",
         "playlist_count": 0,
         "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/1000x1000.jpg"
+          "150x150": "https://creatornode2.audius.co/content/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/150x150.jpg",
+          "480x480": "https://creatornode2.audius.co/content/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/480x480.jpg",
+          "1000x1000": "https://creatornode2.audius.co/content/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/1000x1000.jpg"
         },
-        "repost_count": 70,
-        "track_count": 10,
+        "repost_count": 81,
+        "track_count": 12,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0xcdc88b59fc7f2ea01ff6781bae25c1a59a2378cd",
         "spl_wallet": "3EDj16wey6nfw26LhEXTyVmCnvvAMw4ruHfc76kWKkq8",
         "supporter_count": 0,
-        "supporting_count": 1
+        "supporting_count": 1,
+        "total_audio_balance": 0
       }
     }
   ]
@@ -1687,14 +2954,15 @@ Gets the users that the given user supports
       "rank": 1,
       "amount": "6000000000000000000",
       "receiver": {
-        "album_count": 5,
-        "bio": "Record label based in BCN serving cool house music to the world\ntreinta3tres\nBebig Music\nMassivefunk\ninfo@treinta3tres.com",
+        "album_count": 9,
+        "artist_pick_track_id": "oPRA7",
+        "bio": "house music\ntreinta3tres@gmail.com",
         "cover_photo": {
-          "640x": "https://creatornode2.audius.co/ipfs/QmdHB2wg2inSdiUMYd693dxFB6qcgHnF4REoZQcsUogMJj/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/ipfs/QmdHB2wg2inSdiUMYd693dxFB6qcgHnF4REoZQcsUogMJj/2000x.jpg"
+          "640x": "https://creatornode2.audius.co/content/QmRUUUoeJmhbpvqSr9d34Gb71zk7xZkNtswHdixzhMkXYG/640x.jpg",
+          "2000x": "https://creatornode2.audius.co/content/QmRUUUoeJmhbpvqSr9d34Gb71zk7xZkNtswHdixzhMkXYG/2000x.jpg"
         },
-        "followee_count": 13,
-        "follower_count": 83,
+        "followee_count": 12,
+        "follower_count": 103,
         "does_follow_current_user": false,
         "handle": "treinta3tres",
         "id": "lzkyZ",
@@ -1703,17 +2971,19 @@ Gets the users that the given user supports
         "name": "treinta3tres",
         "playlist_count": 3,
         "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/1000x1000.jpg"
+          "150x150": "https://creatornode2.audius.co/content/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/150x150.jpg",
+          "480x480": "https://creatornode2.audius.co/content/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/480x480.jpg",
+          "1000x1000": "https://creatornode2.audius.co/content/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/1000x1000.jpg"
         },
-        "repost_count": 21,
-        "track_count": 52,
+        "repost_count": 24,
+        "track_count": 71,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0xa18d959231ca5728fefbf7b45ddc87f44e0832db",
         "spl_wallet": "3Mm5mdBT3jtRifHpxBfJavRXyfM4G4kbV7KKrX2nj12M",
         "supporter_count": 2,
-        "supporting_count": 0
+        "supporting_count": 0,
+        "total_audio_balance": 21
       }
     }
   ]
@@ -2053,7 +3323,11 @@ Gets the tracks created by a user using their user ID
 |offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
 |limit|integer|false|The number of items to fetch|
 |user_id|string|false|The user ID of the user making the request|
-|sort|string|false|Field to sort by<table class="inline"><tr><th>Available values:</th><td>date</td><td>plays</td></tr></table>|
+|sort|string|false|[Deprecated] Field to sort by<table class="inline"><tr><th>Available values:</th><td>date</td><td>plays</td></tr></table>|
+|query|string|false|The filter query|
+|sort_method|string|false|The sort method<table class="inline"><tr><th>Available values:</th><td>title</td><td>artist_name</td><td>release_date</td><td>last_listen_date</td><td>added_date</td><td>length</td><td>plays</td><td>reposts</td><td>saves</td><td>most_listens_by_user</td></tr></table>|
+|sort_direction|string|false|The sort direction<table class="inline"><tr><th>Available values:</th><td>asc</td><td>desc</td></tr></table>|
+|filter_tracks|string|false|Filter by unlisted or public tracks<table class="inline"><tr><th>Available values:</th><td>all</td><td>public</td><td>unlisted</td></tr></table>|
 |app_name|string|false|Your app name|
 
 > Example Response
@@ -2063,31 +3337,33 @@ Gets the tracks created by a user using their user ID
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmP47PX5vEMds7cddyz18VGo1bFSgS5jKNbpoeTdDTeBfY/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmP47PX5vEMds7cddyz18VGo1bFSgS5jKNbpoeTdDTeBfY/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmP47PX5vEMds7cddyz18VGo1bFSgS5jKNbpoeTdDTeBfY/1000x1000.jpg"
+        "150x150": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
+        "480x480": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
+        "1000x1000": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
       },
-      "description": "Dimension live from Brownies & Lemonade DNBNL on Nov. 10, 2021",
-      "genre": "Drum & Bass",
-      "id": "gJqxx",
-      "mood": "Energizing",
-      "release_date": "Fri Mar 04 2022 09:47:12 GMT-0800",
+      "description": "@baauer b2b @partyfavor live set at Brownies & Lemonade Block Party LA at The Shrine on 7.3.19.",
+      "genre": "Electronic",
+      "id": "D7KyD",
+      "track_cid": "QmeeTjhUvwQRtNYQwiC7Uebuhi4p9mNQNESb3AFaJCYqNz",
+      "mood": "Fiery",
+      "release_date": "Mon Sep 23 2019 12:35:10 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 2466,
-      "favorite_count": 2608,
-      "tags": "browniesandlemonade,drumandbass,dnbnl,dimension",
-      "title": "Dimension - Brownies and Lemonade Live in LA (Live Set)",
+      "repost_count": 430,
+      "favorite_count": 977,
+      "tags": "baauer,partyfavor,browniesandlemonade,live",
+      "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
       "user": {
         "album_count": 0,
+        "artist_pick_track_id": "D7KyD",
         "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
         "cover_photo": {
-          "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-          "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+          "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+          "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
         },
         "followee_count": 26,
-        "follower_count": 33254,
+        "follower_count": 34503,
         "does_follow_current_user": false,
         "handle": "TeamBandL",
         "id": "nlGNe",
@@ -2096,22 +3372,25 @@ Gets the tracks created by a user using their user ID
         "name": "Brownies & Lemonade",
         "playlist_count": 2,
         "profile_picture": {
-          "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-          "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-          "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+          "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+          "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+          "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
         },
         "repost_count": 5,
         "track_count": 10,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
         "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "supporter_count": 9,
+        "supporting_count": 0,
+        "total_audio_balance": 3123
       },
-      "duration": 4645,
+      "duration": 5265,
       "downloadable": false,
-      "play_count": 11058,
-      "permalink": "/TeamBandL/dimension-brownies-and-lemonade-live-in-la-live-set-1"
+      "play_count": 355660,
+      "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725",
+      "is_streamable": true
     }
   ]
 }
@@ -2286,45 +3565,49 @@ Get a playlist by ID
   "data": [
     {
       "artwork": {
-        "150x150": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
-        "480x480": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
-        "1000x1000": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
+        "150x150": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
+        "480x480": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
+        "1000x1000": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
       },
       "description": "All the latest hot & new tracks on Audius! Prepare to buckle in for a trip through various genres featuring artists you love and new artists you are about to discover.",
+      "permalink": "/Audius/playlist/hot-new-on-audius-🔥",
       "id": "DOPRl",
       "is_album": false,
       "playlist_name": "Hot & New on Audius 🔥",
-      "repost_count": 1498,
-      "favorite_count": 766076,
-      "total_play_count": 24600,
+      "repost_count": 1776,
+      "favorite_count": 1243059,
+      "total_play_count": 129814,
       "user": {
         "album_count": 0,
-        "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audiusannounce",
+        "artist_pick_track_id": null,
+        "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audius",
         "cover_photo": {
-          "640x": "https://usermetadata.audius.co/ipfs/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
-          "2000x": "https://usermetadata.audius.co/ipfs/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
+          "640x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
+          "2000x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
         },
-        "followee_count": 525,
-        "follower_count": 1033171,
+        "followee_count": 856,
+        "follower_count": 1525903,
         "does_follow_current_user": false,
         "handle": "Audius",
         "id": "eJ57D",
         "is_verified": true,
         "location": "SF & LA",
         "name": "Audius",
-        "playlist_count": 4,
+        "playlist_count": 6,
         "profile_picture": {
-          "150x150": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
-          "480x480": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
-          "1000x1000": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
+          "150x150": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
+          "480x480": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
+          "1000x1000": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
         },
-        "repost_count": 1529,
+        "repost_count": 3489,
         "track_count": 0,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0x3256bd2d0b1984e7df4fa525017ad9ba48470760",
         "spl_wallet": "D1WXgUS2pnrVQTEqSGy2t2oxowahUL8Pw2Qy64CvTi79",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "supporter_count": 215,
+        "supporting_count": 4,
+        "total_audio_balance": 16150
       }
     }
   ]
@@ -2499,45 +3782,49 @@ Search for a playlist
   "data": [
     {
       "artwork": {
-        "150x150": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
-        "480x480": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
-        "1000x1000": "https://usermetadata.audius.co/ipfs/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
+        "150x150": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/150x150.jpg",
+        "480x480": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/480x480.jpg",
+        "1000x1000": "https://usermetadata.audius.co/content/Qmc7RFzLGgW3DUTgKK49LzxEwe3Lmb47q85ZwJJRVYTXPr/1000x1000.jpg"
       },
       "description": "All the latest hot & new tracks on Audius! Prepare to buckle in for a trip through various genres featuring artists you love and new artists you are about to discover.",
+      "permalink": "/Audius/playlist/hot-new-on-audius-🔥",
       "id": "DOPRl",
       "is_album": false,
       "playlist_name": "Hot & New on Audius 🔥",
-      "repost_count": 1498,
-      "favorite_count": 766071,
-      "total_play_count": 24527,
+      "repost_count": 1776,
+      "favorite_count": 1243059,
+      "total_play_count": 129802,
       "user": {
         "album_count": 0,
-        "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audiusannounce",
+        "artist_pick_track_id": null,
+        "bio": "The official Audius account!\n\nCreating a decentralized and open-source streaming music platform controlled by artists, fans, & developers.\n\nhttps://discord.gg/audius\nhttps://t.me/audius",
         "cover_photo": {
-          "640x": "https://usermetadata.audius.co/ipfs/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
-          "2000x": "https://usermetadata.audius.co/ipfs/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
+          "640x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/640x.jpg",
+          "2000x": "https://usermetadata.audius.co/content/QmSeB4DY1qBtp9hbnmMwnkGepRY6tRrNQcgZU2oNk4SK1q/2000x.jpg"
         },
-        "followee_count": 525,
-        "follower_count": 1033168,
+        "followee_count": 856,
+        "follower_count": 1525903,
         "does_follow_current_user": false,
         "handle": "Audius",
         "id": "eJ57D",
         "is_verified": true,
         "location": "SF & LA",
         "name": "Audius",
-        "playlist_count": 4,
+        "playlist_count": 6,
         "profile_picture": {
-          "150x150": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
-          "480x480": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
-          "1000x1000": "https://usermetadata.audius.co/ipfs/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
+          "150x150": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/150x150.jpg",
+          "480x480": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/480x480.jpg",
+          "1000x1000": "https://usermetadata.audius.co/content/QmNjJv1wQf2DJq3GNXjXzSL8UXFUGXfchg4NhL7UpbnF1f/1000x1000.jpg"
         },
-        "repost_count": 1529,
+        "repost_count": 3487,
         "track_count": 0,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0x3256bd2d0b1984e7df4fa525017ad9ba48470760",
         "spl_wallet": "D1WXgUS2pnrVQTEqSGy2t2oxowahUL8Pw2Qy64CvTi79",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "supporter_count": 215,
+        "supporting_count": 4,
+        "total_audio_balance": null
       }
     }
   ]
@@ -2711,45 +3998,49 @@ Gets trending playlists for a time period
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/150x150.jpg",
-        "480x480": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/480x480.jpg",
-        "1000x1000": "https://creatornode2.audius.co/ipfs/QmcF1dQdqnn5K49YTCyhR6aKX5kHqnMyVMpwi7dCBfNvsm/1000x1000.jpg"
+        "150x150": "https://audius-content-12.cultur3stake.com/content/Qmf53YjSDjsu1w7sYian2tJcNpzvwQZWN8uS3ajBZUTEVZ/150x150.jpg",
+        "480x480": "https://audius-content-12.cultur3stake.com/content/Qmf53YjSDjsu1w7sYian2tJcNpzvwQZWN8uS3ajBZUTEVZ/480x480.jpg",
+        "1000x1000": "https://audius-content-12.cultur3stake.com/content/Qmf53YjSDjsu1w7sYian2tJcNpzvwQZWN8uS3ajBZUTEVZ/1000x1000.jpg"
       },
-      "description": null,
-      "id": "aAw5Q",
+      "description": "The first installment of Pala Chrome's 'You Stay High' remix EP is out now featuring:\n\nalex martian\nfreeloadr\nDust Of Apollon\nGabriel Earwood\n2chills\n\nArtworks by 6amsunset.",
+      "permalink": "/kumocollective/playlist/pala-chrome-you-stay-high-remix-pack-part-1",
+      "id": "5123bEX",
       "is_album": false,
-      "playlist_name": "Chill Vibes  Lofi hip hop Music Deep ",
-      "repost_count": 29,
-      "favorite_count": 41,
-      "total_play_count": 12695,
+      "playlist_name": "Pala Chrome - You Stay High REMIX PACK (part 1)",
+      "repost_count": 18,
+      "favorite_count": 27,
+      "total_play_count": 1845,
       "user": {
-        "album_count": 0,
-        "bio": "vibe music",
+        "album_count": 6,
+        "artist_pick_track_id": "WNYwG6Z",
+        "bio": "Record label from Italy, established in 2017. \n\nas free as a cloud ☁️\n\nVisit the KUMOverse\nhttps://kumocollective.com",
         "cover_photo": {
-          "640x": "https://creatornode2.audius.co/ipfs/QmWx2iWSpAT3Z5oLSFB9DfxgppESkLBEB9oJpU1BKtPPZk/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/ipfs/QmWx2iWSpAT3Z5oLSFB9DfxgppESkLBEB9oJpU1BKtPPZk/2000x.jpg"
+          "640x": "https://audius-content-12.cultur3stake.com/content/Qme9kcC1xNmRWYsfmzqXYiahUrAb5uuqrT1Lf48VU27goY/640x.jpg",
+          "2000x": "https://audius-content-12.cultur3stake.com/content/Qme9kcC1xNmRWYsfmzqXYiahUrAb5uuqrT1Lf48VU27goY/2000x.jpg"
         },
-        "followee_count": 17,
-        "follower_count": 120,
+        "followee_count": 19,
+        "follower_count": 13558,
         "does_follow_current_user": false,
-        "handle": "vibemusic",
-        "id": "7AG6P",
+        "handle": "kumocollective",
+        "id": "Lj0ae",
         "is_verified": false,
-        "location": null,
-        "name": "vibemusic",
-        "playlist_count": 4,
+        "location": "Amsterdam",
+        "name": "KUMO Collective",
+        "playlist_count": 32,
         "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmSbpL8UxnTgXJF6exg1t3JpnA7QM1YnTF2UEoK5CvNhTQ/1000x1000.jpg"
+          "150x150": "https://audius-content-12.cultur3stake.com/content/QmWd4zNC8hEfTScBDi5YSHf6YV6ETUbstoDynXMGsoHX6Q/150x150.jpg",
+          "480x480": "https://audius-content-12.cultur3stake.com/content/QmWd4zNC8hEfTScBDi5YSHf6YV6ETUbstoDynXMGsoHX6Q/480x480.jpg",
+          "1000x1000": "https://audius-content-12.cultur3stake.com/content/QmWd4zNC8hEfTScBDi5YSHf6YV6ETUbstoDynXMGsoHX6Q/1000x1000.jpg"
         },
-        "repost_count": 179,
-        "track_count": 3,
+        "repost_count": 533,
+        "track_count": 134,
         "is_deactivated": false,
-        "erc_wallet": "0xa83604a5a9bae53def1f4325f048d86afed13a6e",
-        "spl_wallet": "XAcjNmSrsH8JHXynMhDF9erRpxgVN26g8zs3p6dUCGa",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x62b166e2d2c8882e5e624ba1d6eba939424fc3f7",
+        "spl_wallet": "5f5AkVbVPFDCVXBr1fcZ7kYaahQEXYYTFuxJ6RDvjeHS",
+        "supporter_count": 12,
+        "supporting_count": 0,
+        "total_audio_balance": 1271
       }
     }
   ]
@@ -2923,55 +4214,60 @@ Fetch tracks within a playlist.
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/150x150.jpg",
-        "480x480": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/480x480.jpg",
-        "1000x1000": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/1000x1000.jpg"
+        "150x150": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/150x150.jpg",
+        "480x480": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/480x480.jpg",
+        "1000x1000": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/1000x1000.jpg"
       },
-      "description": null,
-      "genre": "Hip-Hop/Rap",
-      "id": "W66jo",
-      "mood": "Gritty",
-      "release_date": "Fri Jun 24 2022 08:14:47 GMT-0700",
+      "description": "Louis Futon “David Blaine” Out Now: https://stem.ffm.to/davidblaine\n\nLouis Futon Merch, Tour Dates, and more... \nhttps://louisfutonbeats.com/\n\nSubscribe to Louis Futon\nhttps://bit.ly/LouisFutonYouTube\n\nFollow Louis Futon\nhttps://instagram.com/louisfutonbeats\nhttps://twitter.com/louisfutonbeats\nhttps://tiktok.com/@notlouisfuton\nhttps://facebook.com/Louisfutonbeats\nhttps://www.twitch.tv/louisfutontv\n\nJoin the community\nhttps://discord.gg/geshyzwA\n\n#LouisFuton #DavidBlaine\n\nMixed/Mastered byJacob Weinstein \nCo-written by Ariel Shrum\nSax, bass clarinet & flute by Hailey Niswanger",
+      "genre": "Electronic",
+      "id": "7dm4zrr",
+      "track_cid": "QmWwMTU6rjCp2t3xtjjLUXSF85bxJkxQesrcrSd8fJ5P2d",
+      "mood": "Sensual",
+      "release_date": "Fri May 05 2023 10:10:02 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 44,
-      "favorite_count": 72,
-      "tags": null,
-      "title": "TAXIN",
+      "repost_count": 54,
+      "favorite_count": 100,
+      "tags": "louisfuton,davidblaine",
+      "title": "Louis Futon - David Blaine",
       "user": {
-        "album_count": 1,
-        "bio": "$INGLES COLLECTION\nhttps://linktr.ee/DarnellW\n\nEach collector will receive 10% of the music royalties via UnitedMasters Splitpay. news.unitedmasters.com/blog/splitpay (Does not include licensing rights)",
+        "album_count": 2,
+        "artist_pick_track_id": null,
+        "bio": "Management: eric@jet-mgmt.com",
         "cover_photo": {
-          "640x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/640x.jpg",
-          "2000x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/2000x.jpg"
+          "640x": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmWWPNRrzgasSoGt4SZceuukFf8FbJR8mzsgtYpDNRWkwf/640x.jpg",
+          "2000x": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmWWPNRrzgasSoGt4SZceuukFf8FbJR8mzsgtYpDNRWkwf/2000x.jpg"
         },
-        "followee_count": 28,
-        "follower_count": 28884,
+        "followee_count": 15,
+        "follower_count": 2239,
         "does_follow_current_user": false,
-        "handle": "DarnellWilliams",
-        "id": "6EEYG",
+        "handle": "louisfutonbeats",
+        "id": "n098k",
         "is_verified": true,
-        "location": "Los Angeles",
-        "name": "Darnell William$",
-        "playlist_count": 0,
+        "location": "Los Angeles, CA",
+        "name": "Louis Futon",
+        "playlist_count": 2,
         "profile_picture": {
-          "150x150": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/150x150.jpg",
-          "480x480": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/480x480.jpg",
-          "1000x1000": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/1000x1000.jpg"
+          "150x150": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/150x150.jpg",
+          "480x480": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/480x480.jpg",
+          "1000x1000": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/1000x1000.jpg"
         },
-        "repost_count": 2,
-        "track_count": 19,
+        "repost_count": 10,
+        "track_count": 50,
         "is_deactivated": false,
-        "erc_wallet": "0x1a994e5b35526111e7aa92fece1815f5099c72b2",
-        "spl_wallet": "5rnytbVtJiV1fqkUPHZhFngPsmEFgjpjJWSg2oLCt2ut",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x4ef00cc32ce488af3ec291a89549712b2dd14f2e",
+        "spl_wallet": "1hfVnihF2p6F6n22easszN3wpn5efVaDGTDFsUxmJ9V",
+        "supporter_count": 6,
+        "supporting_count": 0,
+        "total_audio_balance": 62
       },
-      "duration": 166,
-      "downloadable": false,
-      "play_count": 5814,
-      "permalink": "/DarnellWilliams/taxin"
+      "duration": 197,
+      "downloadable": true,
+      "play_count": 24254,
+      "permalink": "/louisfutonbeats/louis-futon-david-blaine",
+      "is_streamable": true
     }
   ]
 }
@@ -3145,31 +4441,33 @@ Gets a track by ID
 {
   "data": {
     "artwork": {
-      "150x150": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
-      "480x480": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
-      "1000x1000": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
+      "150x150": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
+      "480x480": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
+      "1000x1000": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
     },
     "description": "@baauer b2b @partyfavor live set at Brownies & Lemonade Block Party LA at The Shrine on 7.3.19.",
     "genre": "Electronic",
     "id": "D7KyD",
+    "track_cid": "QmeeTjhUvwQRtNYQwiC7Uebuhi4p9mNQNESb3AFaJCYqNz",
     "mood": "Fiery",
     "release_date": "Mon Sep 23 2019 12:35:10 GMT-0700",
     "remix_of": {
       "tracks": null
     },
-    "repost_count": 397,
-    "favorite_count": 867,
+    "repost_count": 430,
+    "favorite_count": 977,
     "tags": "baauer,partyfavor,browniesandlemonade,live",
     "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
     "user": {
       "album_count": 0,
+      "artist_pick_track_id": "D7KyD",
       "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
       "cover_photo": {
-        "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-        "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+        "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+        "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
       },
       "followee_count": 26,
-      "follower_count": 33254,
+      "follower_count": 34503,
       "does_follow_current_user": false,
       "handle": "TeamBandL",
       "id": "nlGNe",
@@ -3178,22 +4476,25 @@ Gets a track by ID
       "name": "Brownies & Lemonade",
       "playlist_count": 2,
       "profile_picture": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+        "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+        "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+        "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
       },
       "repost_count": 5,
       "track_count": 10,
       "is_deactivated": false,
+      "is_available": true,
       "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
       "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-      "supporter_count": 0,
-      "supporting_count": 0
+      "supporter_count": 9,
+      "supporting_count": 0,
+      "total_audio_balance": 3123
     },
     "duration": 5265,
     "downloadable": false,
-    "play_count": 333597,
-    "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725"
+    "play_count": 355660,
+    "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725",
+    "is_streamable": true
   }
 }
 ```
@@ -3367,31 +4668,33 @@ Gets a list of tracks using their IDs or permalinks
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
+        "150x150": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
+        "480x480": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
+        "1000x1000": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
       },
       "description": "@baauer b2b @partyfavor live set at Brownies & Lemonade Block Party LA at The Shrine on 7.3.19.",
       "genre": "Electronic",
       "id": "D7KyD",
+      "track_cid": "QmeeTjhUvwQRtNYQwiC7Uebuhi4p9mNQNESb3AFaJCYqNz",
       "mood": "Fiery",
       "release_date": "Mon Sep 23 2019 12:35:10 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 397,
-      "favorite_count": 867,
+      "repost_count": 430,
+      "favorite_count": 977,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
       "user": {
         "album_count": 0,
+        "artist_pick_track_id": "D7KyD",
         "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
         "cover_photo": {
-          "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-          "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+          "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+          "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
         },
         "followee_count": 26,
-        "follower_count": 33254,
+        "follower_count": 34503,
         "does_follow_current_user": false,
         "handle": "TeamBandL",
         "id": "nlGNe",
@@ -3400,22 +4703,25 @@ Gets a list of tracks using their IDs or permalinks
         "name": "Brownies & Lemonade",
         "playlist_count": 2,
         "profile_picture": {
-          "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-          "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-          "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+          "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+          "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+          "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
         },
         "repost_count": 5,
         "track_count": 10,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
         "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "supporter_count": 9,
+        "supporting_count": 0,
+        "total_audio_balance": 3123
       },
       "duration": 5265,
       "downloadable": false,
-      "play_count": 333597,
-      "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725"
+      "play_count": 355660,
+      "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725",
+      "is_streamable": true
     }
   ]
 }
@@ -3590,31 +4896,33 @@ Search for a track or tracks
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
+        "150x150": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/150x150.jpg",
+        "480x480": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/480x480.jpg",
+        "1000x1000": "https://audius.prod.capturealpha.io/content/QmVJjA6zXhDZn3BjcjYa33P9NDiPZj7Vyq9TCx1bHjvHmG/1000x1000.jpg"
       },
       "description": "@baauer b2b @partyfavor live set at Brownies & Lemonade Block Party LA at The Shrine on 7.3.19.",
       "genre": "Electronic",
       "id": "D7KyD",
+      "track_cid": "QmeeTjhUvwQRtNYQwiC7Uebuhi4p9mNQNESb3AFaJCYqNz",
       "mood": "Fiery",
       "release_date": "Mon Sep 23 2019 12:35:10 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 397,
-      "favorite_count": 866,
+      "repost_count": 430,
+      "favorite_count": 977,
       "tags": "baauer,partyfavor,browniesandlemonade,live",
       "title": "Paauer | Baauer B2B Party Favor | B&L Block Party LA (Live Set)",
       "user": {
         "album_count": 0,
+        "artist_pick_track_id": "D7KyD",
         "bio": "Makin' moves & keeping you on your toes.\nlinktr.ee/browniesandlemonade",
         "cover_photo": {
-          "640x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
-          "2000x": "https://creatornode.audius.co/ipfs/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
+          "640x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/640x.jpg",
+          "2000x": "https://audius.prod.capturealpha.io/content/QmcVZH5C2ygxoVS4ihPBJrkFrS1Ua6YJB5srNtXafPzihZ/2000x.jpg"
         },
         "followee_count": 26,
-        "follower_count": 33254,
+        "follower_count": 34503,
         "does_follow_current_user": false,
         "handle": "TeamBandL",
         "id": "nlGNe",
@@ -3623,22 +4931,25 @@ Search for a track or tracks
         "name": "Brownies & Lemonade",
         "playlist_count": 2,
         "profile_picture": {
-          "150x150": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
-          "480x480": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
-          "1000x1000": "https://creatornode.audius.co/ipfs/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
+          "150x150": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/150x150.jpg",
+          "480x480": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/480x480.jpg",
+          "1000x1000": "https://audius.prod.capturealpha.io/content/QmU9L4beAM96MpiNqqVTZdiDiCRTeBku1AJCh3NXrE5PxV/1000x1000.jpg"
         },
         "repost_count": 5,
         "track_count": 10,
         "is_deactivated": false,
+        "is_available": true,
         "erc_wallet": "0x8bc337e467cec1e7b05e54c7d1f90814a78d259e",
         "spl_wallet": "WXBYqzejMr5qxmuDrvVTDQopr7vdZt5szsoSSb3EvQH",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "supporter_count": 9,
+        "supporting_count": 0,
+        "total_audio_balance": null
       },
-      "duration": 5265,
+      "duration": 5266,
       "downloadable": false,
-      "play_count": 333592,
-      "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725"
+      "play_count": 355659,
+      "permalink": "/TeamBandL/paauer-|-baauer-b2b-party-favor-|-bl-block-party-la-live-set-725",
+      "is_streamable": true
     }
   ]
 }
@@ -3812,55 +5123,60 @@ Gets the top 100 trending (most popular) tracks on Audius
   "data": [
     {
       "artwork": {
-        "150x150": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/150x150.jpg",
-        "480x480": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/480x480.jpg",
-        "1000x1000": "https://content-node.audius.co/ipfs/QmThWr4yetmRZGpj5QAVGCYPpJF2oPSLjrq6epND41a1zY/1000x1000.jpg"
+        "150x150": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/150x150.jpg",
+        "480x480": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/480x480.jpg",
+        "1000x1000": "https://creatornode3.audius.co/content/QmY7uocBHuSyW3aWuzZ6MeHNod8ph4TmStJJa2v4KXCdXe/1000x1000.jpg"
       },
-      "description": "Follow me on social media!\nOfficial Website: www.nosammusic.com\nMerch: www.nosam.store\nInstagram: www.instagram.com/nosammusic\nTik Tok: www.tiktok.com/@nosam\nYoutube: www.youtube.com/c/nosam\nTwitter: www.twitter.com/nosammusic\nFacebook: www.facebook.com/nosammusic\nSoundCloud: https://soundcloud.com/nosam\nSnapchat: nosammusic",
+      "description": "PBJ with NITTI out now!! ",
       "genre": "Electronic",
-      "id": "3Rva0",
+      "id": "2o8qVY6",
+      "track_cid": "QmVbmiJQ5vHB5RfTGWDrUdHUrd4aTKVV4SpCx48aBoPdS6",
       "mood": "Energizing",
-      "release_date": "Tue Jun 21 2022 10:17:17 GMT-0700",
+      "release_date": "Mon May 08 2023 06:37:27 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 51,
-      "favorite_count": 95,
-      "tags": "sleepatnight,nosam,edm,progressivehouse,trap,dance,2022,festival,newmusic",
-      "title": "Sleep at Night",
+      "repost_count": 33,
+      "favorite_count": 58,
+      "tags": "henryfong,nitti,pbj,basshouse",
+      "title": "Henry Fong & NITTI - PBJ",
       "user": {
         "album_count": 0,
-        "bio": "‘Sleep At Night’ out now!",
+        "artist_pick_track_id": "y8Nvx",
+        "bio": "DJ/Producer",
         "cover_photo": {
-          "640x": "https://content-node.audius.co/ipfs/QmZEB1yfgUH4XShdaAnnhYS8N5sveBTKMn4gdEpSG92LWt/640x.jpg",
-          "2000x": "https://content-node.audius.co/ipfs/QmZEB1yfgUH4XShdaAnnhYS8N5sveBTKMn4gdEpSG92LWt/2000x.jpg"
+          "640x": "https://creatornode3.audius.co/content/QmSADrMwcqUFHjnuh3r3aWGgZjYFYovfsUxDDtxYwWHsv2/640x.jpg",
+          "2000x": "https://creatornode3.audius.co/content/QmSADrMwcqUFHjnuh3r3aWGgZjYFYovfsUxDDtxYwWHsv2/2000x.jpg"
         },
-        "followee_count": 8,
-        "follower_count": 1289,
+        "followee_count": 19,
+        "follower_count": 511,
         "does_follow_current_user": false,
-        "handle": "nosammusic",
-        "id": "z87gz",
+        "handle": "henryfong",
+        "id": "nolY2",
         "is_verified": true,
-        "location": "Los Angeles, CA",
-        "name": "NOSAM",
-        "playlist_count": 2,
+        "location": "Los Angeles",
+        "name": "Henry Fong",
+        "playlist_count": 1,
         "profile_picture": {
-          "150x150": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/150x150.jpg",
-          "480x480": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/480x480.jpg",
-          "1000x1000": "https://content-node.audius.co/ipfs/QmY4ZjXJezD7X7zGhShTt7yk1At1GXLdefx8R6jjJi6QYn/1000x1000.jpg"
+          "150x150": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/content/QmaxRd8YNYzzhU1gkzfaX3vCucNHfyZTiUKCTRtv9QCUjh/1000x1000.jpg"
         },
-        "repost_count": 0,
-        "track_count": 11,
+        "repost_count": 2,
+        "track_count": 12,
         "is_deactivated": false,
-        "erc_wallet": "0x8cbf545775594b2884aa1421de59e96d16696641",
-        "spl_wallet": "7KVcTkoYNJLShQcFG3w4nbfFFxfUPj6ho1httTt5ZpRT",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x106a6b57ca0731cf57bf4fc7ef6b6bd447f5f5dd",
+        "spl_wallet": "3WZRg5pbFLP4ey7RhF4n95hR4WnGJTAq6KZBrfmwxBct",
+        "supporter_count": 7,
+        "supporting_count": 0,
+        "total_audio_balance": 133
       },
-      "duration": 236,
+      "duration": 222,
       "downloadable": false,
-      "play_count": 10927,
-      "permalink": "/nosammusic/sleep-at-night"
+      "play_count": 13424,
+      "permalink": "/henryfong/henry-fong-nitti-pbj",
+      "is_streamable": true
     }
   ]
 }
@@ -3873,6 +5189,231 @@ Gets the top 100 trending (most popular) tracks on Audius
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tracks_response](#schematracks_response)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Underground Trending Tracks
+
+<a id="opIdGet Underground Trending Tracks"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/tracks/trending/underground?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/tracks/trending/underground?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/tracks/trending/underground?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/tracks/trending/underground',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/tracks/trending/underground', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/tracks/trending/underground', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/tracks/trending/underground?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/tracks/trending/underground", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /tracks/trending/underground`
+
+Gets the top 100 trending underground tracks on Audius
+
+<h3 id="get-underground-trending-tracks-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "https://audius-content-1.cultur3stake.com/content/QmNwXj3vESow9b1hvessexnuiHhAA8Bhwzycf2UWsQXHGW/150x150.jpg",
+        "480x480": "https://audius-content-1.cultur3stake.com/content/QmNwXj3vESow9b1hvessexnuiHhAA8Bhwzycf2UWsQXHGW/480x480.jpg",
+        "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmNwXj3vESow9b1hvessexnuiHhAA8Bhwzycf2UWsQXHGW/1000x1000.jpg"
+      },
+      "description": null,
+      "genre": "Electronic",
+      "id": "MYvY63X",
+      "track_cid": "QmWXgp758zKWd4KtmQJwTaLnGR2oGubVhZH7qjiu7Vwi6f",
+      "mood": "Empowering",
+      "release_date": null,
+      "remix_of": {
+        "tracks": null
+      },
+      "repost_count": 14,
+      "favorite_count": 31,
+      "tags": "bass,dubstep,trap,beats,downtempo",
+      "title": "04_Mindex - Wormhole",
+      "user": {
+        "album_count": 1,
+        "artist_pick_track_id": "gQRgZ",
+        "bio": "Storytelling Bass Music",
+        "cover_photo": {
+          "640x": "https://audius-content-1.cultur3stake.com/content/QmQGJeLf73YymgeL9nrtDgSrM255ownEAw8pKupbCbVHFj/640x.jpg",
+          "2000x": "https://audius-content-1.cultur3stake.com/content/QmQGJeLf73YymgeL9nrtDgSrM255ownEAw8pKupbCbVHFj/2000x.jpg"
+        },
+        "followee_count": 12,
+        "follower_count": 419,
+        "does_follow_current_user": false,
+        "handle": "mindex",
+        "id": "n6OJl",
+        "is_verified": false,
+        "location": "Austin, TX",
+        "name": "MINDEX",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "https://audius-content-1.cultur3stake.com/content/QmPFsokU1XFz9aKfyd1x2jqZjrJyiPNrXVN6SKf4fkdqBx/150x150.jpg",
+          "480x480": "https://audius-content-1.cultur3stake.com/content/QmPFsokU1XFz9aKfyd1x2jqZjrJyiPNrXVN6SKf4fkdqBx/480x480.jpg",
+          "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmPFsokU1XFz9aKfyd1x2jqZjrJyiPNrXVN6SKf4fkdqBx/1000x1000.jpg"
+        },
+        "repost_count": 1,
+        "track_count": 11,
+        "is_deactivated": false,
+        "is_available": true,
+        "erc_wallet": "0x6f69411eb84a058ec4df2f8da426c420ddbede06",
+        "spl_wallet": "FQavSBuMGzsavG2M2WbeGWpFDyZwiC4y1XmXeBw13mSw",
+        "supporter_count": 3,
+        "supporting_count": 0,
+        "total_audio_balance": 7
+      },
+      "duration": 219,
+      "downloadable": false,
+      "play_count": 5557,
+      "permalink": "/mindex/04_mindex-wormhole",
+      "is_streamable": true
+    }
+  ]
+}
+```
+
+<h3 id="get-underground-trending-tracks-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tracks_response](#schematracks_response)|
 
 ## Stream Track
 
@@ -4006,7 +5547,23 @@ This endpoint accepts the Range header for streaming.
 |Name|Type|Required|Description|
 |---|---|---|---|---|---|
 |track_id|string|true|A Track ID|
+|user_signature|string|false|Optional - signature from the requesting user's wallet.|
+|user_data|string|false|Optional - data which was used to generate the optional signature argument.|
+|premium_content_signature|string|false|Optional - premium content signature for this track which was previously generated by a registered DN.|
+|filename|string|false|Optional - Filename in case user is trying to download track.|
 |app_name|string|false|Your app name|
+
+#### Detailed descriptions
+
+**user_signature**: Optional - signature from the requesting user's wallet.
+        This is needed to authenticate the user and verify access in case the track is premium.
+
+**premium_content_signature**: Optional - premium content signature for this track which was previously generated by a registered DN.
+        This is so that track access won't have to be check; instead, we check that the user which generated the
+        user signature and the user for whom the DN signed are the same.
+
+**filename**: Optional - Filename in case user is trying to download track.
+        This is needed by the CN in order to set the Content-Disposition response header.
 
 <h3 id="stream-track-responses">Responses</h3>
 
@@ -4191,66 +5748,72 @@ Eg. 'sender' will ensure that each tip returned has a unique sender, using the m
 {
   "data": [
     {
-      "amount": "6000000000000000000",
+      "amount": "3000000000000000000",
       "sender": {
         "album_count": 0,
-        "bio": "Bebig Music is a record label part of treinta3tres records dedicated to dance commercial music.\nBebig Music is Dance!\nbebigmusic@gmail.com",
+        "artist_pick_track_id": null,
+        "bio": "Comunidad de habla Hispana de Audius. Comparte tu música en tus redes sociales y etiquétanos https://linktr.ee/audiusspanish\n\nhttps://discord.com/channels/557662127305785361/862740191046533170",
         "cover_photo": {
-          "640x": "https://creatornode2.audius.co/ipfs/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/ipfs/QmQRATHCJEiwsCu4f1rGjPefF8fcwYnGzv2wuiKFnA3hv2/2000x.jpg"
+          "640x": "https://blockdaemon-audius-content-04.bdnodes.net/content/QmdQcjCgPa5N1Jb2JrqsFZcHYAR1RGd9YJuiswc4WyHDg9/640x.jpg",
+          "2000x": "https://blockdaemon-audius-content-04.bdnodes.net/content/QmdQcjCgPa5N1Jb2JrqsFZcHYAR1RGd9YJuiswc4WyHDg9/2000x.jpg"
         },
-        "followee_count": 57,
-        "follower_count": 69,
+        "followee_count": 283,
+        "follower_count": 97,
         "does_follow_current_user": false,
-        "handle": "bebigmusic",
-        "id": "aW8mr",
+        "handle": "AudiusSpanishCommunity",
+        "id": "Y99y7Jq",
         "is_verified": false,
-        "location": "Barcelona",
-        "name": "Bebig Music",
-        "playlist_count": 0,
-        "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmXrmgMy5fwfr6q6ucU4qkvwkq8cvFXfbms32NNctZDmoB/1000x1000.jpg"
-        },
-        "repost_count": 70,
-        "track_count": 10,
-        "is_deactivated": false,
-        "erc_wallet": "0xcdc88b59fc7f2ea01ff6781bae25c1a59a2378cd",
-        "spl_wallet": "3EDj16wey6nfw26LhEXTyVmCnvvAMw4ruHfc76kWKkq8",
-        "supporter_count": 0,
-        "supporting_count": 1
-      },
-      "receiver": {
-        "album_count": 5,
-        "bio": "Record label based in BCN serving cool house music to the world\ntreinta3tres\nBebig Music\nMassivefunk\ninfo@treinta3tres.com",
-        "cover_photo": {
-          "640x": "https://creatornode2.audius.co/ipfs/QmdHB2wg2inSdiUMYd693dxFB6qcgHnF4REoZQcsUogMJj/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/ipfs/QmdHB2wg2inSdiUMYd693dxFB6qcgHnF4REoZQcsUogMJj/2000x.jpg"
-        },
-        "followee_count": 13,
-        "follower_count": 83,
-        "does_follow_current_user": false,
-        "handle": "treinta3tres",
-        "id": "lzkyZ",
-        "is_verified": false,
-        "location": "Barcelona",
-        "name": "treinta3tres",
+        "location": "Latin America & Spain",
+        "name": "Audius Español 🎧",
         "playlist_count": 3,
         "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/ipfs/QmdJJf81jjRhpmrj2JzeMEzDNbPKfrUWkECE3NjfWnLDMr/1000x1000.jpg"
+          "150x150": "https://blockdaemon-audius-content-04.bdnodes.net/content/QmWSefzBeuv98mTCKz6sMYdhrLEJDXYzdptQ2RyrNs5EWH/150x150.jpg",
+          "480x480": "https://blockdaemon-audius-content-04.bdnodes.net/content/QmWSefzBeuv98mTCKz6sMYdhrLEJDXYzdptQ2RyrNs5EWH/480x480.jpg",
+          "1000x1000": "https://blockdaemon-audius-content-04.bdnodes.net/content/QmWSefzBeuv98mTCKz6sMYdhrLEJDXYzdptQ2RyrNs5EWH/1000x1000.jpg"
         },
-        "repost_count": 21,
-        "track_count": 52,
+        "repost_count": 92,
+        "track_count": 0,
         "is_deactivated": false,
-        "erc_wallet": "0xa18d959231ca5728fefbf7b45ddc87f44e0832db",
-        "spl_wallet": "3Mm5mdBT3jtRifHpxBfJavRXyfM4G4kbV7KKrX2nj12M",
-        "supporter_count": 2,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x2225f4d82ae264d247f2821e3be5d0a3e3fcd2a7",
+        "spl_wallet": "F1xQ7nYN1h5PL2biNGoTsChMHBKgprvPE7Frr6kBLadb",
+        "supporter_count": 5,
+        "supporting_count": 51,
+        "total_audio_balance": 191
       },
-      "created_at": "2022-06-27 11:53:12"
+      "receiver": {
+        "album_count": 0,
+        "artist_pick_track_id": null,
+        "bio": "Electronic Music Artist From  Buenos Aires - Argentina (Minimal - Tech House)\n\nRoad to Music Decentralization ♥",
+        "cover_photo": {
+          "640x": "https://audius-content-7.figment.io/content/QmYRKtSfYVPWJYezhKhA4WzAMuqpQDPZcR3DVfdzkvHWaM/640x.jpg",
+          "2000x": "https://audius-content-7.figment.io/content/QmYRKtSfYVPWJYezhKhA4WzAMuqpQDPZcR3DVfdzkvHWaM/2000x.jpg"
+        },
+        "followee_count": 1131,
+        "follower_count": 1024,
+        "does_follow_current_user": false,
+        "handle": "xguidosantiago",
+        "id": "dEY9m",
+        "is_verified": false,
+        "location": "",
+        "name": "Guido Santiago",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "https://audius-content-7.figment.io/content/QmUC1ddv4sd3qw5GgRSTDw5HUdDs8QPngZ195Zk9RXHvXB/150x150.jpg",
+          "480x480": "https://audius-content-7.figment.io/content/QmUC1ddv4sd3qw5GgRSTDw5HUdDs8QPngZ195Zk9RXHvXB/480x480.jpg",
+          "1000x1000": "https://audius-content-7.figment.io/content/QmUC1ddv4sd3qw5GgRSTDw5HUdDs8QPngZ195Zk9RXHvXB/1000x1000.jpg"
+        },
+        "repost_count": 1,
+        "track_count": 5,
+        "is_deactivated": false,
+        "is_available": true,
+        "erc_wallet": "0x53fde452fc2d54f523da5dcde511948109c71bff",
+        "spl_wallet": "FZg7NYCsfFLBeXbdm1xXoTsBUCPZ6brZnJvDzP41Ndze",
+        "supporter_count": 1,
+        "supporting_count": 0,
+        "total_audio_balance": 5
+      },
+      "created_at": "2023-05-15 22:31:02"
     }
   ]
 }
@@ -4427,55 +5990,60 @@ Tracks, Playlists, and Users are supported.
 {
   "data": {
     "artwork": {
-      "150x150": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/150x150.jpg",
-      "480x480": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/480x480.jpg",
-      "1000x1000": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/1000x1000.jpg"
+      "150x150": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/150x150.jpg",
+      "480x480": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/480x480.jpg",
+      "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/1000x1000.jpg"
     },
     "description": "HYPERMANTRA.\n1 play, 7 chapters, no breaks.\n\nget it here: http://tiny.cc/hypermantra\n\npremiered on Ä Live 8/22.\n\ncredits: ilian, the salsoul orchestra, brian bennett, 100% pure poison, you & explosion band, yuji ohno, frank ocean.",
     "genre": "Electronic",
     "id": "V4W8r",
+    "track_cid": "QmcPiBC9eszbYnFaBTxWW1njhWrhYGb2GyfsmsrALNvgcK",
     "mood": "Yearning",
     "release_date": "Mon Aug 24 2020 21:08:36 GMT+0200",
     "remix_of": {
       "tracks": null
     },
     "repost_count": 78,
-    "favorite_count": 171,
+    "favorite_count": 173,
     "tags": null,
     "title": "HYPERMANTRA",
     "user": {
       "album_count": 0,
+      "artist_pick_track_id": null,
       "bio": "kawaii bounce 🌟\n\nmy sample pack: gum.co/camocandybox1\n\nheader by paprikaworm",
       "cover_photo": {
-        "640x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/640x.jpg",
-        "2000x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/2000x.jpg"
+        "640x": "https://audius-content-1.cultur3stake.com/content/QmRf3uh9tS8EbV59ArZwJN8UnpsjMyRyp2LVrpU7K1DYm2/640x.jpg",
+        "2000x": "https://audius-content-1.cultur3stake.com/content/QmRf3uh9tS8EbV59ArZwJN8UnpsjMyRyp2LVrpU7K1DYm2/2000x.jpg"
       },
-      "followee_count": 204,
-      "follower_count": 16997,
+      "followee_count": 208,
+      "follower_count": 17635,
       "does_follow_current_user": false,
       "handle": "camouflybeats",
       "id": "nd6JD",
-      "is_verified": false,
+      "is_verified": true,
       "location": "",
-      "name": "camoufly 🌟",
-      "playlist_count": 4,
+      "name": "camoufly",
+      "playlist_count": 5,
       "profile_picture": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/1000x1000.jpg"
+        "150x150": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/150x150.jpg",
+        "480x480": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/480x480.jpg",
+        "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/1000x1000.jpg"
       },
-      "repost_count": 157,
-      "track_count": 64,
+      "repost_count": 162,
+      "track_count": 80,
       "is_deactivated": false,
+      "is_available": true,
       "erc_wallet": "0xa65a69a3c38b55b9a3f83266bcc36fe6950cd85f",
       "spl_wallet": "2bnJKYk6WnseedNWkDEACmS5563uxLCrSRAsQqora947",
-      "supporter_count": 0,
-      "supporting_count": 0
+      "supporter_count": 32,
+      "supporting_count": 0,
+      "total_audio_balance": 3496
     },
     "duration": 1741,
     "downloadable": false,
-    "play_count": 12867,
-    "permalink": "/camouflybeats/hypermantra-86216"
+    "play_count": 12927,
+    "permalink": "/camouflybeats/hypermantra-86216",
+    "is_streamable": true
   }
 }
 ```
@@ -4505,10 +6073,12 @@ The following are examples of response formats you can expect to receive from th
     "data": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -4517,11 +6087,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -4587,6 +6161,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -4597,6 +6174,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -4624,10 +6204,12 @@ The following are examples of response formats you can expect to receive from th
 {
   "required": [
     "album_count",
+    "erc_wallet",
     "followee_count",
     "follower_count",
     "handle",
     "id",
+    "is_available",
     "is_deactivated",
     "is_verified",
     "name",
@@ -4636,11 +6218,15 @@ The following are examples of response formats you can expect to receive from th
     "spl_wallet",
     "supporter_count",
     "supporting_count",
+    "total_audio_balance",
     "track_count"
   ],
   "properties": {
     "album_count": {
       "type": "integer"
+    },
+    "artist_pick_track_id": {
+      "type": "string"
     },
     "bio": {
       "type": "string"
@@ -4706,6 +6292,9 @@ The following are examples of response formats you can expect to receive from th
     "is_deactivated": {
       "type": "boolean"
     },
+    "is_available": {
+      "type": "boolean"
+    },
     "erc_wallet": {
       "type": "string"
     },
@@ -4716,6 +6305,9 @@ The following are examples of response formats you can expect to receive from th
       "type": "integer"
     },
     "supporting_count": {
+      "type": "integer"
+    },
+    "total_audio_balance": {
       "type": "integer"
     }
   },
@@ -4729,6 +6321,7 @@ The following are examples of response formats you can expect to receive from th
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |album_count|integer|true|none|none|
+|artist_pick_track_id|string|false|none|none|
 |bio|string|false|none|none|
 |cover_photo|[cover_photo](#schemacover_photo)|false|none|none|
 |followee_count|integer|true|none|none|
@@ -4744,10 +6337,12 @@ The following are examples of response formats you can expect to receive from th
 |repost_count|integer|true|none|none|
 |track_count|integer|true|none|none|
 |is_deactivated|boolean|true|none|none|
-|erc_wallet|string|false|none|none|
+|is_available|boolean|true|none|none|
+|erc_wallet|string|true|none|none|
 |spl_wallet|string|true|none|none|
 |supporter_count|integer|true|none|none|
 |supporting_count|integer|true|none|none|
+|total_audio_balance|integer|true|none|none|
 
 <a id="schemacover_photo"></a>
 <a id="schema_cover_photo"></a>
@@ -4854,6 +6449,9 @@ The following are examples of response formats you can expect to receive from th
           "id": {
             "type": "string"
           },
+          "track_cid": {
+            "type": "string"
+          },
           "mood": {
             "type": "string"
           },
@@ -4894,10 +6492,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -4906,11 +6506,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -4976,6 +6580,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -4986,6 +6593,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -5002,6 +6612,9 @@ The following are examples of response formats you can expect to receive from th
           },
           "permalink": {
             "type": "string"
+          },
+          "is_streamable": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -5060,6 +6673,9 @@ The following are examples of response formats you can expect to receive from th
     "id": {
       "type": "string"
     },
+    "track_cid": {
+      "type": "string"
+    },
     "mood": {
       "type": "string"
     },
@@ -5100,10 +6716,12 @@ The following are examples of response formats you can expect to receive from th
     "user": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -5112,11 +6730,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -5182,6 +6804,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -5192,6 +6817,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -5208,6 +6836,9 @@ The following are examples of response formats you can expect to receive from th
     },
     "permalink": {
       "type": "string"
+    },
+    "is_streamable": {
+      "type": "boolean"
     }
   },
   "type": "object"
@@ -5223,6 +6854,7 @@ The following are examples of response formats you can expect to receive from th
 |description|string|false|none|none|
 |genre|string|false|none|none|
 |id|string|true|none|none|
+|track_cid|string|false|none|none|
 |mood|string|false|none|none|
 |release_date|string|false|none|none|
 |remix_of|[remix_parent](#schemaremix_parent)|false|none|none|
@@ -5235,6 +6867,7 @@ The following are examples of response formats you can expect to receive from th
 |downloadable|boolean|false|none|none|
 |play_count|integer|true|none|none|
 |permalink|string|false|none|none|
+|is_streamable|boolean|false|none|none|
 
 <a id="schematrack_artwork"></a>
 <a id="schema_track_artwork"></a>
@@ -5400,86 +7033,6 @@ The following are examples of response formats you can expect to receive from th
 |item_type|object|false|none|none|
 |item|object|false|none|none|
 
-<a id="schemafavorites_response"></a>
-<a id="schema_favorites_response"></a>
-<a id="tocSfavorites_response"></a>
-<a id="tocsfavorites_response"></a>
-<h2 id="tocS_favorites_response">favorites_response</h2>
-
-```json
-{
-  "properties": {
-    "data": {
-      "type": "array",
-      "items": {
-        "required": [
-          "favorite_item_id",
-          "favorite_type",
-          "user_id"
-        ],
-        "properties": {
-          "favorite_item_id": {
-            "type": "string"
-          },
-          "favorite_type": {
-            "type": "string"
-          },
-          "user_id": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      }
-    }
-  },
-  "type": "object"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|[[favorite](#schemafavorite)]|false|none|none|
-
-<a id="schemafavorite"></a>
-<a id="schema_favorite"></a>
-<a id="tocSfavorite"></a>
-<a id="tocsfavorite"></a>
-<h2 id="tocS_favorite">favorite</h2>
-
-```json
-{
-  "required": [
-    "favorite_item_id",
-    "favorite_type",
-    "user_id"
-  ],
-  "properties": {
-    "favorite_item_id": {
-      "type": "string"
-    },
-    "favorite_type": {
-      "type": "string"
-    },
-    "user_id": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|favorite_item_id|string|true|none|none|
-|favorite_type|string|true|none|none|
-|user_id|string|true|none|none|
-
 <a id="schematags_response"></a>
 <a id="schema_tags_response"></a>
 <a id="tocStags_response"></a>
@@ -5507,6 +7060,95 @@ The following are examples of response formats you can expect to receive from th
 |---|---|---|---|---|
 |data|[string]|false|none|none|
 
+<a id="schemafavorites_response"></a>
+<a id="schema_favorites_response"></a>
+<a id="tocSfavorites_response"></a>
+<a id="tocsfavorites_response"></a>
+<h2 id="tocS_favorites_response">favorites_response</h2>
+
+```json
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "required": [
+          "created_at",
+          "favorite_item_id",
+          "favorite_type",
+          "user_id"
+        ],
+        "properties": {
+          "favorite_item_id": {
+            "type": "string"
+          },
+          "favorite_type": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[favorite](#schemafavorite)]|false|none|none|
+
+<a id="schemafavorite"></a>
+<a id="schema_favorite"></a>
+<a id="tocSfavorite"></a>
+<a id="tocsfavorite"></a>
+<h2 id="tocS_favorite">favorite</h2>
+
+```json
+{
+  "required": [
+    "created_at",
+    "favorite_item_id",
+    "favorite_type",
+    "user_id"
+  ],
+  "properties": {
+    "favorite_item_id": {
+      "type": "string"
+    },
+    "favorite_type": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|favorite_item_id|string|true|none|none|
+|favorite_type|string|true|none|none|
+|user_id|string|true|none|none|
+|created_at|string|true|none|none|
+
 <a id="schemauser_search"></a>
 <a id="schema_user_search"></a>
 <a id="tocSuser_search"></a>
@@ -5521,10 +7163,12 @@ The following are examples of response formats you can expect to receive from th
       "items": {
         "required": [
           "album_count",
+          "erc_wallet",
           "followee_count",
           "follower_count",
           "handle",
           "id",
+          "is_available",
           "is_deactivated",
           "is_verified",
           "name",
@@ -5533,11 +7177,15 @@ The following are examples of response formats you can expect to receive from th
           "spl_wallet",
           "supporter_count",
           "supporting_count",
+          "total_audio_balance",
           "track_count"
         ],
         "properties": {
           "album_count": {
             "type": "integer"
+          },
+          "artist_pick_track_id": {
+            "type": "string"
           },
           "bio": {
             "type": "string"
@@ -5603,6 +7251,9 @@ The following are examples of response formats you can expect to receive from th
           "is_deactivated": {
             "type": "boolean"
           },
+          "is_available": {
+            "type": "boolean"
+          },
           "erc_wallet": {
             "type": "string"
           },
@@ -5613,6 +7264,553 @@ The following are examples of response formats you can expect to receive from th
             "type": "integer"
           },
           "supporting_count": {
+            "type": "integer"
+          },
+          "total_audio_balance": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[user](#schemauser)]|false|none|none|
+
+<a id="schemasubscribers_response"></a>
+<a id="schema_subscribers_response"></a>
+<a id="tocSsubscribers_response"></a>
+<a id="tocssubscribers_response"></a>
+<h2 id="tocS_subscribers_response">subscribers_response</h2>
+
+```json
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "required": [
+          "album_count",
+          "erc_wallet",
+          "followee_count",
+          "follower_count",
+          "handle",
+          "id",
+          "is_available",
+          "is_deactivated",
+          "is_verified",
+          "name",
+          "playlist_count",
+          "repost_count",
+          "spl_wallet",
+          "supporter_count",
+          "supporting_count",
+          "total_audio_balance",
+          "track_count"
+        ],
+        "properties": {
+          "album_count": {
+            "type": "integer"
+          },
+          "artist_pick_track_id": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "cover_photo": {
+            "properties": {
+              "640x": {
+                "type": "string"
+              },
+              "2000x": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "followee_count": {
+            "type": "integer"
+          },
+          "follower_count": {
+            "type": "integer"
+          },
+          "does_follow_current_user": {
+            "type": "boolean"
+          },
+          "handle": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "playlist_count": {
+            "type": "integer"
+          },
+          "profile_picture": {
+            "properties": {
+              "150x150": {
+                "type": "string"
+              },
+              "480x480": {
+                "type": "string"
+              },
+              "1000x1000": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "repost_count": {
+            "type": "integer"
+          },
+          "track_count": {
+            "type": "integer"
+          },
+          "is_deactivated": {
+            "type": "boolean"
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "erc_wallet": {
+            "type": "string"
+          },
+          "spl_wallet": {
+            "type": "string"
+          },
+          "supporter_count": {
+            "type": "integer"
+          },
+          "supporting_count": {
+            "type": "integer"
+          },
+          "total_audio_balance": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[user](#schemauser)]|false|none|none|
+
+<a id="schemafollowers_response"></a>
+<a id="schema_followers_response"></a>
+<a id="tocSfollowers_response"></a>
+<a id="tocsfollowers_response"></a>
+<h2 id="tocS_followers_response">followers_response</h2>
+
+```json
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "required": [
+          "album_count",
+          "erc_wallet",
+          "followee_count",
+          "follower_count",
+          "handle",
+          "id",
+          "is_available",
+          "is_deactivated",
+          "is_verified",
+          "name",
+          "playlist_count",
+          "repost_count",
+          "spl_wallet",
+          "supporter_count",
+          "supporting_count",
+          "total_audio_balance",
+          "track_count"
+        ],
+        "properties": {
+          "album_count": {
+            "type": "integer"
+          },
+          "artist_pick_track_id": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "cover_photo": {
+            "properties": {
+              "640x": {
+                "type": "string"
+              },
+              "2000x": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "followee_count": {
+            "type": "integer"
+          },
+          "follower_count": {
+            "type": "integer"
+          },
+          "does_follow_current_user": {
+            "type": "boolean"
+          },
+          "handle": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "playlist_count": {
+            "type": "integer"
+          },
+          "profile_picture": {
+            "properties": {
+              "150x150": {
+                "type": "string"
+              },
+              "480x480": {
+                "type": "string"
+              },
+              "1000x1000": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "repost_count": {
+            "type": "integer"
+          },
+          "track_count": {
+            "type": "integer"
+          },
+          "is_deactivated": {
+            "type": "boolean"
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "erc_wallet": {
+            "type": "string"
+          },
+          "spl_wallet": {
+            "type": "string"
+          },
+          "supporter_count": {
+            "type": "integer"
+          },
+          "supporting_count": {
+            "type": "integer"
+          },
+          "total_audio_balance": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[user](#schemauser)]|false|none|none|
+
+<a id="schemafollowing_response"></a>
+<a id="schema_following_response"></a>
+<a id="tocSfollowing_response"></a>
+<a id="tocsfollowing_response"></a>
+<h2 id="tocS_following_response">following_response</h2>
+
+```json
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "required": [
+          "album_count",
+          "erc_wallet",
+          "followee_count",
+          "follower_count",
+          "handle",
+          "id",
+          "is_available",
+          "is_deactivated",
+          "is_verified",
+          "name",
+          "playlist_count",
+          "repost_count",
+          "spl_wallet",
+          "supporter_count",
+          "supporting_count",
+          "total_audio_balance",
+          "track_count"
+        ],
+        "properties": {
+          "album_count": {
+            "type": "integer"
+          },
+          "artist_pick_track_id": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "cover_photo": {
+            "properties": {
+              "640x": {
+                "type": "string"
+              },
+              "2000x": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "followee_count": {
+            "type": "integer"
+          },
+          "follower_count": {
+            "type": "integer"
+          },
+          "does_follow_current_user": {
+            "type": "boolean"
+          },
+          "handle": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "playlist_count": {
+            "type": "integer"
+          },
+          "profile_picture": {
+            "properties": {
+              "150x150": {
+                "type": "string"
+              },
+              "480x480": {
+                "type": "string"
+              },
+              "1000x1000": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "repost_count": {
+            "type": "integer"
+          },
+          "track_count": {
+            "type": "integer"
+          },
+          "is_deactivated": {
+            "type": "boolean"
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "erc_wallet": {
+            "type": "string"
+          },
+          "spl_wallet": {
+            "type": "string"
+          },
+          "supporter_count": {
+            "type": "integer"
+          },
+          "supporting_count": {
+            "type": "integer"
+          },
+          "total_audio_balance": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "type": "object"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[user](#schemauser)]|false|none|none|
+
+<a id="schemarelated_artist_response"></a>
+<a id="schema_related_artist_response"></a>
+<a id="tocSrelated_artist_response"></a>
+<a id="tocsrelated_artist_response"></a>
+<h2 id="tocS_related_artist_response">related_artist_response</h2>
+
+```json
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "required": [
+          "album_count",
+          "erc_wallet",
+          "followee_count",
+          "follower_count",
+          "handle",
+          "id",
+          "is_available",
+          "is_deactivated",
+          "is_verified",
+          "name",
+          "playlist_count",
+          "repost_count",
+          "spl_wallet",
+          "supporter_count",
+          "supporting_count",
+          "total_audio_balance",
+          "track_count"
+        ],
+        "properties": {
+          "album_count": {
+            "type": "integer"
+          },
+          "artist_pick_track_id": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "cover_photo": {
+            "properties": {
+              "640x": {
+                "type": "string"
+              },
+              "2000x": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "followee_count": {
+            "type": "integer"
+          },
+          "follower_count": {
+            "type": "integer"
+          },
+          "does_follow_current_user": {
+            "type": "boolean"
+          },
+          "handle": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "playlist_count": {
+            "type": "integer"
+          },
+          "profile_picture": {
+            "properties": {
+              "150x150": {
+                "type": "string"
+              },
+              "480x480": {
+                "type": "string"
+              },
+              "1000x1000": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "repost_count": {
+            "type": "integer"
+          },
+          "track_count": {
+            "type": "integer"
+          },
+          "is_deactivated": {
+            "type": "boolean"
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "erc_wallet": {
+            "type": "string"
+          },
+          "spl_wallet": {
+            "type": "string"
+          },
+          "supporter_count": {
+            "type": "integer"
+          },
+          "supporting_count": {
+            "type": "integer"
+          },
+          "total_audio_balance": {
             "type": "integer"
           }
         },
@@ -5791,10 +7989,12 @@ The following are examples of response formats you can expect to receive from th
           "sender": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -5803,11 +8003,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -5873,6 +8077,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -5883,6 +8090,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -5927,10 +8137,12 @@ The following are examples of response formats you can expect to receive from th
     "sender": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -5939,11 +8151,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -6009,6 +8225,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -6019,6 +8238,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -6065,10 +8287,12 @@ The following are examples of response formats you can expect to receive from th
           "receiver": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -6077,11 +8301,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -6147,6 +8375,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -6157,6 +8388,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -6201,10 +8435,12 @@ The following are examples of response formats you can expect to receive from th
     "receiver": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -6213,11 +8449,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -6283,6 +8523,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -6293,6 +8536,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -6356,9 +8602,6 @@ The following are examples of response formats you can expect to receive from th
               "type": "string"
             },
             "1000x1000": {
-              "type": "string"
-            },
-            "misc": {
               "type": "string"
             }
           },
@@ -6428,9 +8671,6 @@ The following are examples of response formats you can expect to receive from th
         },
         "1000x1000": {
           "type": "string"
-        },
-        "misc": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -6477,9 +8717,6 @@ The following are examples of response formats you can expect to receive from th
     },
     "1000x1000": {
       "type": "string"
-    },
-    "misc": {
-      "type": "string"
     }
   },
   "type": "object"
@@ -6494,7 +8731,6 @@ The following are examples of response formats you can expect to receive from th
 |150x150|string|false|none|none|
 |480x480|string|false|none|none|
 |1000x1000|string|false|none|none|
-|misc|string|false|none|none|
 
 <a id="schemaplaylist_response"></a>
 <a id="schema_playlist_response"></a>
@@ -6535,6 +8771,9 @@ The following are examples of response formats you can expect to receive from th
           "description": {
             "type": "string"
           },
+          "permalink": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -6556,10 +8795,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -6568,11 +8809,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -6638,6 +8883,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -6648,6 +8896,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -6704,6 +8955,9 @@ The following are examples of response formats you can expect to receive from th
     "description": {
       "type": "string"
     },
+    "permalink": {
+      "type": "string"
+    },
     "id": {
       "type": "string"
     },
@@ -6725,10 +8979,12 @@ The following are examples of response formats you can expect to receive from th
     "user": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -6737,11 +8993,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -6807,6 +9067,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -6817,6 +9080,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -6834,6 +9100,7 @@ The following are examples of response formats you can expect to receive from th
 |---|---|---|---|---|
 |artwork|[playlist_artwork](#schemaplaylist_artwork)|false|none|none|
 |description|string|false|none|none|
+|permalink|string|false|none|none|
 |id|string|true|none|none|
 |is_album|boolean|true|none|none|
 |playlist_name|string|true|none|none|
@@ -6919,6 +9186,9 @@ The following are examples of response formats you can expect to receive from th
           "id": {
             "type": "string"
           },
+          "track_cid": {
+            "type": "string"
+          },
           "mood": {
             "type": "string"
           },
@@ -6959,10 +9229,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -6971,11 +9243,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -7041,6 +9317,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -7051,6 +9330,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -7067,6 +9349,9 @@ The following are examples of response formats you can expect to receive from th
           },
           "permalink": {
             "type": "string"
+          },
+          "is_streamable": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -7123,6 +9408,9 @@ The following are examples of response formats you can expect to receive from th
           "description": {
             "type": "string"
           },
+          "permalink": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -7144,10 +9432,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -7156,11 +9446,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -7226,6 +9520,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -7236,6 +9533,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -7296,6 +9596,9 @@ The following are examples of response formats you can expect to receive from th
           "description": {
             "type": "string"
           },
+          "permalink": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -7317,10 +9620,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -7329,11 +9634,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -7399,6 +9708,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -7409,6 +9721,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -7473,6 +9788,9 @@ The following are examples of response formats you can expect to receive from th
         "id": {
           "type": "string"
         },
+        "track_cid": {
+          "type": "string"
+        },
         "mood": {
           "type": "string"
         },
@@ -7513,10 +9831,12 @@ The following are examples of response formats you can expect to receive from th
         "user": {
           "required": [
             "album_count",
+            "erc_wallet",
             "followee_count",
             "follower_count",
             "handle",
             "id",
+            "is_available",
             "is_deactivated",
             "is_verified",
             "name",
@@ -7525,11 +9845,15 @@ The following are examples of response formats you can expect to receive from th
             "spl_wallet",
             "supporter_count",
             "supporting_count",
+            "total_audio_balance",
             "track_count"
           ],
           "properties": {
             "album_count": {
               "type": "integer"
+            },
+            "artist_pick_track_id": {
+              "type": "string"
             },
             "bio": {
               "type": "string"
@@ -7595,6 +9919,9 @@ The following are examples of response formats you can expect to receive from th
             "is_deactivated": {
               "type": "boolean"
             },
+            "is_available": {
+              "type": "boolean"
+            },
             "erc_wallet": {
               "type": "string"
             },
@@ -7605,6 +9932,9 @@ The following are examples of response formats you can expect to receive from th
               "type": "integer"
             },
             "supporting_count": {
+              "type": "integer"
+            },
+            "total_audio_balance": {
               "type": "integer"
             }
           },
@@ -7621,6 +9951,9 @@ The following are examples of response formats you can expect to receive from th
         },
         "permalink": {
           "type": "string"
+        },
+        "is_streamable": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -7682,6 +10015,9 @@ The following are examples of response formats you can expect to receive from th
           "id": {
             "type": "string"
           },
+          "track_cid": {
+            "type": "string"
+          },
           "mood": {
             "type": "string"
           },
@@ -7722,10 +10058,12 @@ The following are examples of response formats you can expect to receive from th
           "user": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -7734,11 +10072,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -7804,6 +10146,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -7814,6 +10159,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -7830,6 +10178,9 @@ The following are examples of response formats you can expect to receive from th
           },
           "permalink": {
             "type": "string"
+          },
+          "is_streamable": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -7870,10 +10221,12 @@ The following are examples of response formats you can expect to receive from th
           "sender": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -7882,11 +10235,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -7952,6 +10309,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -7962,6 +10322,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -7970,10 +10333,12 @@ The following are examples of response formats you can expect to receive from th
           "receiver": {
             "required": [
               "album_count",
+              "erc_wallet",
               "followee_count",
               "follower_count",
               "handle",
               "id",
+              "is_available",
               "is_deactivated",
               "is_verified",
               "name",
@@ -7982,11 +10347,15 @@ The following are examples of response formats you can expect to receive from th
               "spl_wallet",
               "supporter_count",
               "supporting_count",
+              "total_audio_balance",
               "track_count"
             ],
             "properties": {
               "album_count": {
                 "type": "integer"
+              },
+              "artist_pick_track_id": {
+                "type": "string"
               },
               "bio": {
                 "type": "string"
@@ -8052,6 +10421,9 @@ The following are examples of response formats you can expect to receive from th
               "is_deactivated": {
                 "type": "boolean"
               },
+              "is_available": {
+                "type": "boolean"
+              },
               "erc_wallet": {
                 "type": "string"
               },
@@ -8062,6 +10434,9 @@ The following are examples of response formats you can expect to receive from th
                 "type": "integer"
               },
               "supporting_count": {
+                "type": "integer"
+              },
+              "total_audio_balance": {
                 "type": "integer"
               }
             },
@@ -8105,10 +10480,12 @@ The following are examples of response formats you can expect to receive from th
     "sender": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -8117,11 +10494,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -8187,6 +10568,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -8197,6 +10581,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
@@ -8205,10 +10592,12 @@ The following are examples of response formats you can expect to receive from th
     "receiver": {
       "required": [
         "album_count",
+        "erc_wallet",
         "followee_count",
         "follower_count",
         "handle",
         "id",
+        "is_available",
         "is_deactivated",
         "is_verified",
         "name",
@@ -8217,11 +10606,15 @@ The following are examples of response formats you can expect to receive from th
         "spl_wallet",
         "supporter_count",
         "supporting_count",
+        "total_audio_balance",
         "track_count"
       ],
       "properties": {
         "album_count": {
           "type": "integer"
+        },
+        "artist_pick_track_id": {
+          "type": "string"
         },
         "bio": {
           "type": "string"
@@ -8287,6 +10680,9 @@ The following are examples of response formats you can expect to receive from th
         "is_deactivated": {
           "type": "boolean"
         },
+        "is_available": {
+          "type": "boolean"
+        },
         "erc_wallet": {
           "type": "string"
         },
@@ -8297,6 +10693,9 @@ The following are examples of response formats you can expect to receive from th
           "type": "integer"
         },
         "supporting_count": {
+          "type": "integer"
+        },
+        "total_audio_balance": {
           "type": "integer"
         }
       },
