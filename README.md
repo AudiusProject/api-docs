@@ -12,6 +12,8 @@ bundle install
 npm install
 ```
 
+If you see issues with bundler/ffi, you can try running `bundle update ffi` as per `https://stackoverflow.com/questions/31100347/bundle-install-is-not-successful-cannot-install-ffi-1-9-9-osx-10-9`
+
 ### 2. Start server
 ```bash
 # Runs the server on localhost:4567 and watches for changes

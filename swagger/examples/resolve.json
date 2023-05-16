@@ -1,54 +1,59 @@
 {
   "data": {
     "artwork": {
-      "150x150": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/150x150.jpg",
-      "480x480": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/480x480.jpg",
-      "1000x1000": "https://creatornode.audius.co/ipfs/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/1000x1000.jpg"
+      "150x150": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/150x150.jpg",
+      "480x480": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/480x480.jpg",
+      "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmRSVdvMkVnV4UhGNQzNm8pJLLsGwQXyZkCp1dAMYfZx9d/1000x1000.jpg"
     },
     "description": "HYPERMANTRA.\n1 play, 7 chapters, no breaks.\n\nget it here: http://tiny.cc/hypermantra\n\npremiered on Ä Live 8/22.\n\ncredits: ilian, the salsoul orchestra, brian bennett, 100% pure poison, you & explosion band, yuji ohno, frank ocean.",
     "genre": "Electronic",
     "id": "V4W8r",
+    "track_cid": "QmcPiBC9eszbYnFaBTxWW1njhWrhYGb2GyfsmsrALNvgcK",
     "mood": "Yearning",
     "release_date": "Mon Aug 24 2020 21:08:36 GMT+0200",
     "remix_of": {
       "tracks": null
     },
     "repost_count": 78,
-    "favorite_count": 171,
+    "favorite_count": 173,
     "tags": null,
     "title": "HYPERMANTRA",
     "user": {
       "album_count": 0,
+      "artist_pick_track_id": null,
       "bio": "kawaii bounce 🌟\n\nmy sample pack: gum.co/camocandybox1\n\nheader by paprikaworm",
       "cover_photo": {
-        "640x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/640x.jpg",
-        "2000x": "https://creatornode.audius.co/ipfs/QmS3mXLjrmm5i61CWzJHSmQcwKPNQw92rTWC36nCsqF3uU/2000x.jpg"
+        "640x": "https://audius-content-1.cultur3stake.com/content/QmRf3uh9tS8EbV59ArZwJN8UnpsjMyRyp2LVrpU7K1DYm2/640x.jpg",
+        "2000x": "https://audius-content-1.cultur3stake.com/content/QmRf3uh9tS8EbV59ArZwJN8UnpsjMyRyp2LVrpU7K1DYm2/2000x.jpg"
       },
-      "followee_count": 204,
-      "follower_count": 16997,
+      "followee_count": 208,
+      "follower_count": 17635,
       "does_follow_current_user": false,
       "handle": "camouflybeats",
       "id": "nd6JD",
-      "is_verified": false,
+      "is_verified": true,
       "location": "",
-      "name": "camoufly 🌟",
-      "playlist_count": 4,
+      "name": "camoufly",
+      "playlist_count": 5,
       "profile_picture": {
-        "150x150": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/150x150.jpg",
-        "480x480": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/480x480.jpg",
-        "1000x1000": "https://creatornode.audius.co/ipfs/QmZDEwMQbKFAgGMbM6YLRvvnqy1SjVqK6k7yPks4sdCEh4/1000x1000.jpg"
+        "150x150": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/150x150.jpg",
+        "480x480": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/480x480.jpg",
+        "1000x1000": "https://audius-content-1.cultur3stake.com/content/QmP7RZkooL73JNMDSQ34TYYARzmYD8Xd9onA7kh7U5h3PR/1000x1000.jpg"
       },
-      "repost_count": 157,
-      "track_count": 64,
+      "repost_count": 162,
+      "track_count": 80,
       "is_deactivated": false,
+      "is_available": true,
       "erc_wallet": "0xa65a69a3c38b55b9a3f83266bcc36fe6950cd85f",
       "spl_wallet": "2bnJKYk6WnseedNWkDEACmS5563uxLCrSRAsQqora947",
-      "supporter_count": 0,
-      "supporting_count": 0
+      "supporter_count": 32,
+      "supporting_count": 0,
+      "total_audio_balance": 3496
     },
     "duration": 1741,
     "downloadable": false,
-    "play_count": 12867,
-    "permalink": "/camouflybeats/hypermantra-86216"
+    "play_count": 12927,
+    "permalink": "/camouflybeats/hypermantra-86216",
+    "is_streamable": true
   }
 }

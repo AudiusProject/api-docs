@@ -2,55 +2,60 @@
   "data": [
     {
       "artwork": {
-        "150x150": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/150x150.jpg",
-        "480x480": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/480x480.jpg",
-        "1000x1000": "https://creatornode3.audius.co/ipfs/QmV1pQZdfmrMFG2E4GCPvTcC3JVXUejfdZ4W2rSa3jTjsZ/1000x1000.jpg"
+        "150x150": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/150x150.jpg",
+        "480x480": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/480x480.jpg",
+        "1000x1000": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmZJ9dKg4S1BRnRiHPUpoDCjKtTxtg8Nhgei2vTkgNyQ1h/1000x1000.jpg"
       },
-      "description": null,
-      "genre": "Hip-Hop/Rap",
-      "id": "W66jo",
-      "mood": "Gritty",
-      "release_date": "Fri Jun 24 2022 08:14:47 GMT-0700",
+      "description": "Louis Futon “David Blaine” Out Now: https://stem.ffm.to/davidblaine\n\nLouis Futon Merch, Tour Dates, and more... \nhttps://louisfutonbeats.com/\n\nSubscribe to Louis Futon\nhttps://bit.ly/LouisFutonYouTube\n\nFollow Louis Futon\nhttps://instagram.com/louisfutonbeats\nhttps://twitter.com/louisfutonbeats\nhttps://tiktok.com/@notlouisfuton\nhttps://facebook.com/Louisfutonbeats\nhttps://www.twitch.tv/louisfutontv\n\nJoin the community\nhttps://discord.gg/geshyzwA\n\n#LouisFuton #DavidBlaine\n\nMixed/Mastered byJacob Weinstein \nCo-written by Ariel Shrum\nSax, bass clarinet & flute by Hailey Niswanger",
+      "genre": "Electronic",
+      "id": "7dm4zrr",
+      "track_cid": "QmWwMTU6rjCp2t3xtjjLUXSF85bxJkxQesrcrSd8fJ5P2d",
+      "mood": "Sensual",
+      "release_date": "Fri May 05 2023 10:10:02 GMT-0700",
       "remix_of": {
         "tracks": null
       },
-      "repost_count": 44,
-      "favorite_count": 72,
-      "tags": null,
-      "title": "TAXIN",
+      "repost_count": 54,
+      "favorite_count": 100,
+      "tags": "louisfuton,davidblaine",
+      "title": "Louis Futon - David Blaine",
       "user": {
-        "album_count": 1,
-        "bio": "$INGLES COLLECTION\nhttps://linktr.ee/DarnellW\n\nEach collector will receive 10% of the music royalties via UnitedMasters Splitpay. news.unitedmasters.com/blog/splitpay (Does not include licensing rights)",
+        "album_count": 2,
+        "artist_pick_track_id": null,
+        "bio": "Management: eric@jet-mgmt.com",
         "cover_photo": {
-          "640x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/640x.jpg",
-          "2000x": "https://creatornode3.audius.co/ipfs/QmdttfmkepBmhRN1SXN1HahhyURGkZTQvfvvnHFjFiTxS1/2000x.jpg"
+          "640x": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmWWPNRrzgasSoGt4SZceuukFf8FbJR8mzsgtYpDNRWkwf/640x.jpg",
+          "2000x": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmWWPNRrzgasSoGt4SZceuukFf8FbJR8mzsgtYpDNRWkwf/2000x.jpg"
         },
-        "followee_count": 28,
-        "follower_count": 28884,
+        "followee_count": 15,
+        "follower_count": 2239,
         "does_follow_current_user": false,
-        "handle": "DarnellWilliams",
-        "id": "6EEYG",
+        "handle": "louisfutonbeats",
+        "id": "n098k",
         "is_verified": true,
-        "location": "Los Angeles",
-        "name": "Darnell William$",
-        "playlist_count": 0,
+        "location": "Los Angeles, CA",
+        "name": "Louis Futon",
+        "playlist_count": 2,
         "profile_picture": {
-          "150x150": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/150x150.jpg",
-          "480x480": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/480x480.jpg",
-          "1000x1000": "https://creatornode3.audius.co/ipfs/QmZJibTCb9ti4ZRr8myKcLXeE2yFMmvu7WPYZ7Nghp4yN3/1000x1000.jpg"
+          "150x150": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/150x150.jpg",
+          "480x480": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/480x480.jpg",
+          "1000x1000": "https://blockdaemon-audius-content-06.bdnodes.net/content/QmeRrmABZJTGGqQsTo19FkvepEHoZPsmkabGPcLxxfXx2q/1000x1000.jpg"
         },
-        "repost_count": 2,
-        "track_count": 19,
+        "repost_count": 10,
+        "track_count": 50,
         "is_deactivated": false,
-        "erc_wallet": "0x1a994e5b35526111e7aa92fece1815f5099c72b2",
-        "spl_wallet": "5rnytbVtJiV1fqkUPHZhFngPsmEFgjpjJWSg2oLCt2ut",
-        "supporter_count": 0,
-        "supporting_count": 0
+        "is_available": true,
+        "erc_wallet": "0x4ef00cc32ce488af3ec291a89549712b2dd14f2e",
+        "spl_wallet": "1hfVnihF2p6F6n22easszN3wpn5efVaDGTDFsUxmJ9V",
+        "supporter_count": 6,
+        "supporting_count": 0,
+        "total_audio_balance": 62
       },
-      "duration": 166,
-      "downloadable": false,
-      "play_count": 5814,
-      "permalink": "/DarnellWilliams/taxin"
+      "duration": 197,
+      "downloadable": true,
+      "play_count": 24254,
+      "permalink": "/louisfutonbeats/louis-futon-david-blaine",
+      "is_streamable": true
     }
   ]
 }

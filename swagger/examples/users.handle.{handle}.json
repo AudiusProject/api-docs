@@ -1,0 +1,34 @@
+{
+  "data": {
+    "album_count": 1,
+    "artist_pick_track_id": "bbzxO",
+    "bio": "Grammy award winning recording artist",
+    "cover_photo": {
+      "640x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/640x.jpg",
+      "2000x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/2000x.jpg"
+    },
+    "followee_count": 19,
+    "follower_count": 64352,
+    "does_follow_current_user": false,
+    "handle": "RAC",
+    "id": "nkwv1",
+    "is_verified": true,
+    "location": "Portland, OR",
+    "name": "RAC",
+    "playlist_count": 0,
+    "profile_picture": {
+      "150x150": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/150x150.jpg",
+      "480x480": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/480x480.jpg",
+      "1000x1000": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/1000x1000.jpg"
+    },
+    "repost_count": 12,
+    "track_count": 16,
+    "is_deactivated": false,
+    "is_available": true,
+    "erc_wallet": "0x346dfbfaf04f40a7f4d327a4935ee98a5bdbd478",
+    "spl_wallet": "2AXmXpWwbFTRWJWkmfjfKajapgAkQEQKkqxooBRZd5cf",
+    "supporter_count": 23,
+    "supporting_count": 1,
+    "total_audio_balance": 114101
+  }
+}
