@@ -130,16 +130,35 @@ const paramMapping = {
 
 const operationIdMapping = {
   '/users/{id}/tracks': "Get User's Tracks",
-  '/users/{id}/favorites': "Get User's Favorite Tracks",
+  '/users/{id}/favorites': "Get User's Favorite",
   '/users/{id}/reposts': "Get User's Reposts",
   '/users/{id}/tags': "Get User's Most Used Track Tags",
   '/users/{id}/connected_wallets': "Get User's Connected Wallets",
+  '/users/handle/{handle}/tracks/ai_attributed': 'Get AI Tracks by Handle',
   '/users/verify_token': 'Verify ID Token'
 }
 
 const routeOrdering = {
   tracks: ['/tracks/{track_id}', '/tracks'],
-  users: ['/users/{id}'],
+  users: [
+    '/users/{id}',
+    '/users/id',
+    '/users/search',
+    '/users/verify_token',
+    '/users/{id}/connected_wallets',
+    '/users/{id}/favorites',
+    '/users/{id}/reposts',
+    '/users/{id}/followers',
+    '/users/{id}/following',
+    '/users/{id}/supporters',
+    '/users/{id}/supporting',
+    '/users/{id}/tracks',
+    '/users/{id}/related',
+    '/users/{id}/subscribers',
+    '/users/{id}/tags',
+    '/users/handle/{handle}',
+    '/users/handle/{handle}/tracks/ai_attributed'
+  ],
   playlists: ['/playlists/{playlist_id}']
 }
 

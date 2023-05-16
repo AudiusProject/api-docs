@@ -201,440 +201,6 @@ Gets a single user by their user ID
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
-## Get User by Handle
-
-<a id="opIdGet User by Handle"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/rac',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/handle/rac', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/rac', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/rac", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/handle/{handle}`
-
-Gets a single user by their handle
-
-<h3 id="get-user-by-handle-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|handle|string|true|A User handle|
-|user_id|string|false|The user ID of the user making the request|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": {
-    "album_count": 1,
-    "artist_pick_track_id": "bbzxO",
-    "bio": "Grammy award winning recording artist",
-    "cover_photo": {
-      "640x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/640x.jpg",
-      "2000x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/2000x.jpg"
-    },
-    "followee_count": 19,
-    "follower_count": 64352,
-    "does_follow_current_user": false,
-    "handle": "RAC",
-    "id": "nkwv1",
-    "is_verified": true,
-    "location": "Portland, OR",
-    "name": "RAC",
-    "playlist_count": 0,
-    "profile_picture": {
-      "150x150": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/150x150.jpg",
-      "480x480": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/480x480.jpg",
-      "1000x1000": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/1000x1000.jpg"
-    },
-    "repost_count": 12,
-    "track_count": 16,
-    "is_deactivated": false,
-    "is_available": true,
-    "erc_wallet": "0x346dfbfaf04f40a7f4d327a4935ee98a5bdbd478",
-    "spl_wallet": "2AXmXpWwbFTRWJWkmfjfKajapgAkQEQKkqxooBRZd5cf",
-    "supporter_count": 23,
-    "supporting_count": 1,
-    "total_audio_balance": 114101
-  }
-}
-```
-
-<h3 id="get-user-by-handle-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[user_response](#schemauser_response)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
-## Get AI Attributed Tracks by User Handle
-
-<a id="opIdGet AI Attributed Tracks by User Handle"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/handle/{handle}/tracks/ai_attributed`
-
-Gets the AI generated tracks attributed to a user using the user's handle
-
-<h3 id="get-ai-attributed-tracks-by-user-handle-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|handle|string|true|A User handle|
-|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
-|limit|integer|false|The number of items to fetch|
-|user_id|string|false|The user ID of the user making the request|
-|sort|string|false|[Deprecated] Field to sort by<table class="inline"><tr><th>Available values:</th><td>date</td><td>plays</td></tr></table>|
-|query|string|false|The filter query|
-|sort_method|string|false|The sort method<table class="inline"><tr><th>Available values:</th><td>title</td><td>artist_name</td><td>release_date</td><td>last_listen_date</td><td>added_date</td><td>length</td><td>plays</td><td>reposts</td><td>saves</td><td>most_listens_by_user</td></tr></table>|
-|sort_direction|string|false|The sort direction<table class="inline"><tr><th>Available values:</th><td>asc</td><td>desc</td></tr></table>|
-|filter_tracks|string|false|Filter by unlisted or public tracks<table class="inline"><tr><th>Available values:</th><td>all</td><td>public</td><td>unlisted</td></tr></table>|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": [
-    {
-      "artwork": {
-        "150x150": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/150x150.jpg",
-        "480x480": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/480x480.jpg",
-        "1000x1000": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/1000x1000.jpg"
-      },
-      "description": "Made with Boomy",
-      "genre": "Electronic",
-      "id": "wzwEM32",
-      "track_cid": "Qme14CQbQPTK1snP8Gt3JSdGAHHdWFJAg25FnVue4s1oT7",
-      "mood": "Sophisticated",
-      "release_date": "Mon May 01 2023 17:17:23 GMT-0700",
-      "remix_of": {
-        "tracks": null
-      },
-      "repost_count": 1,
-      "favorite_count": 2,
-      "tags": "ai,aimusic",
-      "title": "PhutureAI",
-      "user": {
-        "album_count": 0,
-        "artist_pick_track_id": null,
-        "bio": "Founder of Phuture Collective",
-        "cover_photo": {
-          "640x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/640x.jpg",
-          "2000x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/2000x.jpg"
-        },
-        "followee_count": 8,
-        "follower_count": 247,
-        "does_follow_current_user": false,
-        "handle": "synchronistic",
-        "id": "LRNZL",
-        "is_verified": false,
-        "location": "Portland, OR",
-        "name": "synchronistic",
-        "playlist_count": 0,
-        "profile_picture": {
-          "150x150": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/150x150.jpg",
-          "480x480": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/480x480.jpg",
-          "1000x1000": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/1000x1000.jpg"
-        },
-        "repost_count": 2,
-        "track_count": 3,
-        "is_deactivated": false,
-        "is_available": true,
-        "erc_wallet": "0x0b0e6bd939a6165a98ed8f4ea350a96d1127676f",
-        "spl_wallet": "4eKrNigZuzvAR4rYBLFJMRSULA1Me9LSwygMjqzEYJGc",
-        "supporter_count": 0,
-        "supporting_count": 0,
-        "total_audio_balance": 1
-      },
-      "duration": 67,
-      "downloadable": false,
-      "play_count": 1529,
-      "permalink": "/synchronistic/phutureai",
-      "is_streamable": true
-    }
-  ]
-}
-```
-
-<h3 id="get-ai-attributed-tracks-by-user-handle-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tracks_response](#schematracks_response)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
 ## Get User ID from Wallet
 
 <a id="opIdGet User ID from Wallet"></a>
@@ -1537,6 +1103,239 @@ Gets a user's favorite tracks
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
+## Get User's Reposts
+
+<a id="opIdGet User's Reposts"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/reposts',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/reposts', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/reposts', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/reposts", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/reposts`
+
+Gets the given user's reposts
+
+<h3 id="get-user's-reposts-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "timestamp": "2021-05-03 02:48:00",
+      "item_type": "track",
+      "item": {
+        "artwork": {
+          "150x150": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/150x150.jpg",
+          "480x480": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/480x480.jpg",
+          "1000x1000": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/1000x1000.jpg"
+        },
+        "description": null,
+        "genre": "Electronic",
+        "id": "y7XX7",
+        "track_cid": "QmXFnuP57woE7ZZ3HTkWggXuzZL13SJVLiL7rVE9qSFTyf",
+        "mood": "Other",
+        "release_date": "Sun Mar 28 2021 11:52:35 GMT-0700",
+        "remix_of": {
+          "tracks": null
+        },
+        "repost_count": 46,
+        "favorite_count": 100,
+        "tags": null,
+        "title": "PAULINE HERR @ BROWNIES & LEMONADE OPEN AUX 1/30",
+        "user": {
+          "album_count": 1,
+          "artist_pick_track_id": "JbQN0",
+          "bio": "producer, singer, human\n\nsocials: @paulineherr",
+          "cover_photo": {
+            "640x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/640x.jpg",
+            "2000x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/2000x.jpg"
+          },
+          "followee_count": 144,
+          "follower_count": 41573,
+          "does_follow_current_user": false,
+          "handle": "paulineherr",
+          "id": "eGEam",
+          "is_verified": true,
+          "location": "Burbank, CA",
+          "name": "Pauline Herr",
+          "playlist_count": 1,
+          "profile_picture": {
+            "150x150": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/150x150.jpg",
+            "480x480": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/480x480.jpg",
+            "1000x1000": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/1000x1000.jpg"
+          },
+          "repost_count": 155,
+          "track_count": 35,
+          "is_deactivated": false,
+          "is_available": true,
+          "erc_wallet": "0xf568ab060acd91fe4861e52136deb08ca1f26574",
+          "spl_wallet": "3DeyiqjmCAtqPUzGX6MQP2C62kKRANy7LFvcBzUEHqPc",
+          "supporter_count": 8,
+          "supporting_count": 0,
+          "total_audio_balance": 131
+        },
+        "duration": 1708,
+        "downloadable": false,
+        "play_count": 958,
+        "permalink": "/paulineherr/pauline-herr-brownies-lemonade-open-aux-130-316935",
+        "is_streamable": true
+      }
+    }
+  ]
+}
+```
+
+<h3 id="get-user's-reposts-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[reposts](#schemareposts)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
 ## Get Followers
 
 <a id="opIdGet Followers"></a>
@@ -1942,647 +1741,6 @@ All users that the provided user follows
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[following_response](#schemafollowing_response)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
-## Get Related Users
-
-<a id="opIdGet Related Users"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/related',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/related', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/related', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/related", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/{id}/related`
-
-Gets a list of users that might be of interest to followers of this user.
-
-<h3 id="get-related-users-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|id|string|true|A User ID|
-|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
-|limit|integer|false|The number of items to fetch|
-|user_id|string|false|The user ID of the user making the request|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": [
-    {
-      "album_count": 0,
-      "artist_pick_track_id": null,
-      "bio": "we are here for now. \n\ninquiries: joey@keel.la",
-      "cover_photo": {
-        "640x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/640x.jpg",
-        "2000x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/2000x.jpg"
-      },
-      "followee_count": 8,
-      "follower_count": 39042,
-      "does_follow_current_user": false,
-      "handle": "LouisTheChild",
-      "id": "LxQm2",
-      "is_verified": true,
-      "location": "Chicago, IL",
-      "name": "Louis The Child",
-      "playlist_count": 0,
-      "profile_picture": {
-        "150x150": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/150x150.jpg",
-        "480x480": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/480x480.jpg",
-        "1000x1000": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/1000x1000.jpg"
-      },
-      "repost_count": 1,
-      "track_count": 94,
-      "is_deactivated": false,
-      "is_available": true,
-      "erc_wallet": "0x0fd1293443c366bc433d85c94be56ca8117d0ef6",
-      "spl_wallet": "4V5UASoUDPSMRNU1AJ8vNh2kC7y1DXoMnaoehXCxNZsk",
-      "supporter_count": 4,
-      "supporting_count": 0,
-      "total_audio_balance": 12
-    }
-  ]
-}
-```
-
-<h3 id="get-related-users-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[related_artist_response](#schemarelated_artist_response)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
-## Get User's Reposts
-
-<a id="opIdGet User's Reposts"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/reposts',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/reposts', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/reposts', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/reposts?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/reposts", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/{id}/reposts`
-
-Gets the given user's reposts
-
-<h3 id="get-user's-reposts-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|id|string|true|A User ID|
-|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
-|limit|integer|false|The number of items to fetch|
-|user_id|string|false|The user ID of the user making the request|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": [
-    {
-      "timestamp": "2021-05-03 02:48:00",
-      "item_type": "track",
-      "item": {
-        "artwork": {
-          "150x150": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/150x150.jpg",
-          "480x480": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/480x480.jpg",
-          "1000x1000": "https://creatornode3.audius.co/content/QmWGQf6CnFJJ4he13eDF2vZwDyoaWcHL3HziQyaSPwVFd3/1000x1000.jpg"
-        },
-        "description": null,
-        "genre": "Electronic",
-        "id": "y7XX7",
-        "track_cid": "QmXFnuP57woE7ZZ3HTkWggXuzZL13SJVLiL7rVE9qSFTyf",
-        "mood": "Other",
-        "release_date": "Sun Mar 28 2021 11:52:35 GMT-0700",
-        "remix_of": {
-          "tracks": null
-        },
-        "repost_count": 46,
-        "favorite_count": 100,
-        "tags": null,
-        "title": "PAULINE HERR @ BROWNIES & LEMONADE OPEN AUX 1/30",
-        "user": {
-          "album_count": 1,
-          "artist_pick_track_id": "JbQN0",
-          "bio": "producer, singer, human\n\nsocials: @paulineherr",
-          "cover_photo": {
-            "640x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/640x.jpg",
-            "2000x": "https://creatornode3.audius.co/content/QmZXwdQDq5QDJW3W17g4n4zXVjaDGDbvuzsMWqhis61W7h/2000x.jpg"
-          },
-          "followee_count": 144,
-          "follower_count": 41573,
-          "does_follow_current_user": false,
-          "handle": "paulineherr",
-          "id": "eGEam",
-          "is_verified": true,
-          "location": "Burbank, CA",
-          "name": "Pauline Herr",
-          "playlist_count": 1,
-          "profile_picture": {
-            "150x150": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/150x150.jpg",
-            "480x480": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/480x480.jpg",
-            "1000x1000": "https://creatornode3.audius.co/content/QmbqwCk1axAdXk9iFfeU48iu1P73ChUA3kxpeg7PJBRHsC/1000x1000.jpg"
-          },
-          "repost_count": 155,
-          "track_count": 35,
-          "is_deactivated": false,
-          "is_available": true,
-          "erc_wallet": "0xf568ab060acd91fe4861e52136deb08ca1f26574",
-          "spl_wallet": "3DeyiqjmCAtqPUzGX6MQP2C62kKRANy7LFvcBzUEHqPc",
-          "supporter_count": 8,
-          "supporting_count": 0,
-          "total_audio_balance": 131
-        },
-        "duration": 1708,
-        "downloadable": false,
-        "play_count": 958,
-        "permalink": "/paulineherr/pauline-herr-brownies-lemonade-open-aux-130-316935",
-        "is_streamable": true
-      }
-    }
-  ]
-}
-```
-
-<h3 id="get-user's-reposts-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[reposts](#schemareposts)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
-## Get Subscribers
-
-<a id="opIdGet Subscribers"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/subscribers',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/subscribers', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/subscribers', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/subscribers", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/{id}/subscribers`
-
-All users that subscribe to the provided user
-
-<h3 id="get-subscribers-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|id|string|true|A User ID|
-|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
-|limit|integer|false|The number of items to fetch|
-|user_id|string|false|The user ID of the user making the request|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": [
-    {
-      "album_count": 1,
-      "artist_pick_track_id": "QVkPv",
-      "bio": "🌞👄🌞\noak",
-      "cover_photo": {
-        "640x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/640x.jpg",
-        "2000x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/2000x.jpg"
-      },
-      "followee_count": 1543,
-      "follower_count": 8276,
-      "does_follow_current_user": false,
-      "handle": "rayjacobson",
-      "id": "7eP5n",
-      "is_verified": false,
-      "location": "chik fil yay!!",
-      "name": "raymont",
-      "playlist_count": 8,
-      "profile_picture": {
-        "150x150": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/150x150.jpg",
-        "480x480": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/480x480.jpg",
-        "1000x1000": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/1000x1000.jpg"
-      },
-      "repost_count": 3891,
-      "track_count": 17,
-      "is_deactivated": false,
-      "is_available": true,
-      "erc_wallet": "0x7d273271690538cf855e5b3002a0dd8c154bb060",
-      "spl_wallet": "EXfHYvqN7GTeQa7aiRhq4UMMZBC9PmUXmskgCH7BSaTn",
-      "supporter_count": 8,
-      "supporting_count": 110,
-      "total_audio_balance": 205
-    }
-  ]
-}
-```
-
-<h3 id="get-subscribers-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[subscribers_response](#schemasubscribers_response)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
 
@@ -2996,180 +2154,6 @@ Gets the users that the given user supports
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[get_supporting](#schemaget_supporting)|
 
-## Get User's Most Used Track Tags
-
-<a id="opIdGet User's Most Used Track Tags"></a>
-
-> Code Sample
-
-```shell
-curl AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP 
- 
-
-```
-
-```http
-GET AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP HTTP/1.1
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/tags',
-  params: {
-  'app_name' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/tags', params={
-  'app_name': 'EXAMPLEAPP'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/tags', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/tags", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /users/{id}/tags`
-
-*Fetch most used tags in a user's tracks*
-
-Gets the most used track tags by a user.
-
-<h3 id="get-user's-most-used-track-tags-parameters">Query Parameters</h3>
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|---|
-|id|string|true|A User ID|
-|limit|integer|false|The number of items to fetch|
-|user_id|string|false|The user ID of the user making the request|
-|app_name|string|false|Your app name|
-
-> Example Response
-
-```json
-{
-  "data": [
-    "browniesandlemonade"
-  ]
-}
-```
-
-<h3 id="get-user's-most-used-track-tags-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tags_response](#schematags_response)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
-
 ## Get User's Tracks
 
 <a id="opIdGet User's Tracks"></a>
@@ -3397,6 +2381,1022 @@ Gets the tracks created by a user using their user ID
 ```
 
 <h3 id="get-user's-tracks-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tracks_response](#schematracks_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Related Users
+
+<a id="opIdGet Related Users"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/related',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/related', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/related', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/related?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/related", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/related`
+
+Gets a list of users that might be of interest to followers of this user.
+
+<h3 id="get-related-users-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 0,
+      "artist_pick_track_id": null,
+      "bio": "we are here for now. \n\ninquiries: joey@keel.la",
+      "cover_photo": {
+        "640x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/640x.jpg",
+        "2000x": "https://creatornode3.audius.co/content/QmZFh4413dNdy8RCg6bAx7jLeqMKxVHbKPdq18rG4JhPg1/2000x.jpg"
+      },
+      "followee_count": 8,
+      "follower_count": 39042,
+      "does_follow_current_user": false,
+      "handle": "LouisTheChild",
+      "id": "LxQm2",
+      "is_verified": true,
+      "location": "Chicago, IL",
+      "name": "Louis The Child",
+      "playlist_count": 0,
+      "profile_picture": {
+        "150x150": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/150x150.jpg",
+        "480x480": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/480x480.jpg",
+        "1000x1000": "https://creatornode3.audius.co/content/Qmat15zauKpvWK83WiYiQLJ7LHXTEDViXFAUZayC1AFN5v/1000x1000.jpg"
+      },
+      "repost_count": 1,
+      "track_count": 94,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x0fd1293443c366bc433d85c94be56ca8117d0ef6",
+      "spl_wallet": "4V5UASoUDPSMRNU1AJ8vNh2kC7y1DXoMnaoehXCxNZsk",
+      "supporter_count": 4,
+      "supporting_count": 0,
+      "total_audio_balance": 12
+    }
+  ]
+}
+```
+
+<h3 id="get-related-users-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[related_artist_response](#schemarelated_artist_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get Subscribers
+
+<a id="opIdGet Subscribers"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/subscribers',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/subscribers', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/subscribers', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/subscribers?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/subscribers", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/subscribers`
+
+All users that subscribe to the provided user
+
+<h3 id="get-subscribers-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "album_count": 1,
+      "artist_pick_track_id": "QVkPv",
+      "bio": "🌞👄🌞\noak",
+      "cover_photo": {
+        "640x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/640x.jpg",
+        "2000x": "https://blockchange-audius-content-03.bdnodes.net/content/QmUk61QDUTzhNqjnCAWipSp3jnMmXBmtTUC2mtF5F6VvUy/2000x.jpg"
+      },
+      "followee_count": 1543,
+      "follower_count": 8276,
+      "does_follow_current_user": false,
+      "handle": "rayjacobson",
+      "id": "7eP5n",
+      "is_verified": false,
+      "location": "chik fil yay!!",
+      "name": "raymont",
+      "playlist_count": 8,
+      "profile_picture": {
+        "150x150": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/150x150.jpg",
+        "480x480": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/480x480.jpg",
+        "1000x1000": "https://blockchange-audius-content-03.bdnodes.net/content/QmYRHAJ4YuLjT4fLLRMg5STnQA4yDpiBmzk5R3iCDTmkmk/1000x1000.jpg"
+      },
+      "repost_count": 3891,
+      "track_count": 17,
+      "is_deactivated": false,
+      "is_available": true,
+      "erc_wallet": "0x7d273271690538cf855e5b3002a0dd8c154bb060",
+      "spl_wallet": "EXfHYvqN7GTeQa7aiRhq4UMMZBC9PmUXmskgCH7BSaTn",
+      "supporter_count": 8,
+      "supporting_count": 110,
+      "total_audio_balance": 205
+    }
+  ]
+}
+```
+
+<h3 id="get-subscribers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[subscribers_response](#schemasubscribers_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get User's Most Used Track Tags
+
+<a id="opIdGet User's Most Used Track Tags"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/nlGNe/tags',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/nlGNe/tags', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/nlGNe/tags', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/nlGNe/tags?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/nlGNe/tags", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/{id}/tags`
+
+*Fetch most used tags in a user's tracks*
+
+Gets the most used track tags by a user.
+
+<h3 id="get-user's-most-used-track-tags-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|id|string|true|A User ID|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    "browniesandlemonade"
+  ]
+}
+```
+
+<h3 id="get-user's-most-used-track-tags-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tags_response](#schematags_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get User by Handle
+
+<a id="opIdGet User by Handle"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/rac',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/handle/rac', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/rac', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/rac?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/rac", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/handle/{handle}`
+
+Gets a single user by their handle
+
+<h3 id="get-user-by-handle-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|handle|string|true|A User handle|
+|user_id|string|false|The user ID of the user making the request|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": {
+    "album_count": 1,
+    "artist_pick_track_id": "bbzxO",
+    "bio": "Grammy award winning recording artist",
+    "cover_photo": {
+      "640x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/640x.jpg",
+      "2000x": "https://creatornode3.audius.co/content/QmajqvB5WHRzkkE9dxgxoTcAoRwZ9Mnhd7ZSbZxyheQvzK/2000x.jpg"
+    },
+    "followee_count": 19,
+    "follower_count": 64352,
+    "does_follow_current_user": false,
+    "handle": "RAC",
+    "id": "nkwv1",
+    "is_verified": true,
+    "location": "Portland, OR",
+    "name": "RAC",
+    "playlist_count": 0,
+    "profile_picture": {
+      "150x150": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/150x150.jpg",
+      "480x480": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/480x480.jpg",
+      "1000x1000": "https://creatornode3.audius.co/content/QmeZmZsxNbZ6prX9yg6sa2pk4bPPRUfdYJPqqndRanUrsf/1000x1000.jpg"
+    },
+    "repost_count": 12,
+    "track_count": 16,
+    "is_deactivated": false,
+    "is_available": true,
+    "erc_wallet": "0x346dfbfaf04f40a7f4d327a4935ee98a5bdbd478",
+    "spl_wallet": "2AXmXpWwbFTRWJWkmfjfKajapgAkQEQKkqxooBRZd5cf",
+    "supporter_count": 23,
+    "supporting_count": 1,
+    "total_audio_balance": 114101
+  }
+}
+```
+
+<h3 id="get-user-by-handle-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[user_response](#schemauser_response)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Server error|None|
+
+## Get AI Tracks by Handle
+
+<a id="opIdGet AI Tracks by Handle"></a>
+
+> Code Sample
+
+```shell
+curl AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP 
+ 
+
+```
+
+```http
+GET AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP HTTP/1.1
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed',
+  params: {
+  'app_name' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', params={
+  'app_name': 'EXAMPLEAPP'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed?app_name=EXAMPLEAPP");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "AUDIUS_API_HOST/v1/users/handle/phuture/tracks/ai_attributed", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /users/handle/{handle}/tracks/ai_attributed`
+
+Gets the AI generated tracks attributed to a user using the user's handle
+
+<h3 id="get-ai-tracks-by-handle-parameters">Query Parameters</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|---|
+|handle|string|true|A User handle|
+|offset|integer|false|The number of items to skip. Useful for pagination (page number * limit)|
+|limit|integer|false|The number of items to fetch|
+|user_id|string|false|The user ID of the user making the request|
+|sort|string|false|[Deprecated] Field to sort by<table class="inline"><tr><th>Available values:</th><td>date</td><td>plays</td></tr></table>|
+|query|string|false|The filter query|
+|sort_method|string|false|The sort method<table class="inline"><tr><th>Available values:</th><td>title</td><td>artist_name</td><td>release_date</td><td>last_listen_date</td><td>added_date</td><td>length</td><td>plays</td><td>reposts</td><td>saves</td><td>most_listens_by_user</td></tr></table>|
+|sort_direction|string|false|The sort direction<table class="inline"><tr><th>Available values:</th><td>asc</td><td>desc</td></tr></table>|
+|filter_tracks|string|false|Filter by unlisted or public tracks<table class="inline"><tr><th>Available values:</th><td>all</td><td>public</td><td>unlisted</td></tr></table>|
+|app_name|string|false|Your app name|
+
+> Example Response
+
+```json
+{
+  "data": [
+    {
+      "artwork": {
+        "150x150": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/150x150.jpg",
+        "480x480": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/480x480.jpg",
+        "1000x1000": "https://creatornode2.audius.co/content/QmSQpJrsBM5Vjbifa4e6Xok3mEoyJ3k7YT9YTcM5bcuqDP/1000x1000.jpg"
+      },
+      "description": "Made with Boomy",
+      "genre": "Electronic",
+      "id": "wzwEM32",
+      "track_cid": "Qme14CQbQPTK1snP8Gt3JSdGAHHdWFJAg25FnVue4s1oT7",
+      "mood": "Sophisticated",
+      "release_date": "Mon May 01 2023 17:17:23 GMT-0700",
+      "remix_of": {
+        "tracks": null
+      },
+      "repost_count": 1,
+      "favorite_count": 2,
+      "tags": "ai,aimusic",
+      "title": "PhutureAI",
+      "user": {
+        "album_count": 0,
+        "artist_pick_track_id": null,
+        "bio": "Founder of Phuture Collective",
+        "cover_photo": {
+          "640x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/640x.jpg",
+          "2000x": "https://creatornode2.audius.co/content/QmbB1yiGWF7JpWfW42LbhWY27v7GMfLKuLE3fd84hFKDS7/2000x.jpg"
+        },
+        "followee_count": 8,
+        "follower_count": 247,
+        "does_follow_current_user": false,
+        "handle": "synchronistic",
+        "id": "LRNZL",
+        "is_verified": false,
+        "location": "Portland, OR",
+        "name": "synchronistic",
+        "playlist_count": 0,
+        "profile_picture": {
+          "150x150": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/150x150.jpg",
+          "480x480": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/480x480.jpg",
+          "1000x1000": "https://creatornode2.audius.co/content/QmcBGJSkkWqfc1kx23jVuDfMenMS8u1ctPmm3A5VcLboSH/1000x1000.jpg"
+        },
+        "repost_count": 2,
+        "track_count": 3,
+        "is_deactivated": false,
+        "is_available": true,
+        "erc_wallet": "0x0b0e6bd939a6165a98ed8f4ea350a96d1127676f",
+        "spl_wallet": "4eKrNigZuzvAR4rYBLFJMRSULA1Me9LSwygMjqzEYJGc",
+        "supporter_count": 0,
+        "supporting_count": 0,
+        "total_audio_balance": 1
+      },
+      "duration": 67,
+      "downloadable": false,
+      "play_count": 1529,
+      "permalink": "/synchronistic/phutureai",
+      "is_streamable": true
+    }
+  ]
+}
+```
+
+<h3 id="get-ai-tracks-by-handle-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
