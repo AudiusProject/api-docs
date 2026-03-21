@@ -1,3 +1,5 @@
+# ⚠️ This repo has been archived. Please see [docs.audius.co](https://docs.audius.co) for the Audius API docs.
+
 # Audius API Documentation
 
 [https://audiusproject.github.io/api-docs](https://audiusproject.github.io/api-docs)
